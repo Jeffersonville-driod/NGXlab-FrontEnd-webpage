@@ -1,27 +1,23 @@
+// api/server.js
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
-
-// Load environment variables relative to api folder
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const connectDB = require('./config/db');
 
 const app = express();
 
-// 1. Connect to MongoDB
 connectDB();
 
-// 2. Middlewares
 app.use(cors());
 app.use(express.json());
 
-// 3. Healthcheck Endpoint
+// Auth Routes
+app.use('/api/auth', require('./routes/authRoutes'));
+
 app.get('/api/health', (req, res) => {
-  res.json({
-    status: 'OK',
-    dbState: mongoose.connection.readyState === 1 ? 'Connected' : 'Disconnected'
-  });
+  res.json({ status: 'OK', store: 'Tradia E-Commerce API Active' });
 });
 
 const PORT = process.env.PORT || 5000;
