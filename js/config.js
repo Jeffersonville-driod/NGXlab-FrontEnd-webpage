@@ -1,3 +1,1 @@
-window.NGXLabConfig = Object.freeze({
-  apiBaseUrl: "https://ngxlab-backend.vercel.app"
-});
+export const API_BASE_URL = "https://ngxlab-backend.vercel.app";

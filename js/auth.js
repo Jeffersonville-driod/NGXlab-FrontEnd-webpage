@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://ngxlab-backend.vercel.app";
+import { API_BASE_URL } from "./config.js";
 
 async function authRequest(endpoint, payload) {
   const response = await fetch(`${API_BASE_URL}/api/auth/${endpoint}`, {
