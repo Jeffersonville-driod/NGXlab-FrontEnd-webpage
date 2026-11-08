@@ -1,0 +1,83 @@
+import { login, register } from "./auth.js";
+
+const authIntro = document.getElementById("auth-intro");
+const authStatus = document.getElementById("auth-status");
+const authForms = {
+  login: document.getElementById("login-form"),
+  signup: document.getElementById("signup-form"),
+  recovery: document.getElementById("recovery-form")
+};
+const authCopy = {
+  login: "Log in to continue exploring NGXLab.",
+  signup: "Start building your understanding of the market.",
+  recovery: "Enter your email address to request a password recovery link."
+};
+
+function showAuthView(view, updateUrl = true) {
+  if (!authForms[view]) return;
+
+  Object.entries(authForms).forEach(([name, form]) => {
+    form.hidden = name !== view;
+  });
+  authIntro.textContent = authCopy[view];
+  authStatus.textContent = "";
+  document.querySelectorAll(".auth-tab").forEach((tab) => {
+    tab.setAttribute("aria-pressed", String(tab.dataset.authView === view));
+  });
+
+  if (updateUrl) {
+    const url = new URL(window.location.href);
+    url.searchParams.set("view", view);
+    window.history.replaceState(null, "", url);
+  }
+}
+
+document.querySelectorAll(".auth-tab, .auth-link-button").forEach((button) => {
+  button.addEventListener("click", () => showAuthView(button.dataset.authView));
+});
+
+document.querySelectorAll("[data-google-auth]").forEach((button) => {
+  button.addEventListener("click", () => {
+    authStatus.textContent = button.dataset.googleAuth === "signup"
+      ? "Google sign-up isn't connected yet. No information was sent."
+      : "Google sign-in isn't connected yet. No information was sent.";
+  });
+});
+
+Object.entries(authForms).forEach(([view, form]) => {
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    if (view === "recovery") {
+      authStatus.textContent = "Password recovery isn't connected yet. No email was sent.";
+      return;
+    }
+
+    const submitButton = form.querySelector('[type="submit"]');
+    submitButton.disabled = true;
+    authStatus.textContent = view === "login" ? "Signing in..." : "Creating your account...";
+
+    try {
+      const formData = new FormData(form);
+      if (view === "login") {
+        await login(formData.get("email"), formData.get("password"));
+        authStatus.textContent = "Signed in successfully.";
+      } else {
+        await register(
+          formData.get("name"),
+          formData.get("email"),
+          formData.get("password")
+        );
+        authStatus.textContent = "Your account has been created.";
+      }
+      form.reset();
+    } catch (error) {
+      authStatus.textContent = error.message || "Authentication failed. Please try again.";
+    } finally {
+      submitButton.disabled = false;
+    }
+  });
+});
+
+const requestedView = new URLSearchParams(window.location.search).get("view");
+showAuthView(Object.hasOwn(authForms, requestedView) ? requestedView : "login", false);
