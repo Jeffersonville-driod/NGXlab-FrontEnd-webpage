@@ -40,6 +40,7 @@ function showAuthView(view, updateUrl = true) {
 function setButtonLoading(button, loading) {
   button.disabled = loading;
   button.setAttribute("aria-busy", String(loading));
+  button.querySelector(".button-spinner").hidden = !loading;
 }
 
 document.querySelectorAll(".auth-tab, .auth-link-button").forEach((button) => {

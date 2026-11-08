@@ -77,7 +77,8 @@ a { color: inherit; }
 .auth-submit:hover { background: var(--green); color: var(--white); }
 .auth-submit:disabled { cursor: wait; opacity: .8; }
 .auth-submit:disabled:hover { background: var(--lime); color: var(--green-deep); }
-.auth-submit[aria-busy="true"]::before { width: 13px; height: 13px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: auth-button-spin .7s linear infinite; content: ""; }
+.button-spinner { width: 14px; height: 14px; flex: 0 0 14px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: auth-button-spin .7s linear infinite; }
+.button-spinner[hidden] { display: none; }
 @keyframes auth-button-spin { to { transform: rotate(360deg); } }
 .auth-divider { display: flex; align-items: center; gap: 12px; margin: 15px 0 12px; color: #849086; font-size: 10px; }
 .auth-divider::before, .auth-divider::after { height: 1px; flex: 1; background: var(--line); content: ""; }
@@ -375,6 +376,6 @@ h2 { margin: 0; font-size: clamp(30px, 3.8vw, 42px); font-weight: 520; letter-sp
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
-  .auth-submit[aria-busy="true"]::before { animation: none; }
+  .button-spinner { animation: none; }
 }
 :focus-visible { outline: 3px solid #8eaa59; outline-offset: 3px; }

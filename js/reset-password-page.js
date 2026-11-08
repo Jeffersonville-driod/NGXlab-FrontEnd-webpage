@@ -29,6 +29,7 @@ form.addEventListener("submit", async (event) => {
   const submitButton = form.querySelector('[type="submit"]');
   submitButton.disabled = true;
   submitButton.setAttribute("aria-busy", "true");
+  submitButton.querySelector(".button-spinner").hidden = false;
   status.textContent = "";
 
   try {
@@ -41,5 +42,6 @@ form.addEventListener("submit", async (event) => {
   } finally {
     submitButton.disabled = false;
     submitButton.setAttribute("aria-busy", "false");
+    submitButton.querySelector(".button-spinner").hidden = true;
   }
 });
