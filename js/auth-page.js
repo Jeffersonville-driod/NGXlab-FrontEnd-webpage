@@ -1,4 +1,4 @@
-import { login, register } from "./auth.js";
+import { login, register, requestPasswordReset } from "./auth.js";
 
 const authIntro = document.getElementById("auth-intro");
 const authStatus = document.getElementById("auth-status");
@@ -49,7 +49,20 @@ Object.entries(authForms).forEach(([view, form]) => {
     event.preventDefault();
 
     if (view === "recovery") {
-      authStatus.textContent = "Password recovery isn't connected yet. No email was sent.";
+      const submitButton = form.querySelector('[type="submit"]');
+      submitButton.disabled = true;
+      authStatus.textContent = "Sending your password reset request...";
+
+      try {
+        const formData = new FormData(form);
+        await requestPasswordReset(formData.get("email"));
+        authStatus.textContent = "If an account exists for that email, a password reset link will be sent shortly.";
+        form.reset();
+      } catch (error) {
+        authStatus.textContent = error.message || "Couldn't request a password reset. Please try again.";
+      } finally {
+        submitButton.disabled = false;
+      }
       return;
     }
 

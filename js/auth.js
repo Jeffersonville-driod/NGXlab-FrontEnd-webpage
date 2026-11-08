@@ -30,3 +30,11 @@ export function login(email, password) {
 export function loginWithGoogle(idToken) {
   return authRequest("google", { idToken });
 }
+
+export function requestPasswordReset(email) {
+  return authRequest("forgot-password", { email });
+}
+
+export function resetPassword(token, password) {
+  return authRequest("reset-password", { token, password });
+}
