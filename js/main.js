@@ -1,3 +1,5 @@
+import { login, register } from "./auth.js";
+
 const accountDrawer = document.getElementById("account-drawer");
 const authTitle = document.getElementById("auth-title");
 const authIntro = document.getElementById("auth-intro");
@@ -51,12 +53,37 @@ accountDrawer.addEventListener("click", (event) => {
 });
 
 Object.entries(authForms).forEach(([view, form]) => {
-  form.addEventListener("submit", (event) => {
+  form.addEventListener("submit", async (event) => {
     event.preventDefault();
-    authStatus.textContent = view === "recovery"
-      ? "Password recovery is not connected yet. No email was sent."
-      : "Account access is not connected yet. Nothing was saved or sent.";
-    form.reset();
+
+    if (view === "recovery") {
+      authStatus.textContent = "Password recovery isn't connected yet. No email was sent.";
+      return;
+    }
+
+    const submitButton = form.querySelector('[type="submit"]');
+    submitButton.disabled = true;
+    authStatus.textContent = view === "login" ? "Signing in..." : "Creating your account...";
+
+    try {
+      const formData = new FormData(form);
+      if (view === "login") {
+        await login(formData.get("email"), formData.get("password"));
+        authStatus.textContent = "Signed in successfully.";
+      } else {
+        await register(
+          formData.get("name"),
+          formData.get("email"),
+          formData.get("password")
+        );
+        authStatus.textContent = "Your account has been created.";
+      }
+      form.reset();
+    } catch (error) {
+      authStatus.textContent = error.message || "Authentication failed. Please try again.";
+    } finally {
+      submitButton.disabled = false;
+    }
   });
 });
 
