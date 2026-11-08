@@ -32,6 +32,11 @@ function showAuthView(view, updateUrl = true) {
   }
 }
 
+function setButtonLoading(button, loading) {
+  button.disabled = loading;
+  button.setAttribute("aria-busy", String(loading));
+}
+
 document.querySelectorAll(".auth-tab, .auth-link-button").forEach((button) => {
   button.addEventListener("click", () => showAuthView(button.dataset.authView));
 });
@@ -50,8 +55,8 @@ Object.entries(authForms).forEach(([view, form]) => {
 
     if (view === "recovery") {
       const submitButton = form.querySelector('[type="submit"]');
-      submitButton.disabled = true;
-      authStatus.textContent = "Sending your password reset request...";
+      setButtonLoading(submitButton, true);
+      authStatus.textContent = "";
 
       try {
         const formData = new FormData(form);
@@ -61,14 +66,14 @@ Object.entries(authForms).forEach(([view, form]) => {
       } catch (error) {
         authStatus.textContent = error.message || "Couldn't request a password reset. Please try again.";
       } finally {
-        submitButton.disabled = false;
+        setButtonLoading(submitButton, false);
       }
       return;
     }
 
     const submitButton = form.querySelector('[type="submit"]');
-    submitButton.disabled = true;
-    authStatus.textContent = view === "login" ? "Signing in..." : "Creating your account...";
+    setButtonLoading(submitButton, true);
+    authStatus.textContent = "";
 
     try {
       const formData = new FormData(form);
@@ -87,7 +92,7 @@ Object.entries(authForms).forEach(([view, form]) => {
     } catch (error) {
       authStatus.textContent = error.message || "Authentication failed. Please try again.";
     } finally {
-      submitButton.disabled = false;
+      setButtonLoading(submitButton, false);
     }
   });
 });

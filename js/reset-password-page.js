@@ -23,7 +23,8 @@ form.addEventListener("submit", async (event) => {
 
   const submitButton = form.querySelector('[type="submit"]');
   submitButton.disabled = true;
-  status.textContent = "Updating your password...";
+  submitButton.setAttribute("aria-busy", "true");
+  status.textContent = "";
 
   try {
     await resetPassword(token, password);
@@ -34,5 +35,6 @@ form.addEventListener("submit", async (event) => {
     status.textContent = error.message || "Couldn't reset your password. The link may have expired or already been used.";
   } finally {
     submitButton.disabled = false;
+    submitButton.setAttribute("aria-busy", "false");
   }
 });

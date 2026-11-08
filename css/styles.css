@@ -64,8 +64,12 @@ a { color: inherit; }
 .auth-field { display: block; margin: 15px 0 0; color: #405046; font-size: 11px; font-weight: 620; }
 .auth-input { width: 100%; height: 43px; margin-top: 6px; padding: 0 12px; border: 1px solid #dce4da; border-radius: 6px; outline: none; background: #fff; color: var(--ink); font: inherit; font-size: 12px; }
 .auth-input:focus { border-color: #77964b; box-shadow: 0 0 0 3px #78974b20; }
-.auth-submit { width: 100%; min-height: 45px; margin-top: 21px; border: 0; border-radius: 6px; background: var(--lime); color: var(--green-deep); cursor: pointer; font: inherit; font-size: 12px; font-weight: 680; }
+.auth-submit { width: 100%; min-height: 45px; display: inline-flex; align-items: center; justify-content: center; gap: 9px; margin-top: 21px; border: 0; border-radius: 6px; background: var(--lime); color: var(--green-deep); cursor: pointer; font: inherit; font-size: 12px; font-weight: 680; }
 .auth-submit:hover { background: var(--green); color: var(--white); }
+.auth-submit:disabled { cursor: wait; opacity: .8; }
+.auth-submit:disabled:hover { background: var(--lime); color: var(--green-deep); }
+.auth-submit[aria-busy="true"]::before { width: 13px; height: 13px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: auth-button-spin .7s linear infinite; content: ""; }
+@keyframes auth-button-spin { to { transform: rotate(360deg); } }
 .auth-divider { display: flex; align-items: center; gap: 12px; margin: 15px 0 12px; color: #849086; font-size: 10px; }
 .auth-divider::before, .auth-divider::after { height: 1px; flex: 1; background: var(--line); content: ""; }
 .google-auth-button { width: 100%; min-height: 43px; display: flex; align-items: center; justify-content: center; gap: 10px; border: 1px solid #dce4da; border-radius: 6px; background: white; color: #34443a; cursor: pointer; font: inherit; font-size: 12px; font-weight: 620; }
@@ -338,5 +342,6 @@ h2 { margin: 0; font-size: clamp(30px, 3.8vw, 42px); font-weight: 520; letter-sp
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+  .auth-submit[aria-busy="true"]::before { animation: none; }
 }
 :focus-visible { outline: 3px solid #8eaa59; outline-offset: 3px; }
