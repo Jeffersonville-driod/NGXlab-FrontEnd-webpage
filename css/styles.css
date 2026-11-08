@@ -198,37 +198,45 @@ h2 { margin: 0; font-size: clamp(30px, 3.8vw, 42px); font-weight: 520; letter-sp
 .apps-copy .kicker { margin-bottom: 13px; }
 .apps-copy h2 { max-width: 480px; }
 .apps-copy > p:last-child { max-width: 450px; margin: 14px 0 0; color: var(--muted); font-size: 13px; }
-.app-platforms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 18px; }
+.app-platforms { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 18px; isolation: isolate; }
+.app-platforms::before { position: absolute; z-index: -1; inset: 12% 4% 5%; border-radius: 50%; background: radial-gradient(ellipse, #fff 0, #ffffffa8 40%, #ffffff00 73%); content: ""; }
 .app-platform { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }
 .app-platform-heading { width: 100%; display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 8px; }
 .app-platform-name { color: var(--ink); font-size: 14px; font-weight: 700; }
 .app-status { padding: 4px 8px; border-radius: 99px; background: #e8efd9; color: #4c6a34; font-size: 9px; font-weight: 700; letter-spacing: .04em; }
-.phone-mockup { position: relative; width: min(100%, 174px); padding: 7px; border: 2px solid #26352c; border-radius: 29px; background: #26352c; box-shadow: 0 16px 30px #173a2b20, inset 0 0 0 1px #ffffff30; }
-.phone-android { border-radius: 25px; }
-.phone-ios { border-radius: 32px; }
-.phone-screen { position: relative; min-height: 306px; overflow: hidden; border-radius: 22px; background: #fbfcf9; }
-.phone-ios .phone-screen { border-radius: 26px; }
-.phone-status-bar { height: 23px; display: flex; align-items: center; justify-content: space-between; padding: 0 13px; color: #26352c; font-size: 7px; font-weight: 750; }
-.phone-status-bar span:last-child { font-size: 6px; letter-spacing: 1px; }
-.phone-app-bar { height: 37px; display: flex; align-items: center; gap: 6px; padding: 0 12px; border-bottom: 1px solid #edf0e9; color: #203629; font-size: 10px; font-weight: 760; }
+.phone-mockup { position: relative; width: min(100%, 214px); padding: 6px; border: 1px solid #68736c; border-radius: 34px; background: linear-gradient(135deg, #343d37, #111814 45%, #414b44); box-shadow: 0 28px 42px #173a2b30, 0 8px 14px #173a2b20, inset 0 0 0 1px #ffffff48; }
+.phone-mockup::before { position: absolute; z-index: 2; top: 11px; left: 50%; width: 52px; height: 13px; transform: translateX(-50%); border-radius: 99px; background: #111713; box-shadow: inset 0 1px 2px #000; content: ""; }
+.phone-mockup::after { position: absolute; top: 72px; right: -3px; width: 3px; height: 42px; border-radius: 0 3px 3px 0; background: #3c463f; content: ""; }
+.phone-android { transform: translateY(10px) rotate(-3deg); }
+.phone-ios { transform: translateY(-2px) rotate(3deg); }
+.phone-screen { position: relative; min-height: 350px; overflow: hidden; border-radius: 28px; background: linear-gradient(180deg, #fff 0, #fbfcf9 100%); }
+.phone-status-bar { height: 30px; display: flex; align-items: center; justify-content: space-between; padding: 1px 13px 0; color: #26352c; font-size: 8px; font-weight: 750; }
+.phone-status-bar span:last-child { font-size: 7px; letter-spacing: 1px; }
+.phone-app-bar { height: 39px; display: flex; align-items: center; gap: 7px; padding: 0 12px; border-bottom: 1px solid #edf0e9; color: #203629; font-size: 11px; font-weight: 760; }
 .phone-app-bar > span:nth-child(2) span { color: #638735; }
-.phone-brand-mark { width: 17px; height: 17px; display: grid; place-items: center; border-radius: 5px 5px 5px 1px; background: var(--green); color: var(--lime); font-size: 10px; font-weight: 800; }
-.phone-avatar { width: 18px; height: 18px; display: grid; place-items: center; margin-left: auto; border-radius: 50%; background: #e8efd9; color: #4c6a34; font-size: 8px; }
-.phone-content { padding: 14px 12px 12px; }
-.phone-eyebrow { display: block; color: #778477; font-size: 6px; font-weight: 750; letter-spacing: .08em; }
-.phone-balance { display: block; margin-top: 5px; color: #1c2b21; font-size: 20px; letter-spacing: -.8px; line-height: 1.15; }
-.phone-caption { display: block; margin-top: 3px; color: #748075; font-size: 7px; }
-.phone-chart-heading { display: flex; align-items: center; justify-content: space-between; gap: 4px; margin-top: 17px; color: #34443a; font-size: 8px; }
-.phone-chart-heading span { padding: 3px 5px; border-radius: 99px; background: #eef3e6; color: #58723d; font-size: 6px; font-weight: 700; }
-.phone-chart { display: block; width: 100%; height: 72px; margin-top: 5px; overflow: visible; }
+.phone-brand-mark { width: 19px; height: 19px; display: grid; place-items: center; border-radius: 6px 6px 6px 2px; background: var(--green); color: var(--lime); font-size: 11px; font-weight: 800; }
+.phone-avatar { width: 21px; height: 21px; display: grid; place-items: center; margin-left: auto; border: 1px solid #dfe8d5; border-radius: 50%; background: #eef3e6; color: #4c6a34; font-size: 9px; }
+.phone-content { padding: 18px 13px 10px; }
+.phone-eyebrow { display: block; color: #778477; font-size: 7px; font-weight: 750; letter-spacing: .09em; }
+.phone-balance { display: block; margin-top: 7px; color: #1c2b21; font-size: 24px; letter-spacing: -1px; line-height: 1.15; }
+.phone-caption { display: flex; align-items: center; gap: 7px; margin-top: 5px; color: #748075; font-size: 8px; }
+.phone-gain { padding: 2px 5px; border-radius: 99px; background: #eaf5e9; color: #26734a; font-size: 7px; font-weight: 750; }
+.phone-chart-heading { display: flex; align-items: center; justify-content: space-between; gap: 4px; margin-top: 20px; color: #34443a; font-size: 9px; }
+.phone-chart-heading span { padding: 4px 6px; border-radius: 99px; background: #eef3e6; color: #58723d; font-size: 6px; font-weight: 700; }
+.phone-chart { display: block; width: 100%; height: 82px; margin-top: 8px; overflow: visible; }
 .phone-chart-grid { fill: none; stroke: #e4e9df; stroke-width: 1; stroke-dasharray: 3 4; }
-.phone-chart-fill { fill: #00663f14; }
-.phone-chart-line { fill: none; stroke: #00663f; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2.5; }
-.phone-chart-labels { display: flex; justify-content: space-between; color: #839083; font-size: 6px; }
-.phone-watchlist { display: flex; align-items: center; gap: 6px; margin-top: 13px; padding: 8px 7px; border: 1px solid #e8ede4; border-radius: 7px; color: #526055; font-size: 6px; }
+.phone-android .phone-chart-fill { fill: url("#android-chart-fill"); }
+.phone-ios .phone-chart-fill { fill: url("#ios-chart-fill"); }
+.phone-chart-line { fill: none; stroke: #007448; stroke-linecap: round; stroke-linejoin: round; stroke-width: 3; }
+.phone-chart-labels { display: flex; justify-content: space-between; padding: 2px 2px 0; color: #839083; font-size: 7px; font-weight: 650; }
+.phone-watchlist { display: flex; align-items: center; gap: 6px; margin-top: 16px; padding: 10px 8px; border: 1px solid #e8ede4; border-radius: 9px; background: #fff; color: #526055; font-size: 7px; box-shadow: 0 3px 9px #1c2b2108; }
 .phone-watchlist > span:last-child { margin-left: auto; color: #58723d; font-weight: 700; }
 .phone-watchlist-dot { width: 7px; height: 7px; flex: 0 0 auto; border-radius: 50%; background: var(--lime); box-shadow: inset 0 0 0 2px #8eaa59; }
-.phone-home-indicator { width: 47px; height: 3px; margin: 4px auto 6px; border-radius: 99px; background: #26352c; }
+.phone-tab-bar { display: flex; justify-content: space-around; margin: 7px 7px 0; padding: 9px 0 7px; border-top: 1px solid #edf0e9; color: #849086; text-align: center; font-size: 11px; }
+.phone-tab-bar > span { display: grid; gap: 2px; justify-items: center; }
+.phone-tab-bar small { font-size: 6px; }
+.phone-tab-bar .phone-tab-active { color: #00663f; }
+.phone-home-indicator { width: 42px; height: 3px; margin: 2px auto 5px; border-radius: 99px; background: #26352c; }
 
 .closing { padding: 83px 0 90px; text-align: center; }
 .closing h2 { max-width: 570px; margin: 0 auto; }
@@ -309,7 +317,7 @@ h2 { margin: 0; font-size: clamp(30px, 3.8vw, 42px); font-weight: 520; letter-sp
   .apps-inner { grid-template-columns: 1fr; gap: 25px; }
   .app-platforms { gap: 12px; }
   .app-platform-heading { gap: 6px; }
-  .phone-mockup { width: min(100%, 174px); }
+  .phone-mockup { width: min(100%, 190px); }
   .closing { padding: 64px 0; }
   .newsletter { padding: 43px 0; }
   .newsletter-inner { grid-template-columns: 1fr; gap: 22px; }
