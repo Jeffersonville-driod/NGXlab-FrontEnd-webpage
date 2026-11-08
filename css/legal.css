@@ -1,13 +1,13 @@
 :root {
   color-scheme: light;
-  --paper: #f7f8f3;
-  --white: #fff;
-  --ink: #1c2b21;
-  --muted: #657369;
-  --green: #214c37;
-  --green-deep: #173a2b;
+  --paper: #f5f2e9;
+  --white: #fffcf4;
+  --ink: #173a2b;
+  --muted: #5b6a60;
+  --green: #173a2b;
+  --green-deep: #102a20;
   --lime: #d3ed75;
-  --line: #e4e9df;
+  --line: #d9dfd3;
 }
 
 * { box-sizing: border-box; }
