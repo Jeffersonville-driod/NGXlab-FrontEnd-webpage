@@ -52,6 +52,11 @@
             <input class="auth-input" id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
           </label>
           <button class="auth-submit" type="submit">Log in</button>
+          <div class="auth-divider"><span>or</span></div>
+          <button class="google-auth-button" type="button" data-google-auth="login">
+            <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#4285F4" d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11a9.4 9.4 0 0 1-4.1 6.2v5.1h6.6c3.9-3.6 6.1-8.8 6.1-15Z"/><path fill="#34A853" d="M24 44c5.5 0 10.1-1.8 13.5-4.9l-6.6-5.1c-1.8 1.2-4.1 2-6.9 2-5.3 0-9.8-3.6-11.4-8.4H5.8v5.3A20 20 0 0 0 24 44Z"/><path fill="#FBBC05" d="M12.6 27.6a12 12 0 0 1 0-7.2v-5.3H5.8a20 20 0 0 0 0 17.8l6.8-5.3Z"/><path fill="#EA4335" d="M24 12c3 0 5.7 1 7.8 3.1l5.8-5.8C34.1 6 29.5 4 24 4A20 20 0 0 0 5.8 15.1l6.8 5.3C14.2 15.6 18.7 12 24 12Z"/></svg>
+            Continue with Google
+          </button>
           <div class="auth-secondary">
             <button class="auth-link-button" type="button" data-auth-view="recovery">Forgot password?</button>
             <button class="auth-link-button" type="button" data-auth-view="signup">New to NGXLab? Create an account</button>
@@ -69,6 +74,11 @@
             <input class="auth-input" id="signup-password" name="password" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required>
           </label>
           <button class="auth-submit" type="submit">Create account</button>
+          <div class="auth-divider"><span>or</span></div>
+          <button class="google-auth-button" type="button" data-google-auth="signup">
+            <svg viewBox="0 0 48 48" aria-hidden="true" focusable="false"><path fill="#4285F4" d="M43.6 24.5c0-1.4-.1-2.8-.4-4.1H24v7.8h11a9.4 9.4 0 0 1-4.1 6.2v5.1h6.6c3.9-3.6 6.1-8.8 6.1-15Z"/><path fill="#34A853" d="M24 44c5.5 0 10.1-1.8 13.5-4.9l-6.6-5.1c-1.8 1.2-4.1 2-6.9 2-5.3 0-9.8-3.6-11.4-8.4H5.8v5.3A20 20 0 0 0 24 44Z"/><path fill="#FBBC05" d="M12.6 27.6a12 12 0 0 1 0-7.2v-5.3H5.8a20 20 0 0 0 0 17.8l6.8-5.3Z"/><path fill="#EA4335" d="M24 12c3 0 5.7 1 7.8 3.1l5.8-5.8C34.1 6 29.5 4 24 4A20 20 0 0 0 5.8 15.1l6.8 5.3C14.2 15.6 18.7 12 24 12Z"/></svg>
+            Continue with Google
+          </button>
           <div class="auth-secondary">
             <span class="drawer-intro">Already have an account?</span>
             <button class="auth-link-button" type="button" data-auth-view="login">Log in</button>
@@ -238,20 +248,58 @@
             <p>Learn about the market, explore ideas, and keep building your understanding wherever you are. Our Android and iOS apps are on the way.</p>
           </div>
           <div class="app-platforms" aria-label="Planned app availability">
-            <div class="app-platform">
-              <span class="app-platform-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M7.2 8.2h9.6v9.1a1 1 0 0 1-1 1h-7.6a1 1 0 0 1-1-1V8.2ZM5 9.2v6.2m14-6.2v6.2M9 5.8 7.7 4m7.3 1.8L16.3 4M10 12v2m4-2v2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.5 8.2a4.5 4.5 0 0 1 9 0" stroke="currentColor" stroke-width="1.6"/></svg>
-              </span>
-              <span class="app-platform-name">Android</span>
-              <span class="app-status">Coming soon</span>
-            </div>
-            <div class="app-platform">
-              <span class="app-platform-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none"><path d="M16.5 12.6c0-2 1.6-3 1.7-3.1a3.7 3.7 0 0 0-2.9-1.6c-1.2-.1-2.3.7-2.9.7-.7 0-1.6-.7-2.7-.7-1.4 0-2.7.8-3.4 2.1-1.4 2.5-.4 6.2 1 8.2.7 1 1.5 2 2.5 1.9 1-.1 1.4-.6 2.6-.6s1.6.6 2.7.6c1.1 0 1.8-1 2.4-2 .4-.7.7-1.4 1-2.2a3.4 3.4 0 0 1-2-3.3ZM14.8 6.2A3.5 3.5 0 0 0 15.6 3a3.6 3.6 0 0 0-2.8 1.5 3.4 3.4 0 0 0-.8 3.1 3 3 0 0 0 2.8-1.4Z" fill="currentColor"/></svg>
-              </span>
-              <span class="app-platform-name">iOS</span>
-              <span class="app-status">Coming soon</span>
-            </div>
+            <article class="app-platform">
+              <div class="app-platform-heading">
+                <span class="app-platform-name">Android</span>
+                <span class="app-status">Coming soon</span>
+              </div>
+              <div class="phone-mockup phone-android" role="img" aria-label="Android app preview showing an illustrative NGXLab practice chart">
+                <div class="phone-screen">
+                  <div class="phone-status-bar"><span>9:41</span><span aria-hidden="true">● ● ▰</span></div>
+                  <div class="phone-app-bar"><span class="phone-brand-mark" aria-hidden="true">N</span><span>NGX<span>Lab</span></span><span class="phone-avatar" aria-hidden="true">A</span></div>
+                  <div class="phone-content">
+                    <span class="phone-eyebrow">YOUR PRACTICE PORTFOLIO</span>
+                    <strong class="phone-balance">₦100,000</strong>
+                    <span class="phone-caption">Virtual balance</span>
+                    <div class="phone-chart-heading"><strong>Practice chart</strong><span>Illustrative</span></div>
+                    <svg class="phone-chart" viewBox="0 0 220 88" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                      <path class="phone-chart-grid" d="M0 18H220M0 44H220M0 70H220"/>
+                      <path class="phone-chart-fill" d="m0 65 22-12 21 5 20-23 23 10 22-12 20 9 23-26 20 11 21-16 20 4v73H0Z"/>
+                      <path class="phone-chart-line" d="m0 65 22-12 21 5 20-23 23 10 22-12 20 9 23-26 20 11 21-16 20 4"/>
+                    </svg>
+                    <div class="phone-chart-labels"><span>Practice data</span><span>Learn as you go</span></div>
+                    <div class="phone-watchlist"><span class="phone-watchlist-dot" aria-hidden="true"></span><span>Market concepts</span><span>Explore</span></div>
+                  </div>
+                  <div class="phone-home-indicator" aria-hidden="true"></div>
+                </div>
+              </div>
+            </article>
+            <article class="app-platform">
+              <div class="app-platform-heading">
+                <span class="app-platform-name">iOS</span>
+                <span class="app-status">Coming soon</span>
+              </div>
+              <div class="phone-mockup phone-ios" role="img" aria-label="iOS app preview showing an illustrative NGXLab practice chart">
+                <div class="phone-screen">
+                  <div class="phone-status-bar"><span>9:41</span><span aria-hidden="true">● ● ▰</span></div>
+                  <div class="phone-app-bar"><span class="phone-brand-mark" aria-hidden="true">N</span><span>NGX<span>Lab</span></span><span class="phone-avatar" aria-hidden="true">A</span></div>
+                  <div class="phone-content">
+                    <span class="phone-eyebrow">YOUR PRACTICE PORTFOLIO</span>
+                    <strong class="phone-balance">₦100,000</strong>
+                    <span class="phone-caption">Virtual balance</span>
+                    <div class="phone-chart-heading"><strong>Practice chart</strong><span>Illustrative</span></div>
+                    <svg class="phone-chart" viewBox="0 0 220 88" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                      <path class="phone-chart-grid" d="M0 18H220M0 44H220M0 70H220"/>
+                      <path class="phone-chart-fill" d="m0 65 22-12 21 5 20-23 23 10 22-12 20 9 23-26 20 11 21-16 20 4v73H0Z"/>
+                      <path class="phone-chart-line" d="m0 65 22-12 21 5 20-23 23 10 22-12 20 9 23-26 20 11 21-16 20 4"/>
+                    </svg>
+                    <div class="phone-chart-labels"><span>Practice data</span><span>Learn as you go</span></div>
+                    <div class="phone-watchlist"><span class="phone-watchlist-dot" aria-hidden="true"></span><span>Market concepts</span><span>Explore</span></div>
+                  </div>
+                  <div class="phone-home-indicator" aria-hidden="true"></div>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -262,6 +310,25 @@
           <h2 id="closing-title">Build understanding you can take with you.</h2>
           <p>Start with the ideas. Explore with virtual examples. Take your time deciding what you want to learn next.</p>
           <a class="button button-primary" href="#how-it-works">Explore the NGXLab approach <span class="button-arrow" aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
+        <div class="shell newsletter-inner">
+          <div class="newsletter-copy">
+            <p class="kicker">Notes from NGXLab</p>
+            <h2 id="newsletter-title">Get thoughtful updates in your inbox.</h2>
+            <p>Hear about new learning resources, product news, and the NGXLab app launch.</p>
+          </div>
+          <form class="newsletter-form" id="newsletter-form">
+            <label class="newsletter-label" for="newsletter-email">Email address</label>
+            <div class="newsletter-controls">
+              <input class="newsletter-input" id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+              <button class="newsletter-submit" type="submit">Sign me up <span aria-hidden="true">→</span></button>
+            </div>
+            <p class="newsletter-note">Newsletter sign-up isn't connected yet. Submitting won't send or save your email.</p>
+            <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
+          </form>
         </div>
       </section>
   </main>

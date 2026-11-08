@@ -37,6 +37,14 @@ document.querySelectorAll(".auth-tab, .auth-link-button").forEach((button) => {
   button.addEventListener("click", () => showAuthView(button.dataset.authView));
 });
 
+document.querySelectorAll("[data-google-auth]").forEach((button) => {
+  button.addEventListener("click", () => {
+    authStatus.textContent = button.dataset.googleAuth === "signup"
+      ? "Google sign-up isn't connected yet. No information was sent."
+      : "Google sign-in isn't connected yet. No information was sent.";
+  });
+});
+
 document.querySelector(".drawer-close").addEventListener("click", () => accountDrawer.close());
 accountDrawer.addEventListener("click", (event) => {
   if (event.target === accountDrawer) accountDrawer.close();
@@ -50,4 +58,12 @@ Object.entries(authForms).forEach(([view, form]) => {
       : "Account access is not connected yet. Nothing was saved or sent.";
     form.reset();
   });
+});
+
+const newsletterForm = document.getElementById("newsletter-form");
+const newsletterStatus = document.getElementById("newsletter-status");
+
+newsletterForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  newsletterStatus.textContent = "Newsletter sign-up isn't connected yet. No email was sent or saved.";
 });
