@@ -86,16 +86,14 @@ Object.entries(authForms).forEach(([view, form]) => {
       const formData = new FormData(form);
       if (view === "login") {
         await login(formData.get("email"), formData.get("password"));
-        authStatus.textContent = "Signed in successfully.";
       } else {
         await register(
           formData.get("name"),
           formData.get("email"),
           formData.get("password")
         );
-        authStatus.textContent = "Your account has been created.";
       }
-      form.reset();
+      window.location.assign("dashboard.html");
     } catch (error) {
       showToast(error.message || "Authentication failed. Please try again.");
     } finally {
