@@ -34,9 +34,11 @@
             <label class="auth-field" for="login-email">Email address
               <input class="auth-input" id="login-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
             </label>
-            <label class="auth-field" for="login-password">Password
+            <label class="auth-field" for="login-password">Password</label>
+            <div class="auth-password-control">
               <input class="auth-input" id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
-            </label>
+              <button class="auth-password-toggle" type="button" data-password-toggle aria-controls="login-password" aria-label="Show password" aria-pressed="false">Show</button>
+            </div>
             <button class="auth-submit" type="submit">Log in</button>
             <div class="auth-divider"><span>or</span></div>
             <button class="google-auth-button" type="button" data-google-auth="login">Continue with Google</button>
@@ -53,9 +55,17 @@
             <label class="auth-field" for="signup-email">Email address
               <input class="auth-input" id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
             </label>
-            <label class="auth-field" for="signup-password">Create a password
+            <label class="auth-field" for="signup-password">Create a password</label>
+            <div class="auth-password-control">
               <input class="auth-input" id="signup-password" name="password" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required>
-            </label>
+              <button class="auth-password-toggle" type="button" data-password-toggle aria-controls="signup-password" aria-label="Show password" aria-pressed="false">Show</button>
+            </div>
+            <p class="signup-purpose">NGXLab aims to help people understand Nigerian stock-market concepts through education and virtual practice. It is not a broker or investment adviser, does not place real trades, and does not provide financial advice.</p>
+            <div class="auth-consent">
+              <input id="signup-terms" name="terms-accepted" type="checkbox" required>
+              <label for="signup-terms">I have read and agree to the Terms &amp; Conditions.</label>
+              <a href="terms-and-conditions.html" target="_blank" rel="noopener">Read the terms</a>
+            </div>
             <button class="auth-submit" type="submit">Create account</button>
             <div class="auth-divider"><span>or</span></div>
             <button class="google-auth-button" type="button" data-google-auth="signup">Continue with Google</button>

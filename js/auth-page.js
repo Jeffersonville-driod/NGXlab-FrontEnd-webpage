@@ -1,4 +1,8 @@
 import { login, register, requestPasswordReset } from "./auth.js";
+import { initializePasswordToggles } from "./password-toggle.js";
+import { dismissToast, showToast } from "./toast.js";
+
+initializePasswordToggles();
 
 const authIntro = document.getElementById("auth-intro");
 const authStatus = document.getElementById("auth-status");
@@ -16,6 +20,7 @@ const authCopy = {
 function showAuthView(view, updateUrl = true) {
   if (!authForms[view]) return;
 
+  dismissToast();
   Object.entries(authForms).forEach(([name, form]) => {
     form.hidden = name !== view;
   });
@@ -43,15 +48,17 @@ document.querySelectorAll(".auth-tab, .auth-link-button").forEach((button) => {
 
 document.querySelectorAll("[data-google-auth]").forEach((button) => {
   button.addEventListener("click", () => {
-    authStatus.textContent = button.dataset.googleAuth === "signup"
+    authStatus.textContent = "";
+    showToast(button.dataset.googleAuth === "signup"
       ? "Google sign-up isn't connected yet. No information was sent."
-      : "Google sign-in isn't connected yet. No information was sent.";
+      : "Google sign-in isn't connected yet. No information was sent.");
   });
 });
 
 Object.entries(authForms).forEach(([view, form]) => {
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
+    dismissToast();
 
     if (view === "recovery") {
       const submitButton = form.querySelector('[type="submit"]');
@@ -64,7 +71,7 @@ Object.entries(authForms).forEach(([view, form]) => {
         authStatus.textContent = "If an account exists for that email, a password reset link will be sent shortly.";
         form.reset();
       } catch (error) {
-        authStatus.textContent = error.message || "Couldn't request a password reset. Please try again.";
+        showToast(error.message || "Couldn't request a password reset. Please try again.");
       } finally {
         setButtonLoading(submitButton, false);
       }
@@ -90,7 +97,7 @@ Object.entries(authForms).forEach(([view, form]) => {
       }
       form.reset();
     } catch (error) {
-      authStatus.textContent = error.message || "Authentication failed. Please try again.";
+      showToast(error.message || "Authentication failed. Please try again.");
     } finally {
       setButtonLoading(submitButton, false);
     }
