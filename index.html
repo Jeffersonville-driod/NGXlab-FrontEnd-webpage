@@ -295,10 +295,78 @@
       <nav class="navigation" aria-label="Main navigation">
         <a href="#how-it-works">How it works</a>
         <a href="#why-ngxlab">Why NGXLab</a>
-        <a class="nav-cta" href="#get-started">Start learning <span aria-hidden="true">↗</span></a>
+        <button class="nav-account" type="button" data-open-auth data-auth-view="login">Log in</button>
+        <button class="nav-cta" type="button" data-open-auth data-auth-view="signup">Create account <span aria-hidden="true">↗</span></button>
       </nav>
     </div>
   </header>
+
+  <dialog class="account-drawer" id="account-drawer" aria-labelledby="auth-title">
+    <div class="drawer-layout">
+      <div class="drawer-header">
+        <a class="brand" href="#" aria-label="NGXLab home">
+          <span class="brand-mark" aria-hidden="true">N</span>
+          <span class="brand-name">NGX<span>Lab</span></span>
+        </a>
+        <button class="drawer-close" type="button" aria-label="Close account panel">×</button>
+      </div>
+      <div class="drawer-content">
+        <p class="drawer-eyebrow">Your learning space</p>
+        <h2 id="auth-title">Welcome back</h2>
+        <p class="drawer-intro" id="auth-intro">Log in to continue exploring NGXLab.</p>
+
+        <div class="auth-switcher" role="group" aria-label="Account options">
+          <button class="auth-tab" type="button" data-auth-view="login" aria-pressed="true">Log in</button>
+          <button class="auth-tab" type="button" data-auth-view="signup" aria-pressed="false">Create account</button>
+        </div>
+
+        <form class="auth-form" id="login-form">
+          <label class="auth-field" for="login-email">Email address
+            <input class="auth-input" id="login-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          </label>
+          <label class="auth-field" for="login-password">Password
+            <input class="auth-input" id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+          </label>
+          <button class="auth-submit" type="submit">Log in</button>
+          <div class="auth-secondary">
+            <button class="auth-link-button" type="button" data-auth-view="recovery">Forgot password?</button>
+            <button class="auth-link-button" type="button" data-auth-view="signup">New to NGXLab? Create an account</button>
+          </div>
+        </form>
+
+        <form class="auth-form" id="signup-form" hidden>
+          <label class="auth-field" for="signup-name">Your name
+            <input class="auth-input" id="signup-name" name="name" type="text" autocomplete="name" placeholder="How should we call you?" required>
+          </label>
+          <label class="auth-field" for="signup-email">Email address
+            <input class="auth-input" id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          </label>
+          <label class="auth-field" for="signup-password">Create a password
+            <input class="auth-input" id="signup-password" name="password" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required>
+          </label>
+          <button class="auth-submit" type="submit">Create account</button>
+          <div class="auth-secondary">
+            <span class="drawer-intro">Already have an account?</span>
+            <button class="auth-link-button" type="button" data-auth-view="login">Log in</button>
+          </div>
+        </form>
+
+        <form class="auth-form" id="recovery-form" hidden>
+          <label class="auth-field" for="recovery-email">Email address
+            <input class="auth-input" id="recovery-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          </label>
+          <button class="auth-submit" type="submit">Send recovery link</button>
+          <div class="auth-secondary">
+            <button class="auth-link-button" type="button" data-auth-view="login">← Back to log in</button>
+          </div>
+        </form>
+
+        <p class="auth-status" id="auth-status" role="status" aria-live="polite"></p>
+        <p class="auth-notice"><strong>Preview only.</strong> Account access is not connected yet. These forms do not create accounts, save information, or send emails.</p>
+      </div>
+      <div class="drawer-bottom">NGXLab is a learning concept. Practice examples are illustrative, not financial advice.</div>
+    </div>
+  </dialog>
 
   <main>
       <section class="hero shell" aria-labelledby="hero-title">
@@ -483,5 +551,60 @@
       </div>
     </div>
   </footer>
+  <script>
+    const accountDrawer = document.getElementById("account-drawer");
+    const authTitle = document.getElementById("auth-title");
+    const authIntro = document.getElementById("auth-intro");
+    const authStatus = document.getElementById("auth-status");
+    const authForms = {
+      login: document.getElementById("login-form"),
+      signup: document.getElementById("signup-form"),
+      recovery: document.getElementById("recovery-form")
+    };
+    const authCopy = {
+      login: ["Welcome back", "Log in to continue exploring NGXLab."],
+      signup: ["Create your account", "Start building your understanding of the market."],
+      recovery: ["Reset your password", "Enter your email address to request a password recovery link."]
+    };
+
+    function showAuthView(view) {
+      if (!authForms[view]) return;
+      Object.entries(authForms).forEach(([name, form]) => {
+        form.hidden = name !== view;
+      });
+      authTitle.textContent = authCopy[view][0];
+      authIntro.textContent = authCopy[view][1];
+      authStatus.textContent = "";
+      document.querySelectorAll(".auth-tab").forEach((tab) => {
+        tab.setAttribute("aria-pressed", String(tab.dataset.authView === view));
+      });
+    }
+
+    document.querySelectorAll("[data-open-auth]").forEach((button) => {
+      button.addEventListener("click", () => {
+        showAuthView(button.dataset.authView);
+        if (!accountDrawer.open) accountDrawer.showModal();
+      });
+    });
+
+    document.querySelectorAll(".auth-tab, .auth-link-button").forEach((button) => {
+      button.addEventListener("click", () => showAuthView(button.dataset.authView));
+    });
+
+    document.querySelector(".drawer-close").addEventListener("click", () => accountDrawer.close());
+    accountDrawer.addEventListener("click", (event) => {
+      if (event.target === accountDrawer) accountDrawer.close();
+    });
+
+    Object.entries(authForms).forEach(([view, form]) => {
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        authStatus.textContent = view === "recovery"
+          ? "Password recovery is not connected yet. No email was sent."
+          : "Account access is not connected yet. Nothing was saved or sent.";
+        form.reset();
+      });
+    });
+  </script>
 </body>
 </html>
