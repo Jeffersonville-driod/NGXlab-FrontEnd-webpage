@@ -206,6 +206,19 @@ h2 { margin: 0; font-size: clamp(30px, 3.8vw, 42px); font-weight: 520; letter-sp
 .feature h3 { margin: 1px 0 4px; font-size: 12px; font-weight: 680; }
 .feature p { margin: 0; color: #c0cec2; font-size: 10px; line-height: 1.6; }
 
+.apps { padding: 75px 0; background: #edf2e8; }
+.apps-inner { display: grid; grid-template-columns: 1.1fr .9fr; align-items: center; gap: 65px; }
+.apps-copy { max-width: 520px; }
+.apps-copy .kicker { margin-bottom: 13px; }
+.apps-copy h2 { max-width: 480px; }
+.apps-copy > p:last-child { max-width: 450px; margin: 14px 0 0; color: var(--muted); font-size: 13px; }
+.app-platforms { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 13px; }
+.app-platform { min-height: 157px; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; gap: 8px; padding: 21px; border: 1px solid #dce5d8; border-radius: 10px; background: #fbfcf9; }
+.app-platform-icon { width: 31px; height: 31px; display: grid; place-items: center; color: var(--green); }
+.app-platform-icon svg { width: 27px; height: 27px; }
+.app-platform-name { color: var(--ink); font-size: 14px; font-weight: 700; }
+.app-status { padding: 4px 8px; border-radius: 99px; background: #e8efd9; color: #4c6a34; font-size: 9px; font-weight: 700; letter-spacing: .04em; }
+
 .closing { padding: 83px 0 90px; text-align: center; }
 .closing h2 { max-width: 570px; margin: 0 auto; }
 .closing p { max-width: 430px; margin: 14px auto 22px; color: var(--muted); font-size: 13px; }
@@ -235,6 +248,7 @@ h2 { margin: 0; font-size: clamp(30px, 3.8vw, 42px); font-weight: 520; letter-sp
   .trust-inner { align-items: flex-start; flex-direction: column; justify-content: center; padding: 17px 0; }
   .trust-points { justify-content: flex-start; gap: 13px 22px; }
   .feature-inner { gap: 32px; }
+  .apps-inner { gap: 32px; }
 }
 @media (max-width: 650px) {
   .shell { width: min(100% - 38px, 500px); }
@@ -264,6 +278,9 @@ h2 { margin: 0; font-size: clamp(30px, 3.8vw, 42px); font-weight: 520; letter-sp
   .feature-band { padding: 51px 0; }
   .feature-inner { grid-template-columns: 1fr; gap: 30px; }
   .feature-list { gap: 20px 14px; }
+  .apps { padding: 55px 0; }
+  .apps-inner { grid-template-columns: 1fr; gap: 25px; }
+  .app-platform { min-height: 145px; padding: 16px; }
   .closing { padding: 64px 0; }
   .footer-cta { align-items: flex-start; flex-direction: column; padding: 31px 0; }
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 27px 18px; }
