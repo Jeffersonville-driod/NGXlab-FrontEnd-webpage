@@ -87,8 +87,8 @@
       <div class="dashboard-section-heading">
         <div>
           <p class="dashboard-eyebrow">Daily market snapshot</p>
-          <h2 id="market-title">Explore the latest NGX session</h2>
-          <p class="dashboard-market-intro">Use the stored session data as a learning reference. It is not a live feed, trade offer, or recommendation.</p>
+          <h2 id="market-title">Explore the market. Practise without risk.</h2>
+          <p class="dashboard-market-intro">Compare Nigerian stocks from the latest stored trading session as you get familiar with demo trading. Prices may be delayed; no real orders or money are involved.</p>
         </div>
         <span class="journey-label">Learn · Observe · Reflect</span>
       </div>
@@ -96,7 +96,7 @@
         <div class="market-board-header">
           <div>
             <h3>Market overview</h3>
-            <p id="market-session">Trading session: loading…</p>
+            <p id="market-session">Loading trading session…</p>
           </div>
           <div class="market-board-meta">
             <span id="market-total-stocks"></span>
@@ -105,20 +105,34 @@
         </div>
         <p class="market-status" id="market-status" role="status" aria-live="polite">Loading the latest market snapshot…</p>
         <button class="market-retry" id="market-retry" type="button" hidden>Try again</button>
-        <dl class="market-summary" id="market-summary" aria-label="Market summary"></dl>
-        <div class="market-lists">
-          <section class="market-list-panel" aria-labelledby="market-gainers-title">
-            <h3 id="market-gainers-title">Top gainers</h3>
-            <ol class="market-stock-list" id="market-gainers"></ol>
-          </section>
-          <section class="market-list-panel" aria-labelledby="market-losers-title">
-            <h3 id="market-losers-title">Top losers</h3>
-            <ol class="market-stock-list" id="market-losers"></ol>
-          </section>
-          <section class="market-list-panel" aria-labelledby="market-volume-title">
-            <h3 id="market-volume-title">Top by volume</h3>
-            <ol class="market-stock-list" id="market-volume"></ol>
-          </section>
+        <div class="market-summary-wrap">
+          <table class="market-summary" aria-label="Market summary">
+            <thead>
+              <tr><th scope="col">Market measure</th><th scope="col">Snapshot</th></tr>
+            </thead>
+            <tbody id="market-summary"></tbody>
+          </table>
+        </div>
+        <div class="market-data">
+          <div class="market-tabs" role="group" aria-label="Choose a stock list">
+            <button class="market-tab" type="button" data-market-view="gainers" aria-pressed="true">Top gainers</button>
+            <button class="market-tab" type="button" data-market-view="losers" aria-pressed="false">Top losers</button>
+            <button class="market-tab" type="button" data-market-view="volume" aria-pressed="false">Top by volume</button>
+          </div>
+          <div class="market-table-scroll" tabindex="0" aria-label="Scrollable stock table">
+            <table class="market-stock-table">
+              <thead>
+                <tr>
+                  <th scope="col">Company</th>
+                  <th scope="col">Last price</th>
+                  <th scope="col">Change</th>
+                  <th scope="col">Volume</th>
+                  <th scope="col">Sector</th>
+                </tr>
+              </thead>
+              <tbody id="market-stocks"></tbody>
+            </table>
+          </div>
         </div>
       </div>
     </section>
@@ -156,8 +170,8 @@
     <aside class="dashboard-disclaimer">
       <span class="disclaimer-mark" aria-hidden="true">i</span>
       <div>
-        <h2>This is a learning space, not a brokerage account.</h2>
-        <p>NGXLab does not place real trades or give personalised financial advice. Market data is a stored daily snapshot for learning, not live pricing; virtual examples are illustrative and do not predict real results. Read our <a href="terms-and-conditions.html">Terms &amp; Conditions</a>.</p>
+        <h2>Practise trading without real money.</h2>
+        <p>NGXLab is a demo-trading experience. Market data is a stored daily snapshot, and virtual balances and trades are simulated only. No real orders are placed and demo results do not predict real outcomes. Read our <a href="terms-and-conditions.html">Terms &amp; Conditions</a>.</p>
       </div>
     </aside>
 

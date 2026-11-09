@@ -106,14 +106,14 @@
         <div class="shell">
           <div class="section-heading">
             <p class="kicker">NGX market snapshot</p>
-            <h2 id="market-title">A view of the latest stored market data.</h2>
-            <p>Daily snapshot for learning purposes; this is not a real-time feed or investment advice.</p>
+            <h2 id="market-title">Learn the NGX by exploring the market.</h2>
+            <p>Compare Nigerian stocks from the latest stored session as you get familiar with demo trading. Prices may be delayed; no real orders or money are involved.</p>
           </div>
           <div class="market-board">
             <div class="market-board-header">
               <div>
                 <h3>Market overview</h3>
-                <p id="market-session">Trading session: loading…</p>
+                <p id="market-session">Loading trading session…</p>
               </div>
               <div class="market-board-meta">
                 <span id="market-total-stocks"></span>
@@ -122,20 +122,34 @@
             </div>
             <p class="market-status" id="market-status" role="status" aria-live="polite">Loading the latest market snapshot…</p>
             <button class="market-retry" id="market-retry" type="button" hidden>Try again</button>
-            <dl class="market-summary" id="market-summary" aria-label="Market summary"></dl>
-            <div class="market-lists">
-              <section class="market-list-panel" aria-labelledby="market-gainers-title">
-                <h3 id="market-gainers-title">Top gainers</h3>
-                <ol class="market-stock-list" id="market-gainers"></ol>
-              </section>
-              <section class="market-list-panel" aria-labelledby="market-losers-title">
-                <h3 id="market-losers-title">Top losers</h3>
-                <ol class="market-stock-list" id="market-losers"></ol>
-              </section>
-              <section class="market-list-panel" aria-labelledby="market-volume-title">
-                <h3 id="market-volume-title">Top by volume</h3>
-                <ol class="market-stock-list" id="market-volume"></ol>
-              </section>
+            <div class="market-summary-wrap">
+              <table class="market-summary" aria-label="Market summary">
+                <thead>
+                  <tr><th scope="col">Market measure</th><th scope="col">Snapshot</th></tr>
+                </thead>
+                <tbody id="market-summary"></tbody>
+              </table>
+            </div>
+            <div class="market-data">
+              <div class="market-tabs" role="group" aria-label="Choose a stock list">
+                <button class="market-tab" type="button" data-market-view="gainers" aria-pressed="true">Top gainers</button>
+                <button class="market-tab" type="button" data-market-view="losers" aria-pressed="false">Top losers</button>
+                <button class="market-tab" type="button" data-market-view="volume" aria-pressed="false">Top by volume</button>
+              </div>
+              <div class="market-table-scroll" tabindex="0" aria-label="Scrollable stock table">
+                <table class="market-stock-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Company</th>
+                      <th scope="col">Last price</th>
+                      <th scope="col">Change</th>
+                      <th scope="col">Volume</th>
+                      <th scope="col">Sector</th>
+                    </tr>
+                  </thead>
+                  <tbody id="market-stocks"></tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

@@ -7,9 +7,13 @@ const sessionDate = document.getElementById("market-session");
 const totalStocks = document.getElementById("market-total-stocks");
 const asOf = document.getElementById("market-as-of");
 const summary = document.getElementById("market-summary");
+const stockTable = document.getElementById("market-stocks");
+const tabs = [...document.querySelectorAll(".market-tab")];
 
 const numberFormat = new Intl.NumberFormat("en-NG", { maximumFractionDigits: 2 });
 const volumeFormat = new Intl.NumberFormat("en-NG", { maximumFractionDigits: 0 });
+const stockLists = { gainers: [], losers: [], volume: [] };
+let activeView = "gainers";
 
 function displayValue(value) {
   if (value === null || value === undefined || value === "") return "—";
@@ -31,24 +35,35 @@ function formatTradeDate(value) {
   return `Trading session: ${String(value)}`;
 }
 
-function appendMetric(label, value) {
-  if (value === null || value === undefined || typeof value === "object") return;
-  const metric = document.createElement("div");
-  metric.className = "market-metric";
-  const term = document.createElement("dt");
-  term.textContent = label.replaceAll("_", " ");
-  const description = document.createElement("dd");
-  description.textContent = displayValue(value);
-  metric.append(term, description);
-  summary.append(metric);
+function appendTableMessage(tableBody, message, columnCount) {
+  const row = document.createElement("tr");
+  const cell = document.createElement("td");
+  cell.className = "market-stock-empty";
+  cell.colSpan = columnCount;
+  cell.textContent = message;
+  row.append(cell);
+  tableBody.replaceChildren(row);
 }
 
 function renderSummary(market) {
   summary.replaceChildren();
-  if (market && typeof market === "object" && !Array.isArray(market)) {
-    for (const [label, value] of Object.entries(market)) appendMetric(label, value);
-  } else if (market !== null && market !== undefined && market !== "") {
-    appendMetric("Market", market);
+  const values = market && typeof market === "object" && !Array.isArray(market)
+    ? Object.entries(market).filter(([, value]) => value === null || ["string", "number", "boolean"].includes(typeof value))
+    : [];
+
+  if (values.length === 0) {
+    appendTableMessage(summary, "Market summary is not available.", 2);
+    return;
+  }
+
+  for (const [label, value] of values) {
+    const row = document.createElement("tr");
+    const nameCell = document.createElement("td");
+    nameCell.textContent = label.replaceAll("_", " ");
+    const valueCell = document.createElement("td");
+    valueCell.textContent = displayValue(value);
+    row.append(nameCell, valueCell);
+    summary.append(row);
   }
 }
 
@@ -65,54 +80,57 @@ function formatChange(value) {
   return `${change > 0 ? "+" : ""}${numberFormat.format(change)}%`;
 }
 
-function renderStocks(containerId, stocks) {
-  const list = document.getElementById(containerId);
-  list.replaceChildren();
+function renderStocks() {
+  const stocks = stockLists[activeView];
   if (!Array.isArray(stocks) || stocks.length === 0) {
-    const empty = document.createElement("li");
-    empty.className = "market-empty-list";
-    empty.textContent = "No stocks are available for this list.";
-    list.append(empty);
+    appendTableMessage(stockTable, "No stocks are available for this list.", 5);
     return;
   }
 
-  for (const stock of stocks.slice(0, 5)) {
-    const item = document.createElement("li");
-    item.className = "market-stock-item";
-
-    const heading = document.createElement("div");
-    heading.className = "market-stock-heading";
-    const name = document.createElement("div");
-    name.className = "market-stock-name";
+  const rows = stocks.slice(0, 5).map((stock) => {
+    const row = document.createElement("tr");
+    const companyCell = document.createElement("td");
+    const company = document.createElement("div");
+    company.className = "market-stock-company";
     const symbol = document.createElement("strong");
     symbol.textContent = displayValue(stock?.symbol);
-    const company = document.createElement("span");
-    company.textContent = displayValue(stock?.name);
-    name.append(symbol, company);
+    const name = document.createElement("span");
+    name.textContent = displayValue(stock?.name);
+    company.append(symbol, name);
+    companyCell.append(company);
 
-    const change = document.createElement("span");
-    const numericChange = Number(stock?.change_percent);
-    change.className = `market-stock-change${Number.isFinite(numericChange) && numericChange < 0 ? " is-negative" : ""}`;
-    change.textContent = formatChange(stock?.change_percent);
-    heading.append(name, change);
+    const priceCell = document.createElement("td");
+    priceCell.textContent = formatPrice(stock?.current_price);
 
-    const details = document.createElement("div");
-    details.className = "market-stock-details";
-    const price = document.createElement("span");
-    price.textContent = `Price ${formatPrice(stock?.current_price)}`;
-    const volume = document.createElement("span");
+    const changeCell = document.createElement("td");
+    const numericChange = stock?.change_percent === null || stock?.change_percent === undefined || stock?.change_percent === ""
+      ? Number.NaN
+      : Number(stock.change_percent);
+    const changeClass = numericChange > 0 ? "is-positive" : numericChange < 0 ? "is-negative" : "is-neutral";
+    changeCell.className = `market-stock-change ${changeClass}`;
+    changeCell.textContent = formatChange(stock?.change_percent);
+
+    const volumeCell = document.createElement("td");
     const rawVolume = stock?.volume;
     const numericVolume = rawVolume === null || rawVolume === undefined || rawVolume === "" ? Number.NaN : Number(rawVolume);
-    volume.textContent = `Volume ${Number.isFinite(numericVolume) ? volumeFormat.format(numericVolume) : displayValue(rawVolume)}`;
-    details.append(price, volume);
+    volumeCell.textContent = Number.isFinite(numericVolume) ? volumeFormat.format(numericVolume) : displayValue(rawVolume);
 
-    const sector = document.createElement("div");
-    sector.className = "market-stock-details";
-    sector.textContent = `Sector ${displayValue(stock?.sector)}`;
+    const sectorCell = document.createElement("td");
+    sectorCell.textContent = displayValue(stock?.sector);
+    row.append(companyCell, priceCell, changeCell, volumeCell, sectorCell);
+    return row;
+  });
 
-    item.append(heading, details, sector);
-    list.append(item);
+  stockTable.replaceChildren(...rows);
+}
+
+function selectView(view) {
+  if (!Object.hasOwn(stockLists, view)) return;
+  activeView = view;
+  for (const tab of tabs) {
+    tab.setAttribute("aria-pressed", String(tab.dataset.marketView === activeView));
   }
+  renderStocks();
 }
 
 function renderOverview(data) {
@@ -126,15 +144,17 @@ function renderOverview(data) {
     : `${displayValue(data.total_stocks)} stocks`;
   asOf.textContent = data.as_of ? `Updated ${displayValue(data.as_of)}` : "";
   renderSummary(data.market);
-  renderStocks("market-gainers", data.gainers);
-  renderStocks("market-losers", data.losers);
-  renderStocks("market-volume", data.top_volume);
+  stockLists.gainers = data.gainers;
+  stockLists.losers = data.losers;
+  stockLists.volume = data.top_volume;
+  renderStocks();
 }
 
 async function loadMarketOverview() {
   board.setAttribute("aria-busy", "true");
   retryButton.hidden = true;
   status.textContent = "Loading the latest market snapshot…";
+  appendTableMessage(stockTable, "Loading market data…", 5);
 
   try {
     const response = await fetch(`${API_BASE_URL}/api/market/overview`, {
@@ -153,11 +173,16 @@ async function loadMarketOverview() {
     status.textContent = error instanceof Error && error.message.startsWith("Market data unavailable")
       ? `${error.message} Please try again later.`
       : "Market data is currently unavailable. Please try again later.";
+    appendTableMessage(stockTable, "Market data could not be loaded.", 5);
     retryButton.hidden = false;
   } finally {
     board.setAttribute("aria-busy", "false");
   }
 }
 
+for (const tab of tabs) {
+  tab.addEventListener("click", () => selectView(tab.dataset.marketView));
+}
 retryButton.addEventListener("click", loadMarketOverview);
+renderSummary(null);
 loadMarketOverview();
