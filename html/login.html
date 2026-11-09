@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2e9">
+  <meta name="description" content="Log in to NGXLab to explore investing ideas and build your understanding of the Nigerian market.">
+  <title>Log in | NGXLab</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body data-auth-view="login">
+  <main class="auth-page">
+    <section class="auth-page-card" aria-labelledby="auth-title">
+      <div class="drawer-layout">
+        <header class="drawer-header">
+          <a class="brand" href="index.html" aria-label="NGXLab home">
+            <span class="brand-mark" aria-hidden="true">N</span>
+            <span class="brand-name">NGX<span>Lab</span></span>
+          </a>
+        </header>
+        <div class="drawer-content">
+          <p class="drawer-eyebrow">Your learning space</p>
+          <h1 id="auth-title">Welcome back</h1>
+          <p class="drawer-intro" id="auth-intro">Log in to continue exploring NGXLab.</p>
+
+          <form class="auth-form" id="login-form">
+            <label class="auth-field" for="login-email">Email address
+              <input class="auth-input" id="login-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            </label>
+            <label class="auth-field" for="login-password">Password</label>
+            <div class="auth-password-control">
+              <input class="auth-input" id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+              <button class="auth-password-toggle" type="button" data-password-toggle aria-controls="login-password" aria-label="Show password" aria-pressed="false">Show</button>
+            </div>
+            <button class="auth-submit" type="submit"><span class="button-spinner" aria-hidden="true" hidden></span>Log in</button>
+            <div class="auth-divider"><span>or</span></div>
+            <button class="google-auth-button" type="button" data-google-auth="login">Continue with Google</button>
+            <div class="auth-secondary">
+              <button class="auth-link-button" type="button" data-auth-view="recovery">Forgot password?</button>
+              <span class="drawer-intro">New to NGXLab?</span>
+              <a class="auth-link-button" href="signup.html">Create an account</a>
+            </div>
+          </form>
+
+          <form class="auth-form" id="recovery-form" hidden>
+            <label class="auth-field" for="recovery-email">Email address
+              <input class="auth-input" id="recovery-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            </label>
+            <button class="auth-submit" type="submit"><span class="button-spinner" aria-hidden="true" hidden></span>Send recovery link</button>
+            <div class="auth-secondary">
+              <button class="auth-link-button" type="button" data-auth-view="login">Back to log in</button>
+            </div>
+          </form>
+
+          <p class="auth-status" id="auth-status" role="status" aria-live="polite"></p>
+          <p class="auth-notice"><strong>Account access:</strong> Email login and password recovery are available. Google sign-in isn't connected yet. Password reset emails require the backend's Resend configuration.</p>
+        </div>
+        <div class="drawer-bottom">NGXLab is a learning concept. Practice examples are illustrative, not financial advice.</div>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="../js/auth-page.js"></script>
+  <script type="module" src="../js/theme.js"></script>
+</body>
+</html>

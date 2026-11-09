@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142e3a">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="View your NGXLab virtual practice balance.">
+  <title>NGXLab — Wallet</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body class="trading-dashboard" data-dashboard-page="wallet">
+  <div class="app-shell" id="app-shell">
+    <main class="app-main"><div class="dashboard-content">
+      <div class="dashboard-section-heading">
+        <p class="dashboard-eyebrow">YOUR PRACTICE FUNDS</p>
+        <h1>Wallet</h1>
+        <p>Track the simulated cash balance provided for your NGXLab practice account.</p>
+      </div>
+      <article class="dashboard-card wallet-card">
+        <div class="wallet-card-icon" aria-hidden="true">₦</div>
+        <div>
+          <p class="wallet-label">Available virtual balance</p>
+          <p class="wallet-balance" id="wallet-balance">Loading…</p>
+          <p class="wallet-note" id="wallet-status">Simulated funds · no cash value</p>
+        </div>
+        <p class="wallet-disclaimer">This is a demo balance, not a bank or payment wallet. Deposits, withdrawals, and cash transfers are not available.</p>
+      </article>
+      <div class="wallet-actions">
+        <a class="view-link" href="new.html">Preview a practice order <span aria-hidden="true">→</span></a>
+        <a class="view-link" href="portfolio.html">View portfolio <span aria-hidden="true">→</span></a>
+      </div>
+    </div></main>
+  </div>
+  <script type="module" src="../js/dashboard-shell.js"></script>
+  <script type="module" src="../js/dashboard.js"></script>
+  <script type="module" src="../js/theme.js"></script>
+</body>
+</html>

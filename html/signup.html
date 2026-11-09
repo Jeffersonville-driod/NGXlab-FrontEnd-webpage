@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2e9">
+  <meta name="description" content="Create an NGXLab account to learn about Nigerian markets using virtual practice funds.">
+  <title>Create an account | NGXLab</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body data-auth-view="signup">
+  <main class="auth-page">
+    <section class="auth-page-card" aria-labelledby="auth-title">
+      <div class="drawer-layout">
+        <header class="drawer-header">
+          <a class="brand" href="index.html" aria-label="NGXLab home">
+            <span class="brand-mark" aria-hidden="true">N</span>
+            <span class="brand-name">NGX<span>Lab</span></span>
+          </a>
+        </header>
+        <div class="drawer-content">
+          <p class="drawer-eyebrow">Your learning space</p>
+          <h1 id="auth-title">Create your account</h1>
+          <p class="drawer-intro" id="auth-intro">Start building your understanding of the market.</p>
+
+          <form class="auth-form" id="signup-form">
+            <label class="auth-field" for="signup-name">Your name
+              <input class="auth-input" id="signup-name" name="name" type="text" autocomplete="name" placeholder="How should we call you?" required>
+            </label>
+            <label class="auth-field" for="signup-email">Email address
+              <input class="auth-input" id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            </label>
+            <label class="auth-field" for="signup-password">Create a password</label>
+            <div class="auth-password-control">
+              <input class="auth-input" id="signup-password" name="password" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required>
+              <button class="auth-password-toggle" type="button" data-password-toggle aria-controls="signup-password" aria-label="Show password" aria-pressed="false">Show</button>
+            </div>
+            <p class="signup-purpose">NGXLab aims to help people understand Nigerian stock-market concepts through education and virtual practice. It is not a broker or investment adviser, does not place real trades, and does not provide financial advice.</p>
+            <div class="auth-consent">
+              <input id="signup-terms" name="terms-accepted" type="checkbox" required>
+              <label for="signup-terms">I have read and agree to the Terms &amp; Conditions.</label>
+              <a href="terms-and-conditions.html" target="_blank" rel="noopener">Read the terms</a>
+            </div>
+            <button class="auth-submit" type="submit"><span class="button-spinner" aria-hidden="true" hidden></span>Create account</button>
+            <div class="auth-divider"><span>or</span></div>
+            <button class="google-auth-button" type="button" data-google-auth="signup">Continue with Google</button>
+            <div class="auth-secondary">
+              <span class="drawer-intro">Already have an account?</span>
+              <a class="auth-link-button" href="login.html">Log in</a>
+            </div>
+          </form>
+
+          <p class="auth-status" id="auth-status" role="status" aria-live="polite"></p>
+          <p class="auth-notice"><strong>Account access:</strong> Registration is available by email. Google sign-in isn't connected yet.</p>
+        </div>
+        <div class="drawer-bottom">NGXLab is a learning concept. Practice examples are illustrative, not financial advice.</div>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="../js/auth-page.js"></script>
+  <script type="module" src="../js/theme.js"></script>
+</body>
+</html>

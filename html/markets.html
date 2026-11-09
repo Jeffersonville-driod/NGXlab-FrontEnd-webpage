@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142e3a">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Explore the latest stored Nigerian Exchange market snapshot in NGXLab practice mode.">
+  <title>NGXLab — Markets</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body class="trading-dashboard" data-dashboard-page="markets">
+  <div class="app-shell" id="app-shell">
+    <main class="app-main"><div class="dashboard-content">
+      <section class="market-section dashboard-market" aria-labelledby="market-title" aria-busy="true">
+        <div class="market-section-heading">
+          <div>
+            <p class="dashboard-eyebrow">NIGERIAN EXCHANGE</p>
+            <h1 id="market-title">Market overview</h1>
+            <p>Explore stocks from the latest stored trading session. Prices may be delayed.</p>
+          </div>
+          <span class="snapshot-date" id="market-session">Loading trading session…</span>
+        </div>
+        <div class="market-board dashboard-market-board">
+          <div class="market-board-header">
+            <div><h3>NGX stocks</h3><p>Market data for demo practice</p></div>
+            <div class="market-board-meta"><span id="market-total-stocks"></span><span id="market-as-of"></span></div>
+          </div>
+          <p class="market-status" id="market-status" role="status" aria-live="polite">Loading the latest market snapshot…</p>
+          <button class="market-retry" id="market-retry" type="button" hidden>Try again</button>
+          <div class="market-summary-wrap">
+            <table class="market-summary" aria-label="Market summary">
+              <thead><tr><th scope="col">Market measure</th><th scope="col">Snapshot</th></tr></thead>
+              <tbody id="market-summary"></tbody>
+            </table>
+          </div>
+          <div class="market-data">
+            <div class="market-table-toolbar">
+              <div class="market-tabs" role="group" aria-label="Choose a stock list">
+                <button class="market-tab" type="button" data-market-view="gainers" aria-pressed="true">Top gainers</button>
+                <button class="market-tab" type="button" data-market-view="losers" aria-pressed="false">Top losers</button>
+                <button class="market-tab" type="button" data-market-view="volume" aria-pressed="false">Most traded</button>
+              </div>
+              <span class="snapshot-count">Up to five stocks per list</span>
+            </div>
+            <div class="market-table-scroll" tabindex="0" aria-label="Scrollable stock table">
+              <table class="market-stock-table">
+                <thead><tr>
+                  <th scope="col">Company</th><th scope="col">Market price</th>
+                  <th scope="col">Change</th><th scope="col">Volume</th><th scope="col">Sector</th>
+                  <th scope="col"><span class="visually-hidden">Practice action</span></th>
+                </tr></thead>
+                <tbody id="market-stocks"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div></main>
+  </div>
+  <script type="module" src="../js/dashboard-shell.js"></script>
+  <script type="module" src="../js/dashboard.js"></script>
+  <script type="module" src="../js/market-board.js"></script>
+  <script type="module" src="../js/theme.js"></script>
+</body>
+</html>

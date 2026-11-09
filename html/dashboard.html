@@ -6,70 +6,18 @@
   <meta name="theme-color" content="#142e3a">
   <meta name="robots" content="noindex, nofollow">
   <meta name="description" content="Practise trading Nigerian stocks with NGXLab virtual funds and stored market data.">
-  <title>NGXLab — Practice dashboard</title>
+  <title>NGXLab — Practice overview</title>
   <link rel="icon" href="../favicon.svg" type="image/svg+xml">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/styles.css">
   <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/theme.css">
 </head>
-<body class="trading-dashboard">
-  <div class="app-shell">
-    <aside class="app-sidebar" aria-label="Dashboard sidebar">
-      <a class="dashboard-brand" href="dashboard.html" aria-label="NGXLab practice dashboard">
-        <span class="dashboard-brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 36 36" fill="none">
-            <path d="M12 5h12l-2 8 7 15H7l7-15-2-8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-            <path d="M11 23h14M14 18l3 2 4-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="23" cy="8" r="1.4" fill="#ff7900"/>
-          </svg>
-        </span>
-        <span class="dashboard-brand-name">NGX<span>Lab</span></span>
-      </a>
-
-      <p class="sidebar-label">PRACTICE SPACE</p>
-      <nav class="app-navigation" aria-label="Practice navigation">
-        <a class="app-nav-link is-active" href="#overview" aria-current="page">
-          <span class="app-nav-icon" aria-hidden="true">⌂</span> Overview
-        </a>
-        <a class="app-nav-link" href="#market">
-          <span class="app-nav-icon" aria-hidden="true">▥</span> Markets
-        </a>
-        <a class="app-nav-link" href="#practice-order">
-          <span class="app-nav-icon" aria-hidden="true">↗</span> Practice trade
-        </a>
-        <a class="app-nav-link" href="#portfolio">
-          <span class="app-nav-icon" aria-hidden="true">◫</span> Portfolio
-        </a>
-      </nav>
-
-      <div class="sidebar-note">
-        <span class="sidebar-note-icon" aria-hidden="true">✳</span>
-        <strong>Learn by doing</strong>
-        <p>Build confidence with virtual money. No deposits, no real losses.</p>
-      </div>
-
-      <div class="sidebar-footer">
-        <span class="practice-mode"><span aria-hidden="true"></span> Practice mode</span>
-        <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
-        <a href="index.html">About NGXLab</a>
-      </div>
-    </aside>
-
-    <main class="app-main" id="overview">
-      <header class="app-topbar">
-        <label class="dashboard-search">
-          <span aria-hidden="true">⌕</span>
-          <input id="market-search" type="search" placeholder="Search stocks…" aria-label="Search displayed market stocks">
-          <kbd>⌘ K</kbd>
-        </label>
-        <div class="topbar-actions">
-          <span class="practice-pill"><span aria-hidden="true"></span> Demo account</span>
-          <span class="profile-button" id="user-avatar" aria-hidden="true">N</span>
-        </div>
-      </header>
-
+<body class="trading-dashboard" data-dashboard-page="overview">
+  <div class="app-shell" id="app-shell">
+    <main class="app-main">
       <div class="dashboard-content">
         <section class="dashboard-welcome" aria-labelledby="dashboard-title">
           <div>
@@ -97,149 +45,47 @@
             <span class="overview-stat-note">Available to explore</span>
           </article>
         </section>
+        <p class="overview-market-status" id="dashboard-market-status" role="status">Loading latest stored market snapshot…</p>
 
-        <div class="dashboard-grid">
-          <section class="portfolio-card dashboard-card" id="portfolio" aria-labelledby="portfolio-title">
-            <div class="card-heading">
-              <div>
-                <p class="dashboard-eyebrow">YOUR SIMULATION</p>
-                <h2 id="portfolio-title">Practice portfolio</h2>
-                <p class="card-subtitle">Your virtual buying power</p>
-              </div>
-              <span class="card-symbol" aria-hidden="true">₦</span>
-            </div>
-            <p class="portfolio-value" id="portfolio-balance">Loading…</p>
-            <p class="portfolio-caption">Available virtual cash</p>
-            <div class="portfolio-chart" role="img" aria-label="Portfolio performance will appear here after practice trades are connected">
-              <div class="chart-placeholder">
-                <span class="chart-placeholder-mark" aria-hidden="true">↗</span>
-                <span>Your practice performance will appear here</span>
-              </div>
-            </div>
-            <div class="portfolio-stats">
-              <div><span>Virtual capital</span><strong id="portfolio-capital">Loading…</strong></div>
-              <div><span>Holdings</span><strong>Not connected</strong></div>
-              <div><span>Trade history</span><strong>Not connected</strong></div>
-            </div>
-          </section>
-
-          <aside class="order-card dashboard-card" id="practice-order" aria-labelledby="order-title">
-            <div class="order-card-heading">
-              <div>
-                <p class="dashboard-eyebrow">SANDBOX</p>
-                <h2 id="order-title">Practice trade</h2>
-              </div>
-              <span class="order-spark" aria-hidden="true">↗</span>
-            </div>
-            <div class="order-tabs" role="group" aria-label="Practice order side">
-              <button class="order-tab is-active" type="button" data-order-side="Buy" aria-pressed="true">Buy</button>
-              <button class="order-tab" type="button" data-order-side="Sell" aria-pressed="false">Sell</button>
-            </div>
-            <label class="order-field" for="trade-symbol">Choose a stock</label>
-            <select class="order-select" id="trade-symbol" disabled>
-              <option>Loading market stocks…</option>
-            </select>
-            <div class="selected-quote">
-              <span id="selected-stock-name">Market quote</span>
-              <strong id="selected-stock-price">—</strong>
-            </div>
-            <label class="order-field" for="trade-amount">Practice amount</label>
-            <div class="order-amount-field">
-              <span aria-hidden="true">₦</span>
-              <input id="trade-amount" type="number" min="1" step="1" value="50000" inputmode="numeric">
-            </div>
-            <div class="amount-chips" aria-label="Quick practice amounts">
-              <button type="button" data-order-amount="10000">₦10k</button>
-              <button type="button" data-order-amount="25000">₦25k</button>
-              <button type="button" data-order-amount="50000" class="is-selected">₦50k</button>
-              <button type="button" data-order-amount="100000">₦100k</button>
-            </div>
-            <div class="order-estimate">
-              <span>Estimated whole shares</span>
-              <strong id="estimated-shares">—</strong>
-            </div>
-            <button class="order-submit" id="preview-order" type="button" disabled>Preview practice order</button>
-            <p class="order-note" id="order-status" role="status">Preview only. Practice trades are not submitted yet.</p>
-            <p class="secure-note">Simulated order · no real securities are bought or sold.</p>
-          </aside>
+        <div class="overview-shortcuts" aria-label="Explore your practice space">
+          <a class="dashboard-card overview-shortcut" href="markets.html">
+            <span class="overview-shortcut-icon" aria-hidden="true">▥</span>
+            <span><strong>Explore the market</strong><small>Browse the latest NGX snapshot</small></span>
+            <span class="overview-shortcut-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="dashboard-card overview-shortcut" href="new.html">
+            <span class="overview-shortcut-icon" aria-hidden="true">↗</span>
+            <span><strong>Preview a practice order</strong><small>Estimate a virtual share quantity</small></span>
+            <span class="overview-shortcut-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="dashboard-card overview-shortcut" href="portfolio.html">
+            <span class="overview-shortcut-icon" aria-hidden="true">◫</span>
+            <span><strong>View your portfolio</strong><small>See what is available in the demo</small></span>
+            <span class="overview-shortcut-arrow" aria-hidden="true">→</span>
+          </a>
         </div>
 
-        <section class="market-section dashboard-market" id="market" aria-labelledby="market-title" aria-busy="true">
-          <div class="market-section-heading">
+        <div class="overview-lower-grid">
+          <section class="dashboard-card overview-learning-card" aria-labelledby="overview-learning-title">
+            <p class="dashboard-eyebrow">LEARN AS YOU EXPLORE</p>
+            <h2 id="overview-learning-title">Build market confidence one step at a time.</h2>
+            <p>Understand stock quotes, compare market activity, and try ideas with simulated funds—without placing real orders.</p>
+            <a class="view-link" href="learn.html">Start learning <span aria-hidden="true">→</span></a>
+          </section>
+          <aside class="dashboard-disclaimer">
+            <span class="disclaimer-mark" aria-hidden="true">i</span>
             <div>
-              <p class="dashboard-eyebrow">NIGERIAN EXCHANGE</p>
-              <h2 id="market-title">Market overview</h2>
-              <p>Explore stocks from the latest stored trading session. Prices may be delayed.</p>
+              <h2>Practice only. No real money.</h2>
+              <p>Market prices may be delayed. NGXLab does not place real orders or provide investment advice. Read our <a href="terms-and-conditions.html">Terms &amp; Conditions</a>.</p>
             </div>
-            <span class="snapshot-date" id="market-session">Loading trading session…</span>
-          </div>
-          <div class="market-board dashboard-market-board">
-            <div class="market-board-header">
-              <div>
-                <h3>NGX stocks</h3>
-                <p>Market data for demo practice</p>
-              </div>
-              <div class="market-board-meta">
-                <span id="market-total-stocks"></span>
-                <span id="market-as-of"></span>
-              </div>
-            </div>
-            <p class="market-status" id="market-status" role="status" aria-live="polite">Loading the latest market snapshot…</p>
-            <button class="market-retry" id="market-retry" type="button" hidden>Try again</button>
-            <div class="market-summary-wrap">
-              <table class="market-summary" aria-label="Market summary">
-                <thead><tr><th scope="col">Market measure</th><th scope="col">Snapshot</th></tr></thead>
-                <tbody id="market-summary"></tbody>
-              </table>
-            </div>
-            <div class="market-data">
-              <div class="market-table-toolbar">
-                <div class="market-tabs" role="group" aria-label="Choose a stock list">
-                  <button class="market-tab" type="button" data-market-view="gainers" aria-pressed="true">Top gainers</button>
-                  <button class="market-tab" type="button" data-market-view="losers" aria-pressed="false">Top losers</button>
-                  <button class="market-tab" type="button" data-market-view="volume" aria-pressed="false">Most traded</button>
-                </div>
-                <span class="snapshot-count">Up to five stocks per list</span>
-              </div>
-              <div class="market-table-scroll" tabindex="0" aria-label="Scrollable stock table">
-                <table class="market-stock-table">
-                  <thead><tr>
-                    <th scope="col">Company</th><th scope="col">Market price</th>
-                    <th scope="col">Change</th><th scope="col">Volume</th><th scope="col">Sector</th>
-                    <th scope="col"><span class="visually-hidden">Practice action</span></th>
-                  </tr></thead>
-                  <tbody id="market-stocks"></tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section class="watchlist-section" aria-labelledby="watchlist-title">
-          <div class="section-heading">
-            <div>
-              <p class="dashboard-eyebrow">QUICK LOOK</p>
-              <h2 id="watchlist-title">Stocks to explore</h2>
-              <p>Sampled from today’s highest-volume market list.</p>
-            </div>
-            <a class="view-link" href="#market">View market table <span aria-hidden="true">→</span></a>
-          </div>
-          <div class="stock-grid" id="watchlist-stocks">
-            <p class="watchlist-empty">Loading stocks from the market snapshot…</p>
-          </div>
-        </section>
-
-        <aside class="dashboard-disclaimer">
-          <span class="disclaimer-mark" aria-hidden="true">i</span>
-          <div>
-            <h2>Practise trading without real money.</h2>
-            <p>NGXLab uses virtual funds and stored market data for demo practice only. No real orders are placed. Demo results do not predict real outcomes. Read our <a href="terms-and-conditions.html">Terms &amp; Conditions</a>.</p>
-          </div>
-        </aside>
+          </aside>
+        </div>
       </div>
     </main>
   </div>
+  <script type="module" src="../js/dashboard-shell.js"></script>
   <script type="module" src="../js/dashboard.js"></script>
-  <script type="module" src="../js/market-board.js"></script>
+  <script type="module" src="../js/market-overview.js"></script>
+  <script type="module" src="../js/theme.js"></script>
 </body>
 </html>

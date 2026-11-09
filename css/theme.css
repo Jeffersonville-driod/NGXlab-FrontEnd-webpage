@@ -1,0 +1,409 @@
+.theme-toggle {
+  display: inline-grid;
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--line, #d9dfd3);
+  border-radius: 9px;
+  background: var(--white, #fffcf4);
+  color: var(--ink, #173a2b);
+  cursor: pointer;
+  font: inherit;
+  font-size: 19px;
+  line-height: 1;
+}
+
+.theme-toggle:hover {
+  border-color: #8ca663;
+}
+
+.theme-toggle:focus-visible {
+  outline: 3px solid #8eaa59;
+  outline-offset: 3px;
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #101713;
+  --white: #1a241e;
+  --ink: #e4ece5;
+  --muted: #aab8ad;
+  --green: #c1dc93;
+  --green-deep: #152018;
+  --lime: #b7d77c;
+  --line: #35433a;
+  --soft-green: #253329;
+  --dash-ink: #e3ebe5;
+  --dash-muted: #aab8af;
+  --dash-faint: #829188;
+  --dash-line: #34423a;
+  --dash-surface: #1a241e;
+  --dash-soft: #202b24;
+  --dash-green: #76c79f;
+  --dash-green-dark: #9bd6b8;
+  --dash-green-soft: #263d31;
+  --dash-shadow: 0 8px 26px rgb(0 0 0 / 18%);
+}
+
+html[data-theme="dark"] body {
+  background-color: var(--paper);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .topbar,
+html[data-theme="dark"] .app-topbar,
+html[data-theme="dark"] .drawer-header,
+html[data-theme="dark"] .drawer-bottom,
+html[data-theme="dark"] .legal-footer {
+  border-color: var(--line);
+}
+
+html[data-theme="dark"] .navigation a,
+html[data-theme="dark"] .navigation .nav-account,
+html[data-theme="dark"] .home-link,
+html[data-theme="dark"] .legal-footer a,
+html[data-theme="dark"] .drawer-bottom,
+html[data-theme="dark"] .drawer-eyebrow,
+html[data-theme="dark"] .auth-field,
+html[data-theme="dark"] .auth-consent,
+html[data-theme="dark"] .newsletter-label {
+  color: var(--muted);
+}
+
+html[data-theme="dark"] .brand-name span,
+html[data-theme="dark"] .drawer-eyebrow,
+html[data-theme="dark"] .eyebrow,
+html[data-theme="dark"] .kicker {
+  color: #b4d48a;
+}
+
+html[data-theme="dark"] .auth-page-card,
+html[data-theme="dark"] .faq-item,
+html[data-theme="dark"] .market-board,
+html[data-theme="dark"] .notice,
+html[data-theme="dark"] .learning-card,
+html[data-theme="dark"] .float-note,
+html[data-theme="dark"] .step,
+html[data-theme="dark"] .topic-card {
+  border-color: var(--line);
+  background: var(--white);
+}
+
+html[data-theme="dark"] .auth-switcher,
+html[data-theme="dark"] .market-section,
+html[data-theme="dark"] .faq-section,
+html[data-theme="dark"] .learning-topics,
+html[data-theme="dark"] .apps,
+html[data-theme="dark"] .newsletter {
+  background: #17211b;
+}
+
+html[data-theme="dark"] .hero-art {
+  background: linear-gradient(145deg, #1d2c22, #26382b);
+}
+
+html[data-theme="dark"] .hero-art::before,
+html[data-theme="dark"] .hero-art::after {
+  border-color: #3a4b3b;
+}
+
+html[data-theme="dark"] .market-chart-grid {
+  stroke: #536650;
+}
+
+html[data-theme="dark"] .card-label,
+html[data-theme="dark"] .card-description,
+html[data-theme="dark"] .path-status,
+html[data-theme="dark"] .streak,
+html[data-theme="dark"] .content > p,
+html[data-theme="dark"] .content ul {
+  color: var(--muted);
+}
+
+html[data-theme="dark"] .path-name,
+html[data-theme="dark"] .float-note {
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .path-number,
+html[data-theme="dark"] .lesson-count {
+  border-color: var(--line);
+  background: #263329;
+  color: #c4d6b7;
+}
+
+html[data-theme="dark"] .path-divider {
+  background-color: var(--line);
+}
+
+html[data-theme="dark"] .card-footer {
+  border-color: var(--line);
+}
+
+html[data-theme="dark"] .step-icon {
+  background: #2b3c2d;
+  color: #c6df9d;
+}
+
+html[data-theme="dark"] .content .intro {
+  border-color: #819e5a;
+  background: #202d23;
+  color: #c0cdbf;
+}
+
+html[data-theme="dark"] .legal-footer p,
+html[data-theme="dark"] .legal-footer a {
+  color: var(--muted);
+}
+
+html[data-theme="dark"] .app-platforms::before {
+  background: radial-gradient(ellipse, #29372d 0, #29372da8 40%, #29372d00 73%);
+}
+
+html[data-theme="dark"] .auth-tab,
+html[data-theme="dark"] .drawer-intro,
+html[data-theme="dark"] .signup-purpose,
+html[data-theme="dark"] .auth-status,
+html[data-theme="dark"] .newsletter-copy > p:last-child,
+html[data-theme="dark"] .market-board-header p,
+html[data-theme="dark"] .market-board-meta,
+html[data-theme="dark"] .market-stock-company span,
+html[data-theme="dark"] .market-summary td:first-child {
+  color: var(--muted);
+}
+
+html[data-theme="dark"] .auth-tab[aria-pressed="true"],
+html[data-theme="dark"] .auth-input,
+html[data-theme="dark"] .google-auth-button,
+html[data-theme="dark"] .newsletter-input {
+  border-color: var(--line);
+  background: #202b24;
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .auth-input::placeholder,
+html[data-theme="dark"] .newsletter-input::placeholder {
+  color: #87958b;
+}
+
+html[data-theme="dark"] .auth-password-toggle,
+html[data-theme="dark"] .auth-link-button,
+html[data-theme="dark"] .auth-consent a {
+  color: #b7d98f;
+}
+
+html[data-theme="dark"] .auth-notice,
+html[data-theme="dark"] .intro {
+  border-color: #39483c;
+  background: #202d23;
+  color: #c0cdbf;
+}
+
+html[data-theme="dark"] .auth-notice strong {
+  color: #d3e4c1;
+}
+
+html[data-theme="dark"] .market-summary,
+html[data-theme="dark"] .market-table-scroll {
+  border-color: var(--line);
+}
+
+html[data-theme="dark"] .market-summary th {
+  background: #263a30;
+  color: #dce8df;
+}
+
+html[data-theme="dark"] .market-stock-table th {
+  background: #26332c;
+  color: #dce8df;
+}
+
+html[data-theme="dark"] .market-summary td,
+html[data-theme="dark"] .market-stock-table td {
+  border-color: #34423a;
+  color: #d0dbd2;
+}
+
+html[data-theme="dark"] .market-summary tbody tr:nth-child(even),
+html[data-theme="dark"] .market-stock-table tbody tr:nth-child(even),
+html[data-theme="dark"] .market-stock-table tbody tr:hover {
+  background: #202b24;
+}
+
+html[data-theme="dark"] .market-tab[aria-pressed="true"] {
+  border-color: var(--line);
+  border-bottom-color: var(--white);
+  background: var(--white);
+  color: var(--ink);
+}
+
+html[data-theme="dark"] .market-retry,
+html[data-theme="dark"] .market-practice-button {
+  border-color: #3b5948;
+  background: #22372b;
+  color: #b7dfc7;
+}
+
+html[data-theme="dark"] .dashboard-disclaimer,
+html[data-theme="dark"] .sidebar-note {
+  border-color: #35473a;
+  background: #202d23;
+}
+
+html[data-theme="dark"] .disclaimer-mark,
+html[data-theme="dark"] .sidebar-note-icon,
+html[data-theme="dark"] .overview-shortcut-icon,
+html[data-theme="dark"] .card-symbol,
+html[data-theme="dark"] .wallet-card-icon,
+html[data-theme="dark"] .chart-placeholder-mark,
+html[data-theme="dark"] .portfolio-empty-state > span,
+html[data-theme="dark"] .resource-icon,
+html[data-theme="dark"] .contest-card-mark {
+  background: #2b4435;
+  color: #a9ddbd;
+}
+
+html[data-theme="dark"] .welcome-badge,
+html[data-theme="dark"] .contest-status {
+  border-color: #554331;
+  background: #30271f;
+  color: #e2bc8e;
+}
+
+html[data-theme="dark"] .overview-stat,
+html[data-theme="dark"] .dashboard-card,
+html[data-theme="dark"] .stock-card {
+  border-color: var(--dash-line);
+  background-color: var(--dash-surface);
+  color: var(--dash-ink);
+}
+
+html[data-theme="dark"] .app-sidebar {
+  border-color: var(--dash-line);
+  background: var(--dash-surface);
+}
+
+html[data-theme="dark"] .app-topbar {
+  background: rgb(26 36 30 / 96%);
+}
+
+html[data-theme="dark"] .practice-pill,
+html[data-theme="dark"] .dashboard-search,
+html[data-theme="dark"] .dashboard-search kbd,
+html[data-theme="dark"] .snapshot-date,
+html[data-theme="dark"] .selected-quote,
+html[data-theme="dark"] .order-amount-field,
+html[data-theme="dark"] .order-select,
+html[data-theme="dark"] .amount-chips button {
+  border-color: var(--dash-line);
+  background-color: #202b24;
+  color: var(--dash-ink);
+}
+
+html[data-theme="dark"] .order-tab.is-active {
+  background: #303e35;
+  color: #b9dfc8;
+}
+
+html[data-theme="dark"] .order-tabs {
+  background: #202b24;
+}
+
+html[data-theme="dark"] .portfolio-chart {
+  border-color: var(--dash-line);
+  background: linear-gradient(180deg, #202b24, #1a241e);
+}
+
+html[data-theme="dark"] .portfolio-empty-state,
+html[data-theme="dark"] .wallet-disclaimer {
+  border-color: var(--dash-line);
+  background: #202b24;
+}
+
+html[data-theme="dark"] .contest-hero {
+  border-color: var(--dash-line);
+  background: linear-gradient(125deg, #203127, #1a241e 72%);
+}
+
+html[data-theme="dark"] .contest-coming-icon {
+  background: #3b3023;
+  color: #e7b66e;
+}
+
+html[data-theme="dark"] .stock-card:nth-child(4n + 2) .stock-symbol-mark,
+html[data-theme="dark"] .stock-card:nth-child(4n + 3) .stock-symbol-mark,
+html[data-theme="dark"] .stock-card:nth-child(4n + 4) .stock-symbol-mark {
+  background: #29352e;
+  color: #c2d5c7;
+}
+
+html[data-theme="dark"] .app-nav-link.is-active {
+  background: #294435;
+  color: #b5dfc7;
+}
+
+html[data-theme="dark"] .portfolio-value,
+html[data-theme="dark"] .wallet-balance {
+  color: #9bd6b8;
+}
+
+html[data-theme="dark"] .practice-mode,
+html[data-theme="dark"] .wallet-label,
+html[data-theme="dark"] .wallet-note,
+html[data-theme="dark"] .overview-shortcut small,
+html[data-theme="dark"] .resource-card-copy,
+html[data-theme="dark"] .lesson-card p,
+html[data-theme="dark"] .help-item p,
+html[data-theme="dark"] .contest-hero > p:not(.dashboard-eyebrow),
+html[data-theme="dark"] .contest-learning-card > p:not(.dashboard-eyebrow),
+html[data-theme="dark"] .contest-coming-soon p:last-child,
+html[data-theme="dark"] .overview-learning-card > p:not(.dashboard-eyebrow) {
+  color: var(--dash-muted);
+}
+
+html[data-theme="dark"] .theme-toggle {
+  border-color: #45554a;
+  background: #202b24;
+  color: #e7d59b;
+}
+
+@media (max-width: 650px) {
+  .theme-toggle {
+    width: 32px;
+    height: 32px;
+    flex-basis: 32px;
+  }
+
+  .navigation .theme-toggle {
+    width: 30px;
+    height: 30px;
+    flex-basis: 30px;
+  }
+}
+
+@media (max-width: 390px) {
+  .topbar-inner {
+    gap: 8px;
+  }
+
+  .navigation {
+    gap: 8px;
+  }
+
+  .navigation .nav-cta {
+    padding: 7px 9px;
+    font-size: 10px;
+  }
+
+  .navigation .nav-account {
+    font-size: 10px;
+  }
+
+  .navigation .theme-toggle {
+    width: 28px;
+    height: 28px;
+    flex-basis: 28px;
+  }
+}

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142e3a">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Preview a simulated Nigerian stock market practice order with NGXLab.">
+  <title>NGXLab — New practice order</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body class="trading-dashboard" data-dashboard-page="new">
+  <div class="app-shell" id="app-shell">
+    <main class="app-main"><div class="dashboard-content">
+      <div class="dashboard-section-heading">
+        <p class="dashboard-eyebrow">SANDBOX</p>
+        <h1>New practice order</h1>
+        <p>Choose an NGX stock and preview a hypothetical order. No trade will be submitted.</p>
+      </div>
+      <div class="dashboard-grid">
+        <aside class="order-card dashboard-card" aria-labelledby="order-title">
+          <div class="order-card-heading">
+            <div><p class="dashboard-eyebrow">SIMULATED ONLY</p><h2 id="order-title">Practice trade</h2></div>
+            <span class="order-spark" aria-hidden="true">↗</span>
+          </div>
+          <div class="order-tabs" role="group" aria-label="Practice order side">
+            <button class="order-tab is-active" type="button" data-order-side="Buy" aria-pressed="true">Buy</button>
+            <button class="order-tab" type="button" data-order-side="Sell" aria-pressed="false">Sell</button>
+          </div>
+          <label class="order-field" for="trade-symbol">Choose a stock</label>
+          <select class="order-select" id="trade-symbol" disabled><option>Loading market stocks…</option></select>
+          <div class="selected-quote"><span id="selected-stock-name">Market quote</span><strong id="selected-stock-price">—</strong></div>
+          <label class="order-field" for="trade-amount">Practice amount</label>
+          <div class="order-amount-field"><span aria-hidden="true">₦</span><input id="trade-amount" type="number" min="1" step="1" value="50000" inputmode="numeric"></div>
+          <div class="amount-chips" aria-label="Quick practice amounts">
+            <button type="button" data-order-amount="10000">₦10k</button>
+            <button type="button" data-order-amount="25000">₦25k</button>
+            <button type="button" data-order-amount="50000" class="is-selected">₦50k</button>
+            <button type="button" data-order-amount="100000">₦100k</button>
+          </div>
+          <div class="order-estimate"><span>Estimated whole shares</span><strong id="estimated-shares">—</strong></div>
+          <button class="order-submit" id="preview-order" type="button" disabled>Preview practice order</button>
+          <p class="order-note" id="order-status" role="status">Loading market stocks…</p>
+          <p class="secure-note">Preview only. No real securities are bought or sold, and your balance will not change.</p>
+        </aside>
+        <aside class="dashboard-card order-info-card">
+          <p class="dashboard-eyebrow">A LEARNING TOOL</p>
+          <h2>Explore the numbers, not real risk.</h2>
+          <p>Use this preview to estimate how many whole shares fit within a hypothetical amount at the latest stored quote.</p>
+          <a class="view-link" href="markets.html">Review the market snapshot <span aria-hidden="true">→</span></a>
+        </aside>
+      </div>
+    </div></main>
+  </div>
+  <script type="module" src="../js/dashboard-shell.js"></script>
+  <script type="module" src="../js/dashboard.js"></script>
+  <script type="module" src="../js/order-market-data.js"></script>
+  <script type="module" src="../js/theme.js"></script>
+</body>
+</html>

@@ -1,0 +1,242 @@
+{
+  "redirects": [
+    {
+      "source": "/auth",
+      "has": [
+        {
+          "type": "query",
+          "key": "view",
+          "value": "signup"
+        }
+      ],
+      "destination": "/signup",
+      "permanent": true
+    },
+    {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/dashboard.html",
+      "destination": "/dashboard",
+      "permanent": true
+    },
+    {
+      "source": "/auth.html",
+      "destination": "/auth",
+      "permanent": true
+    },
+    {
+      "source": "/reset-password.html",
+      "destination": "/reset-password",
+      "permanent": true
+    },
+    {
+      "source": "/terms-and-conditions.html",
+      "destination": "/terms-and-conditions",
+      "permanent": true
+    },
+    {
+      "source": "/cookie-policy.html",
+      "destination": "/cookie-policy",
+      "permanent": true
+    },
+    {
+      "source": "/login.html",
+      "destination": "/login",
+      "permanent": true
+    },
+    {
+      "source": "/signup.html",
+      "destination": "/signup",
+      "permanent": true
+    },
+    {
+      "source": "/markets.html",
+      "destination": "/markets",
+      "permanent": true
+    },
+    {
+      "source": "/new.html",
+      "destination": "/new",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio.html",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/wallet.html",
+      "destination": "/wallet",
+      "permanent": true
+    },
+    {
+      "source": "/resources.html",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/learn.html",
+      "destination": "/learn",
+      "permanent": true
+    },
+    {
+      "source": "/help-center.html",
+      "destination": "/help-center",
+      "permanent": true
+    },
+    {
+      "source": "/contest.html",
+      "destination": "/contest",
+      "permanent": true
+    },
+    {
+      "source": "/html/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/html/dashboard.html",
+      "destination": "/dashboard",
+      "permanent": true
+    },
+    {
+      "source": "/html/auth.html",
+      "destination": "/auth",
+      "permanent": true
+    },
+    {
+      "source": "/html/login.html",
+      "destination": "/login",
+      "permanent": true
+    },
+    {
+      "source": "/html/signup.html",
+      "destination": "/signup",
+      "permanent": true
+    },
+    {
+      "source": "/html/markets.html",
+      "destination": "/markets",
+      "permanent": true
+    },
+    {
+      "source": "/html/new.html",
+      "destination": "/new",
+      "permanent": true
+    },
+    {
+      "source": "/html/portfolio.html",
+      "destination": "/portfolio",
+      "permanent": true
+    },
+    {
+      "source": "/html/wallet.html",
+      "destination": "/wallet",
+      "permanent": true
+    },
+    {
+      "source": "/html/resources.html",
+      "destination": "/resources",
+      "permanent": true
+    },
+    {
+      "source": "/html/learn.html",
+      "destination": "/learn",
+      "permanent": true
+    },
+    {
+      "source": "/html/help-center.html",
+      "destination": "/help-center",
+      "permanent": true
+    },
+    {
+      "source": "/html/contest.html",
+      "destination": "/contest",
+      "permanent": true
+    },
+    {
+      "source": "/html/reset-password.html",
+      "destination": "/reset-password",
+      "permanent": true
+    },
+    {
+      "source": "/html/terms-and-conditions.html",
+      "destination": "/terms-and-conditions",
+      "permanent": true
+    },
+    {
+      "source": "/html/cookie-policy.html",
+      "destination": "/cookie-policy",
+      "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/",
+      "destination": "/html/index.html"
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/html/dashboard.html"
+    },
+    {
+      "source": "/auth",
+      "destination": "/html/login.html"
+    },
+    {
+      "source": "/login",
+      "destination": "/html/login.html"
+    },
+    {
+      "source": "/signup",
+      "destination": "/html/signup.html"
+    },
+    {
+      "source": "/reset-password",
+      "destination": "/html/reset-password.html"
+    },
+    {
+      "source": "/terms-and-conditions",
+      "destination": "/html/terms-and-conditions.html"
+    },
+    {
+      "source": "/cookie-policy",
+      "destination": "/html/cookie-policy.html"
+    },
+    {
+      "source": "/markets",
+      "destination": "/html/markets.html"
+    },
+    {
+      "source": "/new",
+      "destination": "/html/new.html"
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/html/portfolio.html"
+    },
+    {
+      "source": "/wallet",
+      "destination": "/html/wallet.html"
+    },
+    {
+      "source": "/resources",
+      "destination": "/html/resources.html"
+    },
+    {
+      "source": "/learn",
+      "destination": "/html/learn.html"
+    },
+    {
+      "source": "/help-center",
+      "destination": "/html/help-center.html"
+    },
+    {
+      "source": "/contest",
+      "destination": "/html/contest.html"
+    }
+  ]
+}

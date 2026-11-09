@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.ngxlab.com/html/index.html</loc>
+    <loc>https://www.ngxlab.com/</loc>
   </url>
   <url>
-    <loc>https://www.ngxlab.com/html/auth.html</loc>
+    <loc>https://www.ngxlab.com/cookie-policy</loc>
   </url>
   <url>
-    <loc>https://www.ngxlab.com/html/cookie-policy.html</loc>
-  </url>
-  <url>
-    <loc>https://www.ngxlab.com/html/terms-and-conditions.html</loc>
+    <loc>https://www.ngxlab.com/terms-and-conditions</loc>
   </url>
 </urlset>

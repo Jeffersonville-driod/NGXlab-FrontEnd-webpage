@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#142e3a">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Review your NGXLab virtual practice portfolio.">
+  <title>NGXLab — Portfolio</title>
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+  <link rel="stylesheet" href="../css/theme.css">
+</head>
+<body class="trading-dashboard" data-dashboard-page="portfolio">
+  <div class="app-shell" id="app-shell">
+    <main class="app-main"><div class="dashboard-content">
+      <div class="dashboard-section-heading">
+        <p class="dashboard-eyebrow">YOUR SIMULATION</p>
+        <h1>Portfolio</h1>
+        <p>Review your virtual buying power and portfolio activity.</p>
+      </div>
+      <section class="portfolio-card dashboard-card" aria-labelledby="portfolio-title">
+        <div class="card-heading">
+          <div><p class="dashboard-eyebrow">PRACTICE ACCOUNT</p><h2 id="portfolio-title">Portfolio value</h2><p class="card-subtitle">Available virtual cash</p></div>
+          <span class="card-symbol" aria-hidden="true">₦</span>
+        </div>
+        <p class="portfolio-value" id="portfolio-balance">Loading…</p>
+        <p class="portfolio-caption">Current balance provided for this practice session</p>
+        <div class="portfolio-chart" role="img" aria-label="Portfolio history is not available until simulated trades are connected">
+          <div class="chart-placeholder"><span class="chart-placeholder-mark" aria-hidden="true">↗</span><span>Portfolio performance will appear after trade history is connected</span></div>
+        </div>
+        <div class="portfolio-stats">
+          <div><span>Virtual capital</span><strong id="portfolio-capital">Loading…</strong></div>
+          <div><span>Holdings</span><strong>Not connected</strong></div>
+          <div><span>Trade history</span><strong>Not connected</strong></div>
+        </div>
+      </section>
+      <div class="portfolio-empty-state">
+        <span aria-hidden="true">◫</span>
+        <h2>No holdings to show yet</h2>
+        <p>Practice orders are currently previews only, so they do not create holdings or update your balance.</p>
+        <a class="view-link" href="new.html">Go to practice order <span aria-hidden="true">→</span></a>
+      </div>
+    </div></main>
+  </div>
+  <script type="module" src="../js/dashboard-shell.js"></script>
+  <script type="module" src="../js/dashboard.js"></script>
+  <script type="module" src="../js/theme.js"></script>
+</body>
+</html>

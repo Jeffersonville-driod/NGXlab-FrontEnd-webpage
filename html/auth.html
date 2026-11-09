@@ -3,95 +3,16 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#f5f2e9">
-  <meta name="description" content="Sign up or log in to NGXLab to explore investing ideas and build your understanding of the Nigerian market.">
-  <link rel="canonical" href="https://www.ngxlab.com/html/auth.html">
-  <title>Sign up or login | NGXLab</title>
-  <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="../css/styles.css">
+  <meta http-equiv="refresh" content="0; url=login.html">
+  <title>Continue to NGXLab</title>
 </head>
 <body>
-  <main class="auth-page">
-    <section class="auth-page-card" aria-labelledby="auth-title">
-      <div class="drawer-layout">
-        <header class="drawer-header">
-          <a class="brand" href="index.html" aria-label="NGXLab home">
-            <span class="brand-mark" aria-hidden="true">N</span>
-            <span class="brand-name">NGX<span>Lab</span></span>
-          </a>
-        </header>
-        <div class="drawer-content">
-          <p class="drawer-eyebrow">Your learning space</p>
-          <h1 id="auth-title">Sign up or login</h1>
-          <p class="drawer-intro" id="auth-intro">Log in to continue exploring NGXLab.</p>
-
-          <div class="auth-switcher" role="group" aria-label="Account options">
-            <button class="auth-tab" type="button" data-auth-view="login" aria-pressed="true">Log in</button>
-            <button class="auth-tab" type="button" data-auth-view="signup" aria-pressed="false">Create account</button>
-          </div>
-
-          <form class="auth-form" id="login-form">
-            <label class="auth-field" for="login-email">Email address
-              <input class="auth-input" id="login-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
-            </label>
-            <label class="auth-field" for="login-password">Password</label>
-            <div class="auth-password-control">
-              <input class="auth-input" id="login-password" name="password" type="password" autocomplete="current-password" placeholder="Enter your password" required>
-              <button class="auth-password-toggle" type="button" data-password-toggle aria-controls="login-password" aria-label="Show password" aria-pressed="false">Show</button>
-            </div>
-            <button class="auth-submit" type="submit"><span class="button-spinner" aria-hidden="true" hidden></span>Log in</button>
-            <div class="auth-divider"><span>or</span></div>
-            <button class="google-auth-button" type="button" data-google-auth="login">Continue with Google</button>
-            <div class="auth-secondary">
-              <button class="auth-link-button" type="button" data-auth-view="recovery">Forgot password?</button>
-              <button class="auth-link-button" type="button" data-auth-view="signup">New to NGXLab? Create an account</button>
-            </div>
-          </form>
-
-          <form class="auth-form" id="signup-form" hidden>
-            <label class="auth-field" for="signup-name">Your name
-              <input class="auth-input" id="signup-name" name="name" type="text" autocomplete="name" placeholder="How should we call you?" required>
-            </label>
-            <label class="auth-field" for="signup-email">Email address
-              <input class="auth-input" id="signup-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
-            </label>
-            <label class="auth-field" for="signup-password">Create a password</label>
-            <div class="auth-password-control">
-              <input class="auth-input" id="signup-password" name="password" type="password" autocomplete="new-password" minlength="8" placeholder="At least 8 characters" required>
-              <button class="auth-password-toggle" type="button" data-password-toggle aria-controls="signup-password" aria-label="Show password" aria-pressed="false">Show</button>
-            </div>
-            <p class="signup-purpose">NGXLab aims to help people understand Nigerian stock-market concepts through education and virtual practice. It is not a broker or investment adviser, does not place real trades, and does not provide financial advice.</p>
-            <div class="auth-consent">
-              <input id="signup-terms" name="terms-accepted" type="checkbox" required>
-              <label for="signup-terms">I have read and agree to the Terms &amp; Conditions.</label>
-              <a href="terms-and-conditions.html" target="_blank" rel="noopener">Read the terms</a>
-            </div>
-            <button class="auth-submit" type="submit"><span class="button-spinner" aria-hidden="true" hidden></span>Create account</button>
-            <div class="auth-divider"><span>or</span></div>
-            <button class="google-auth-button" type="button" data-google-auth="signup">Continue with Google</button>
-            <div class="auth-secondary">
-              <span class="drawer-intro">Already have an account?</span>
-              <button class="auth-link-button" type="button" data-auth-view="login">Log in</button>
-            </div>
-          </form>
-
-          <form class="auth-form" id="recovery-form" hidden>
-            <label class="auth-field" for="recovery-email">Email address
-              <input class="auth-input" id="recovery-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
-            </label>
-            <button class="auth-submit" type="submit"><span class="button-spinner" aria-hidden="true" hidden></span>Send recovery link</button>
-            <div class="auth-secondary">
-              <button class="auth-link-button" type="button" data-auth-view="login">Back to log in</button>
-            </div>
-          </form>
-
-          <p class="auth-status" id="auth-status" role="status" aria-live="polite"></p>
-          <p class="auth-notice"><strong>Account access:</strong> Email login, registration, and password recovery are available. Google sign-in isn't connected yet. Password reset emails require the backend's Resend configuration.</p>
-        </div>
-        <div class="drawer-bottom">NGXLab is a learning concept. Practice examples are illustrative, not financial advice.</div>
-      </div>
-    </section>
-  </main>
-  <script type="module" src="../js/auth-page.js"></script>
+  <script>
+    const destination = new URLSearchParams(window.location.search).get("view") === "signup"
+      ? "signup.html"
+      : "login.html";
+    window.location.replace(destination);
+  </script>
+  <p><a href="login.html">Continue to NGXLab</a></p>
 </body>
 </html>

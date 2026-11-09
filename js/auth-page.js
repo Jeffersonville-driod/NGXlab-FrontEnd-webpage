@@ -8,11 +8,14 @@ const authIntro = document.getElementById("auth-intro");
 const authStatus = document.getElementById("auth-status");
 const virtualBalanceStorageKey = "ngxlabVirtualBalanceNgn";
 const userNameStorageKey = "ngxlabUserName";
-const authForms = {
+const authFormElements = {
   login: document.getElementById("login-form"),
   signup: document.getElementById("signup-form"),
   recovery: document.getElementById("recovery-form")
 };
+const authForms = Object.fromEntries(
+  Object.entries(authFormElements).filter(([, form]) => form)
+);
 const authCopy = {
   login: "Log in to continue exploring NGXLab.",
   signup: "Start building your understanding of the market.",
@@ -26,8 +29,8 @@ function showAuthView(view, updateUrl = true) {
   Object.entries(authForms).forEach(([name, form]) => {
     form.hidden = name !== view;
   });
-  authIntro.textContent = authCopy[view];
-  authStatus.textContent = "";
+  if (authIntro) authIntro.textContent = authCopy[view];
+  if (authStatus) authStatus.textContent = "";
   document.querySelectorAll(".auth-tab").forEach((tab) => {
     tab.setAttribute("aria-pressed", String(tab.dataset.authView === view));
   });
@@ -45,7 +48,7 @@ function setButtonLoading(button, loading) {
   button.querySelector(".button-spinner").hidden = !loading;
 }
 
-document.querySelectorAll(".auth-tab, .auth-link-button").forEach((button) => {
+document.querySelectorAll("[data-auth-view]").forEach((button) => {
   button.addEventListener("click", () => showAuthView(button.dataset.authView));
 });
 
@@ -115,4 +118,5 @@ Object.entries(authForms).forEach(([view, form]) => {
 });
 
 const requestedView = new URLSearchParams(window.location.search).get("view");
-showAuthView(Object.hasOwn(authForms, requestedView) ? requestedView : "login", false);
+const initialView = document.body.dataset.authView || "login";
+showAuthView(Object.hasOwn(authForms, requestedView) ? requestedView : initialView, false);

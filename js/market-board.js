@@ -15,7 +15,7 @@ const numberFormat = new Intl.NumberFormat("en-NG", { maximumFractionDigits: 2 }
 const volumeFormat = new Intl.NumberFormat("en-NG", { maximumFractionDigits: 0 });
 const stockLists = { gainers: [], losers: [], volume: [] };
 let activeView = "gainers";
-let searchQuery = "";
+let searchQuery = new URLSearchParams(window.location.search).get("q")?.trim().toLowerCase() || "";
 
 function displayValue(value) {
   if (value === null || value === undefined || value === "") return "—";
@@ -129,15 +129,7 @@ function renderStocks() {
     practiceButton.textContent = "Practise";
     practiceButton.setAttribute("aria-label", `Preview a practice order for ${displayValue(stock?.symbol)}`);
     practiceButton.addEventListener("click", () => {
-      const practiceOrder = document.getElementById("practice-order");
-      if (!practiceOrder) {
-        window.location.assign("auth.html?view=signup");
-        return;
-      }
-      if (typeof window !== "undefined") {
-        window.dispatchEvent(new CustomEvent("ngxlab:select-stock", { detail: stock }));
-        practiceOrder.scrollIntoView({ behavior: "smooth", block: "center" });
-      }
+      window.location.assign(`new.html?symbol=${encodeURIComponent(stock?.symbol || "")}`);
     });
     actionCell.append(practiceButton);
     row.append(companyCell, priceCell, changeCell, volumeCell, sectorCell, actionCell);
@@ -213,6 +205,7 @@ searchInput?.addEventListener("input", () => {
   searchQuery = searchInput.value.trim().toLowerCase();
   renderStocks();
 });
+if (searchInput) searchInput.value = new URLSearchParams(window.location.search).get("q") || "";
 retryButton.addEventListener("click", loadMarketOverview);
 renderSummary(null);
 loadMarketOverview();
