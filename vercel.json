@@ -1,18 +1,6 @@
 {
   "redirects": [
     {
-      "source": "/auth",
-      "has": [
-        {
-          "type": "query",
-          "key": "view",
-          "value": "signup"
-        }
-      ],
-      "destination": "/signup",
-      "permanent": true
-    },
-    {
       "source": "/index.html",
       "destination": "/",
       "permanent": true
