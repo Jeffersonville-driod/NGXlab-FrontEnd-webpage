@@ -25,7 +25,8 @@ function applyTheme(nextTheme) {
 
 applyTheme(theme);
 
-const controlsHost = document.querySelector(".topbar-actions, .navigation, .drawer-header, .topbar-inner");
+const controlsHost = document.querySelector(".topbar-actions")
+  || document.querySelector(".navigation, .drawer-header, .topbar-inner");
 if (controlsHost) {
   const toggle = document.createElement("button");
   toggle.className = "theme-toggle";

@@ -100,6 +100,81 @@ html[data-theme="dark"] .newsletter {
   background: #17211b;
 }
 
+html[data-theme="dark"] .homepage-market {
+  background: radial-gradient(ellipse at 9% 12%, #26372a 0, transparent 38%), #17211b;
+}
+
+html[data-theme="dark"] .homepage-market .market-board {
+  border-color: var(--line);
+}
+
+html[data-theme="dark"] .homepage-market .market-board-header {
+  background: linear-gradient(112deg, #13291e 0%, #1c3828 66%, #264530 100%);
+}
+
+html[data-theme="dark"] .homepage-market .market-status {
+  border-color: var(--line);
+  background: #202b24;
+}
+
+html[data-theme="dark"] .market-overline {
+  color: #b4d48a;
+}
+
+html[data-theme="dark"] .market-data-tag {
+  border-color: #3b4e3b;
+  background: #263329;
+  color: #c4dda6;
+}
+
+html[data-theme="dark"] .market-context {
+  border-color: var(--line);
+  background: linear-gradient(145deg, #253329, #202b24);
+}
+
+html[data-theme="dark"] .market-context > p:not(.market-overline) {
+  color: var(--muted);
+}
+
+html[data-theme="dark"] .market-context a {
+  color: #c4dda6;
+}
+
+html[data-theme="dark"] .market-context a:hover {
+  color: #e4ece5;
+}
+
+html[data-theme="dark"] .market-context-icon {
+  background: #344734;
+  color: #c4dda6;
+}
+
+html[data-theme="dark"] .homepage-market .market-summary th,
+html[data-theme="dark"] .homepage-market .market-stock-table th {
+  background: #26332c;
+  color: #dce8df;
+}
+
+html[data-theme="dark"] .homepage-market .market-summary tbody tr:nth-child(even) {
+  background: #202b24;
+}
+
+html[data-theme="dark"] .homepage-market .market-stock-table tbody tr:hover {
+  background: #263329;
+}
+
+html[data-theme="dark"] .homepage-market .market-practice-button {
+  border-color: #3b5948;
+  background: #22372b;
+  color: #b7dfc7;
+}
+
+html[data-theme="dark"] .homepage-market .market-practice-button:hover {
+  border-color: #9bd6b8;
+  background: #31503c;
+  color: #f0f8f2;
+}
+
 html[data-theme="dark"] .hero-art {
   background: linear-gradient(145deg, #1d2c22, #26382b);
 }

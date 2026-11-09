@@ -41,13 +41,20 @@ a { color: inherit; }
 }
 .brand-name { font-size: 19px; font-weight: 760; letter-spacing: -.7px; }
 .brand-name span { color: #638735; }
-.navigation { display: flex; align-items: center; gap: 34px; }
+.navigation { display: flex; align-items: center; gap: clamp(11px, 1.5vw, 21px); }
 .navigation a { color: #526055; font-size: 13px; font-weight: 550; text-decoration: none; }
 .navigation a:hover { color: var(--green); }
 .navigation .nav-cta { padding: 10px 17px; border: 1px solid var(--lime); border-radius: 7px; background: var(--lime); color: var(--green-deep); cursor: pointer; font: inherit; font-size: 13px; font-weight: 600; }
 .navigation .nav-cta:hover { border-color: var(--green); background: var(--green); color: var(--white); }
 .navigation .nav-account { padding: 0; border: 0; background: transparent; color: #526055; cursor: pointer; font: inherit; font-size: 13px; font-weight: 550; }
 .navigation .nav-account:hover { color: var(--green); }
+.topbar-actions { display: flex; flex: 0 0 auto; align-items: center; gap: 9px; }
+.topbar-actions .nav-cta { padding: 10px 15px; border: 1px solid var(--lime); border-radius: 7px; background: var(--lime); color: var(--green-deep); font-size: 12px; font-weight: 650; text-decoration: none; white-space: nowrap; }
+.topbar-actions .nav-cta:hover { border-color: var(--green); background: var(--green); color: var(--white); }
+.mobile-nav-heading, .mobile-menu-toggle, .mobile-nav-cta { display: none; }
+.mobile-nav-close { width: 36px; height: 36px; border: 1px solid var(--line); border-radius: 9px; background: var(--white); color: var(--ink); cursor: pointer; font: inherit; font-size: 24px; line-height: 1; }
+.mobile-nav-backdrop { display: none; }
+.mobile-nav-backdrop[hidden] { display: none; }
 
 .auth-page { min-height: 100vh; display: grid; place-items: center; padding: 28px 0; }
 .auth-page-card { width: min(100% - 32px, 480px); border: 1px solid var(--line); border-radius: 12px; background: var(--white); box-shadow: 0 22px 70px #1c2b2114; }
@@ -352,6 +359,45 @@ h2 { margin: 0; font-size: clamp(30px, 3.8vw, 42px); font-weight: 520; letter-sp
 .market-section[aria-busy="true"] .market-board { cursor: progress; }
 .visually-hidden { position: absolute; overflow: hidden; width: 1px; height: 1px; clip: rect(0,0,0,0); white-space: nowrap; clip-path: inset(50%); }
 
+.homepage-market { position: relative; isolation: isolate; overflow: hidden; background: radial-gradient(ellipse at 9% 12%, #e5eddc 0, transparent 38%), #f3f6f5; }
+.homepage-market .section-heading { max-width: 760px; }
+.homepage-market .market-board { border-color: #d3ddd2; border-radius: 17px; box-shadow: 0 22px 55px #18372812, 0 3px 9px #18372808; }
+.homepage-market .market-board-header { min-height: 116px; padding: 25px 30px; background: linear-gradient(112deg, #173a2b 0%, #244a37 66%, #31583e 100%); color: #fffdf6; }
+.homepage-market .market-board-header h3 { font-size: 19px; letter-spacing: -.5px; }
+.homepage-market .market-board-header p { color: #cfdbcf; font-size: 12px; }
+.homepage-market .market-board-meta { gap: 8px; color: #f1f5e9; }
+.homepage-market .market-board-meta span { padding: 6px 10px; border: 1px solid #ffffff2b; border-radius: 999px; background: #ffffff12; font-size: 10px; }
+.homepage-market .market-board-meta span + span::before { content: none; }
+.homepage-market .market-status { padding: 11px 30px; border-bottom: 1px solid #e8ede6; background: #f7f9f4; }
+.homepage-market .market-summary-wrap { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(230px, .75fr); align-items: stretch; gap: 18px; margin: 22px 30px 0; }
+.market-summary-content { min-width: 0; }
+.market-overview-heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 12px; }
+.market-overline { margin: 0 0 3px; color: #738267; font-size: 9px; font-weight: 760; letter-spacing: .12em; text-transform: uppercase; }
+.market-overview-heading h4, .market-context h4 { margin: 0; color: var(--ink); font-size: 15px; font-weight: 710; letter-spacing: -.35px; }
+.market-data-tag { padding: 5px 9px; border: 1px solid #dfe8d5; border-radius: 999px; background: #f4f7ed; color: #557038; font-size: 9px; font-weight: 700; white-space: nowrap; }
+.homepage-market .market-summary { max-width: none; border-color: #e2e8de; border-radius: 10px; }
+.homepage-market .market-summary th { padding: 10px 13px; background: #eef2e9; color: #56664e; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+.homepage-market .market-summary td { padding: 11px 13px; font-size: 11px; }
+.homepage-market .market-summary td:last-child { color: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
+.homepage-market .market-summary tbody tr:nth-child(even) { background: #fbfcf8; }
+.market-context { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 20px; border: 1px solid #e1e9d8; border-radius: 12px; background: linear-gradient(145deg, #f3f7ed, #eaf1e4); }
+.market-context-icon { display: grid; width: 32px; height: 32px; place-items: center; margin-bottom: 17px; border-radius: 10px; background: #dce9c9; color: #416232; font-size: 20px; font-weight: 700; }
+.market-context .market-overline { margin-bottom: 7px; }
+.market-context h4 { max-width: 220px; font-size: 17px; line-height: 1.35; }
+.market-context > p:not(.market-overline) { margin: 9px 0 14px; color: #5b6a60; font-size: 10px; line-height: 1.65; }
+.market-context a { display: inline-flex; align-items: center; gap: 8px; margin-top: auto; color: #355a34; font-size: 10px; font-weight: 720; text-decoration: none; }
+.market-context a:hover { color: #173a2b; text-decoration: underline; text-underline-offset: 3px; }
+.homepage-market .market-data { margin-top: 24px; }
+.homepage-market .market-tabs { padding-top: 13px; }
+.homepage-market .market-tab { padding: 10px 14px; }
+.homepage-market .market-table-scroll { margin-top: 0; border-radius: 0 0 10px 10px; }
+.homepage-market .market-stock-table th { padding: 12px 14px; background: #f0f3ed; color: #56664e; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+.homepage-market .market-stock-table td { padding-top: 13px; padding-bottom: 13px; }
+.homepage-market .market-stock-table tbody tr { transition: background-color .16s ease; }
+.homepage-market .market-practice-button { min-height: 31px; padding: 0 11px; border: 1px solid #d6e0cb; border-radius: 999px; background: #f5f8ef; color: #355a34; cursor: pointer; font: inherit; font-size: 10px; font-weight: 700; }
+.homepage-market .market-practice-button:hover { border-color: #173a2b; background: #173a2b; color: #fffdf6; }
+.homepage-market .market-tab:focus-visible, .homepage-market .market-practice-button:focus-visible { outline-offset: 2px; }
+
 @media (max-width: 850px) {
   .hero { grid-template-columns: 1fr .82fr; gap: 22px; }
   .hero-art { min-height: 350px; }
@@ -363,6 +409,15 @@ h2 { margin: 0; font-size: clamp(30px, 3.8vw, 42px); font-weight: 520; letter-sp
   .topic-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 @media (max-width: 650px) {
+  .homepage-market .market-board-header { min-height: 0; padding: 20px 17px; }
+  .homepage-market .market-board-meta span { padding: 5px 8px; }
+  .homepage-market .market-status { padding: 10px 17px; }
+  .homepage-market .market-summary-wrap { grid-template-columns: 1fr; gap: 13px; margin: 17px 16px 0; }
+  .market-context { padding: 16px; }
+  .market-context-icon { margin-bottom: 12px; }
+  .homepage-market .market-summary th, .homepage-market .market-summary td { padding: 10px; }
+  .homepage-market .market-data { margin-top: 19px; }
+  .homepage-market .market-stock-table td { padding-top: 11px; padding-bottom: 11px; }
   .shell { width: min(100% - 38px, 500px); }
   .topbar-inner { height: 70px; }
   .navigation { gap: 15px; }
@@ -431,3 +486,40 @@ h2 { margin: 0; font-size: clamp(30px, 3.8vw, 42px); font-weight: 520; letter-sp
   .button-spinner { animation: none; }
 }
 :focus-visible { outline: 3px solid #8eaa59; outline-offset: 3px; }
+
+@media (max-width: 850px) {
+  .topbar-inner { height: 72px; gap: 12px; }
+  .topbar-actions { gap: 8px; }
+  .topbar-actions .header-cta { display: none; }
+  .navigation {
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    width: min(350px, 88vw);
+    align-items: stretch;
+    flex-direction: column;
+    gap: 0;
+    padding: max(20px, env(safe-area-inset-top)) 22px max(24px, env(safe-area-inset-bottom));
+    transform: translateX(102%);
+    border-left: 1px solid var(--line);
+    background: var(--white);
+    box-shadow: -20px 0 60px #102a201c;
+    visibility: hidden;
+    transition: transform .24s ease, visibility .24s;
+  }
+  .mobile-nav-open .navigation { transform: translateX(0); visibility: visible; }
+  .navigation .mobile-nav-heading { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-bottom: 20px; padding-bottom: 17px; border-bottom: 1px solid var(--line); color: var(--ink); font-size: 14px; font-weight: 740; }
+  .navigation a, .navigation .nav-account, .navigation a:not(.nav-cta):not(.nav-account) { display: block; padding: 13px 0; border-bottom: 1px solid var(--line); color: var(--ink); font-size: 13px; text-align: left; }
+  .navigation .mobile-nav-cta { display: block; margin-top: 20px; padding: 12px 15px; border: 1px solid var(--lime); border-radius: 7px; background: var(--lime); color: var(--green-deep); text-align: center; }
+  .mobile-menu-toggle { display: flex; width: 40px; height: 40px; flex: 0 0 40px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 0; border: 1px solid var(--line); border-radius: 10px; background: var(--white); color: var(--ink); cursor: pointer; }
+  .mobile-menu-toggle span { display: block; width: 16px; height: 2px; border-radius: 2px; background: currentColor; }
+  .mobile-nav-backdrop:not([hidden]) { position: fixed; z-index: 1000; inset: 0; display: block; border: 0; background: #0c1711a8; cursor: pointer; }
+  .mobile-nav-open { overflow: hidden; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navigation { transition: none; }
+}

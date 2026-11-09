@@ -18,17 +18,28 @@
         <span class="brand-mark" aria-hidden="true">N</span>
         <span class="brand-name">NGX<span>Lab</span></span>
       </a>
-      <nav class="navigation" aria-label="Main navigation">
+      <nav class="navigation" id="main-navigation" aria-label="Main navigation">
+        <div class="mobile-nav-heading">
+          <span>Explore NGXLab</span>
+          <button class="mobile-nav-close" type="button" aria-label="Close navigation">×</button>
+        </div>
         <a href="#how-it-works">How it works</a>
         <a href="#market">Market snapshot</a>
         <a href="#learning-topics">Learn the basics</a>
         <a href="#why-ngxlab">Why NGXLab</a>
         <a href="#faq">FAQs</a>
         <a class="nav-account" href="/login">Log in</a>
-        <a class="nav-cta" href="/signup">Create account <span aria-hidden="true">↗</span></a>
+        <a class="nav-cta mobile-nav-cta" href="/signup">Create account <span aria-hidden="true">↗</span></a>
       </nav>
+      <div class="topbar-actions">
+        <a class="nav-cta header-cta" href="/signup">Create account <span aria-hidden="true">↗</span></a>
+        <button class="mobile-menu-toggle" type="button" aria-controls="main-navigation" aria-expanded="false" aria-label="Open navigation">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
   </header>
+  <button class="mobile-nav-backdrop" type="button" aria-label="Close navigation" tabindex="-1" hidden></button>
 
   <main>
       <section class="hero shell" aria-labelledby="hero-title">
@@ -104,7 +115,7 @@
         </div>
       </section>
 
-      <section class="section market-section" id="market" aria-labelledby="market-title" aria-busy="true">
+      <section class="section market-section homepage-market" id="market" aria-labelledby="market-title" aria-busy="true">
         <div class="shell">
           <div class="section-heading">
             <p class="kicker">NGX market snapshot</p>
@@ -125,12 +136,28 @@
             <p class="market-status" id="market-status" role="status" aria-live="polite">Loading the latest market snapshot…</p>
             <button class="market-retry" id="market-retry" type="button" hidden>Try again</button>
             <div class="market-summary-wrap">
-              <table class="market-summary" aria-label="Market summary">
-                <thead>
-                  <tr><th scope="col">Market measure</th><th scope="col">Snapshot</th></tr>
-                </thead>
-                <tbody id="market-summary"></tbody>
-              </table>
+              <div class="market-summary-content">
+                <div class="market-overview-heading">
+                  <div>
+                    <p class="market-overline">Session snapshot</p>
+                    <h4>Market at a glance</h4>
+                  </div>
+                  <span class="market-data-tag">For learning</span>
+                </div>
+                <table class="market-summary" aria-label="Market summary">
+                  <thead>
+                    <tr><th scope="col">Market measure</th><th scope="col">Snapshot</th></tr>
+                  </thead>
+                  <tbody id="market-summary"></tbody>
+                </table>
+              </div>
+              <aside class="market-context" aria-label="How to use this market snapshot">
+                <span class="market-context-icon" aria-hidden="true">↗</span>
+                <p class="market-overline">A thoughtful starting point</p>
+                <h4>Look for context, not a signal.</h4>
+                <p>Compare the session’s measures and company moves to learn what changed. This snapshot is for practice—not a recommendation to trade.</p>
+                <a href="/markets">Explore the full market <span aria-hidden="true">→</span></a>
+              </aside>
             </div>
             <div class="market-data">
               <div class="market-tabs" role="group" aria-label="Choose a stock list">
@@ -431,6 +458,7 @@
   </footer>
   <script type="module" src="/js/main.js"></script>
   <script type="module" src="/js/market-board.js"></script>
+  <script type="module" src="/js/mobile-navigation.js"></script>
   <script type="module" src="/js/theme.js"></script>
 </body>
 </html>
