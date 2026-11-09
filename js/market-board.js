@@ -9,11 +9,13 @@ const asOf = document.getElementById("market-as-of");
 const summary = document.getElementById("market-summary");
 const stockTable = document.getElementById("market-stocks");
 const tabs = [...document.querySelectorAll(".market-tab")];
+const searchInput = document.getElementById("market-search");
 
 const numberFormat = new Intl.NumberFormat("en-NG", { maximumFractionDigits: 2 });
 const volumeFormat = new Intl.NumberFormat("en-NG", { maximumFractionDigits: 0 });
 const stockLists = { gainers: [], losers: [], volume: [] };
 let activeView = "gainers";
+let searchQuery = "";
 
 function displayValue(value) {
   if (value === null || value === undefined || value === "") return "—";
@@ -81,9 +83,12 @@ function formatChange(value) {
 }
 
 function renderStocks() {
-  const stocks = stockLists[activeView];
+  const allStocks = stockLists[activeView];
+  const stocks = Array.isArray(allStocks)
+    ? allStocks.filter((stock) => `${stock?.symbol || ""} ${stock?.name || ""} ${stock?.sector || ""}`.toLowerCase().includes(searchQuery))
+    : [];
   if (!Array.isArray(stocks) || stocks.length === 0) {
-    appendTableMessage(stockTable, "No stocks are available for this list.", 5);
+    appendTableMessage(stockTable, searchQuery ? "No stocks match your search in this list." : "No stocks are available for this list.", 6);
     return;
   }
 
@@ -117,7 +122,25 @@ function renderStocks() {
 
     const sectorCell = document.createElement("td");
     sectorCell.textContent = displayValue(stock?.sector);
-    row.append(companyCell, priceCell, changeCell, volumeCell, sectorCell);
+    const actionCell = document.createElement("td");
+    const practiceButton = document.createElement("button");
+    practiceButton.className = "market-practice-button";
+    practiceButton.type = "button";
+    practiceButton.textContent = "Practise";
+    practiceButton.setAttribute("aria-label", `Preview a practice order for ${displayValue(stock?.symbol)}`);
+    practiceButton.addEventListener("click", () => {
+      const practiceOrder = document.getElementById("practice-order");
+      if (!practiceOrder) {
+        window.location.assign("auth.html?view=signup");
+        return;
+      }
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(new CustomEvent("ngxlab:select-stock", { detail: stock }));
+        practiceOrder.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+    actionCell.append(practiceButton);
+    row.append(companyCell, priceCell, changeCell, volumeCell, sectorCell, actionCell);
     return row;
   });
 
@@ -147,6 +170,9 @@ function renderOverview(data) {
   stockLists.gainers = data.gainers;
   stockLists.losers = data.losers;
   stockLists.volume = data.top_volume;
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(new CustomEvent("ngxlab:market-overview", { detail: data }));
+  }
   renderStocks();
 }
 
@@ -154,7 +180,7 @@ async function loadMarketOverview() {
   board.setAttribute("aria-busy", "true");
   retryButton.hidden = true;
   status.textContent = "Loading the latest market snapshot…";
-  appendTableMessage(stockTable, "Loading market data…", 5);
+  appendTableMessage(stockTable, "Loading market data…", 6);
 
   try {
     const response = await fetch(`${API_BASE_URL}/api/market/overview`, {
@@ -173,7 +199,7 @@ async function loadMarketOverview() {
     status.textContent = error instanceof Error && error.message.startsWith("Market data unavailable")
       ? `${error.message} Please try again later.`
       : "Market data is currently unavailable. Please try again later.";
-    appendTableMessage(stockTable, "Market data could not be loaded.", 5);
+    appendTableMessage(stockTable, "Market data could not be loaded.", 6);
     retryButton.hidden = false;
   } finally {
     board.setAttribute("aria-busy", "false");
@@ -183,6 +209,10 @@ async function loadMarketOverview() {
 for (const tab of tabs) {
   tab.addEventListener("click", () => selectView(tab.dataset.marketView));
 }
+searchInput?.addEventListener("input", () => {
+  searchQuery = searchInput.value.trim().toLowerCase();
+  renderStocks();
+});
 retryButton.addEventListener("click", loadMarketOverview);
 renderSummary(null);
 loadMarketOverview();

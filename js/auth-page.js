@@ -7,6 +7,7 @@ initializePasswordToggles();
 const authIntro = document.getElementById("auth-intro");
 const authStatus = document.getElementById("auth-status");
 const virtualBalanceStorageKey = "ngxlabVirtualBalanceNgn";
+const userNameStorageKey = "ngxlabUserName";
 const authForms = {
   login: document.getElementById("login-form"),
   signup: document.getElementById("signup-form"),
@@ -84,6 +85,7 @@ Object.entries(authForms).forEach(([view, form]) => {
     setButtonLoading(submitButton, true);
     authStatus.textContent = "";
     sessionStorage.removeItem(virtualBalanceStorageKey);
+    sessionStorage.removeItem(userNameStorageKey);
 
     try {
       const formData = new FormData(form);
@@ -99,6 +101,9 @@ Object.entries(authForms).forEach(([view, form]) => {
       }
       if (typeof user?.virtualBalanceNgn === "number" && Number.isFinite(user.virtualBalanceNgn) && user.virtualBalanceNgn >= 0) {
         sessionStorage.setItem(virtualBalanceStorageKey, String(user.virtualBalanceNgn));
+      }
+      if (typeof user?.name === "string" && user.name.trim()) {
+        sessionStorage.setItem(userNameStorageKey, user.name.trim());
       }
       window.location.assign("dashboard.html");
     } catch (error) {

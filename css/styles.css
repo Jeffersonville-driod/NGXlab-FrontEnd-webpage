@@ -350,6 +350,7 @@ h2 { margin: 0; font-size: clamp(30px, 3.8vw, 42px); font-weight: 520; letter-sp
 .market-stock-change.is-neutral { color: var(--muted); }
 .market-stock-empty { padding: 22px 14px !important; color: var(--muted) !important; text-align: center !important; }
 .market-section[aria-busy="true"] .market-board { cursor: progress; }
+.visually-hidden { position: absolute; overflow: hidden; width: 1px; height: 1px; clip: rect(0,0,0,0); white-space: nowrap; clip-path: inset(50%); }
 
 @media (max-width: 850px) {
   .hero { grid-template-columns: 1fr .82fr; gap: 22px; }
