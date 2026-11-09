@@ -163,10 +163,6 @@
   ],
   "rewrites": [
     {
-      "source": "/",
-      "destination": "/html/index.html"
-    },
-    {
       "source": "/dashboard",
       "destination": "/html/dashboard.html"
     },

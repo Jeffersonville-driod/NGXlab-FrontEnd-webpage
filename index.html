@@ -1,13 +1,436 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="canonical" href="/">
-    <link rel="icon" href="favicon.svg" type="image/svg+xml">
-    <title>NGXLab</title>
-  </head>
-  <body>
-    <p><a href="html/index.html">Continue to NGXLab</a></p>
-  </body>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f2e9">
+  <meta name="description" content="Go beyond a trading demo with NGXLab. Learn about the Nigerian stock market, explore investing ideas, and practice thoughtfully in a low-pressure environment.">
+  <title>NGXLab — Beyond the demo</title>
+  <link rel="canonical" href="/">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/theme.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="#" aria-label="NGXLab home">
+        <span class="brand-mark" aria-hidden="true">N</span>
+        <span class="brand-name">NGX<span>Lab</span></span>
+      </a>
+      <nav class="navigation" aria-label="Main navigation">
+        <a href="#how-it-works">How it works</a>
+        <a href="#market">Market snapshot</a>
+        <a href="#learning-topics">Learn the basics</a>
+        <a href="#why-ngxlab">Why NGXLab</a>
+        <a href="#faq">FAQs</a>
+        <a class="nav-account" href="/login">Log in</a>
+        <a class="nav-cta" href="/signup">Create account <span aria-hidden="true">↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+      <section class="hero shell" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="kicker">A more thoughtful way to learn investing</p>
+          <h1 id="hero-title">Beyond the demo.<br><em>Understand the why.</em></h1>
+          <p class="hero-description">A moving chart can show you what happened. NGXLab is here to help you explore why it matters: learn about the Nigerian market, test ideas with virtual money, and think through your choices before real risk is involved.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#how-it-works">See a better way to learn <span class="button-arrow" aria-hidden="true">→</span></a>
+            <a class="button-text" href="#why-ngxlab">What makes it different?</a>
+          </div>
+          <p class="hero-note">
+            <svg width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 1.5 13 3.4v4.2c0 3-2.1 5.5-5 6.9-2.9-1.4-5-3.9-5-6.9V3.4L8 1.5Z" stroke="currentColor" stroke-width="1.3"/><path d="m5.7 7.8 1.5 1.5 3.1-3.2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Learn the idea. Try it virtually. Reflect before you act.
+          </p>
+        </div>
+
+        <div class="hero-art" aria-label="An illustration of a beginner-friendly market learning path">
+          <span class="orbit" aria-hidden="true"></span>
+          <svg class="market-chart" viewBox="0 0 520 320" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+            <defs>
+              <linearGradient id="chart-fill" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#173a2b" stop-opacity=".2"/>
+                <stop offset="1" stop-color="#173a2b" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path class="market-chart-grid" d="M0 70H520M0 140H520M0 210H520M90 0V320M180 0V320M270 0V320M360 0V320M450 0V320"/>
+            <path class="market-chart-area" d="m0 230 58-26 48 13 52-56 49 15 57-45 43 23 54-66 49 17 47-49 63-24v288H0Z"/>
+            <path class="market-chart-line" d="m0 230 58-26 48 13 52-56 49 15 57-45 43 23 54-66 49 17 47-49 63-24"/>
+            <circle class="market-chart-point" cx="520" cy="32" r="5"/>
+          </svg>
+          <div class="learning-card">
+            <div class="card-top">
+              <span class="card-label">Beyond the buy button</span>
+              <span class="lesson-count">Learn by exploring</span>
+            </div>
+            <h2 class="card-title">Understand the thinking behind the trade.</h2>
+            <p class="card-description">Explore the idea, the trade-offs, and what you learn.</p>
+            <div class="learning-path">
+              <div class="path-item current">
+                <span class="path-number">01</span>
+                <span class="path-name">Learn a market concept</span>
+                <span class="path-status">Understand</span>
+              </div>
+              <div class="path-item">
+                <span class="path-number">02</span>
+                <span class="path-name">Try an idea virtually</span>
+                <span class="path-status">Explore</span>
+              </div>
+              <div class="path-item">
+                <span class="path-number">03</span>
+                <span class="path-name">Reflect on your choices</span>
+                <span class="path-status">Discover</span>
+              </div>
+            </div>
+            <div class="card-footer">
+              <span class="streak"><span class="streak-mark" aria-hidden="true">✳</span> Progress over prediction</span>
+              <span class="start-label">NGXLAB</span>
+            </div>
+          </div>
+          <div class="float-note"><strong>Understand first.</strong> Real risk stays out of it.</div>
+        </div>
+      </section>
+
+      <section class="trust-strip" aria-label="What to expect">
+        <div class="shell trust-inner">
+          <span class="trust-copy">More than a demo. A space to build understanding.</span>
+          <div class="trust-points">
+            <span class="trust-point"><span class="check" aria-hidden="true">✓</span> Made for beginners</span>
+            <span class="trust-point"><span class="check" aria-hidden="true">✓</span> Practice with virtual funds</span>
+            <span class="trust-point"><span class="check" aria-hidden="true">✓</span> Learn at your own pace</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section market-section" id="market" aria-labelledby="market-title" aria-busy="true">
+        <div class="shell">
+          <div class="section-heading">
+            <p class="kicker">NGX market snapshot</p>
+            <h2 id="market-title">Learn the NGX by exploring the market.</h2>
+            <p>Compare Nigerian stocks from the latest stored session as you get familiar with demo trading. Prices may be delayed; no real orders or money are involved.</p>
+          </div>
+          <div class="market-board">
+            <div class="market-board-header">
+              <div>
+                <h3>Market overview</h3>
+                <p id="market-session">Loading trading session…</p>
+              </div>
+              <div class="market-board-meta">
+                <span id="market-total-stocks"></span>
+                <span id="market-as-of"></span>
+              </div>
+            </div>
+            <p class="market-status" id="market-status" role="status" aria-live="polite">Loading the latest market snapshot…</p>
+            <button class="market-retry" id="market-retry" type="button" hidden>Try again</button>
+            <div class="market-summary-wrap">
+              <table class="market-summary" aria-label="Market summary">
+                <thead>
+                  <tr><th scope="col">Market measure</th><th scope="col">Snapshot</th></tr>
+                </thead>
+                <tbody id="market-summary"></tbody>
+              </table>
+            </div>
+            <div class="market-data">
+              <div class="market-tabs" role="group" aria-label="Choose a stock list">
+                <button class="market-tab" type="button" data-market-view="gainers" aria-pressed="true">Top gainers</button>
+                <button class="market-tab" type="button" data-market-view="losers" aria-pressed="false">Top losers</button>
+                <button class="market-tab" type="button" data-market-view="volume" aria-pressed="false">Top by volume</button>
+              </div>
+              <div class="market-table-scroll" tabindex="0" aria-label="Scrollable stock table">
+                <table class="market-stock-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Company</th>
+                      <th scope="col">Last price</th>
+                      <th scope="col">Change</th>
+                      <th scope="col">Volume</th>
+                      <th scope="col">Sector</th>
+                      <th scope="col"><span class="visually-hidden">Practice action</span></th>
+                    </tr>
+                  </thead>
+                  <tbody id="market-stocks"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="how-it-works" aria-labelledby="steps-title">
+        <div class="shell">
+        <div class="section-heading">
+          <p class="kicker">From curiosity to understanding</p>
+          <h2 id="steps-title">Learn the why.<br>Then explore the how.</h2>
+          <p>Move beyond watching prices move. Get to know the ideas behind investing, try them in a virtual setting, and consider what each choice can teach you.</p>
+        </div>
+        <div class="steps">
+          <article class="step">
+            <span class="step-index">01 — Understand</span>
+            <div class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 19.5h16M6.5 16V9m5 7V4m5 12v-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><circle cx="6.5" cy="6.5" r="1.5" stroke="currentColor" stroke-width="1.5"/><circle cx="16.5" cy="8.5" r="1.5" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <h3>Start with the idea</h3>
+            <p>Get to know shares, the Nigerian market, and the principles behind investing in clear, everyday language.</p>
+          </article>
+          <article class="step">
+            <span class="step-index">02 — Explore</span>
+            <div class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M12 3.5 19 7v5c0 4.1-2.8 7.1-7 8.5-4.2-1.4-7-4.4-7-8.5V7l7-3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Try the thinking virtually</h3>
+            <p>Explore hypothetical market scenarios with virtual funds. See how different choices might affect a practice portfolio.</p>
+          </article>
+          <article class="step">
+            <span class="step-index">03 — Reflect</span>
+            <div class="step-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M4 17.5 9 12l3.5 3.5L20 7.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.5 7.5H20v4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Learn from each choice</h3>
+            <p>Look back at the reasons, trade-offs, and outcomes behind a decision. A practice result is a lesson, not a promise.</p>
+          </article>
+        </div>
+        </div>
+      </section>
+
+      <section class="section learning-topics" id="learning-topics" aria-labelledby="topics-title">
+        <div class="shell">
+          <div class="section-heading">
+            <p class="kicker">A beginner's market map</p>
+            <h2 id="topics-title">Start with the questions behind the numbers.</h2>
+            <p>Before looking at a price, get comfortable with the ideas that help put it in context.</p>
+          </div>
+          <div class="topic-grid">
+            <article class="topic-card">
+              <span class="topic-number">01</span>
+              <h3>What does a share represent?</h3>
+              <p>Explore what it means to own a small part of a company, and how that differs from lending it money.</p>
+            </article>
+            <article class="topic-card">
+              <span class="topic-number">02</span>
+              <h3>What can a company tell you?</h3>
+              <p>Learn why people look at a company's business, results, debts, and plans rather than a price alone.</p>
+            </article>
+            <article class="topic-card">
+              <span class="topic-number">03</span>
+              <h3>How do risk and time connect?</h3>
+              <p>Consider uncertainty, changing prices, and why your goals and time horizon matter to a decision.</p>
+            </article>
+            <article class="topic-card">
+              <span class="topic-number">04</span>
+              <h3>Why think beyond one company?</h3>
+              <p>Understand diversification as a way to spread exposure, not a guarantee against loss.</p>
+            </article>
+          </div>
+          <p class="topic-resource">For independent investor education, visit the <a href="https://sec.gov.ng/for-investors/" target="_blank" rel="noopener noreferrer">SEC Nigeria investor hub</a>. NGXLab is not affiliated with or endorsed by the SEC.</p>
+        </div>
+      </section>
+
+      <section class="feature-band" id="why-ngxlab" aria-labelledby="why-title">
+        <div class="shell feature-inner">
+          <div class="feature-copy">
+            <p class="kicker">The NGXLab difference</p>
+            <h2 id="why-title">Not just what to do. Why it matters.</h2>
+            <p>NGXLab makes the learning behind investing the main event. There are no real orders here—just room to explore market concepts, test your thinking, and reflect without pressure.</p>
+          </div>
+          <div class="feature-list">
+            <article class="feature">
+              <span class="feature-icon" aria-hidden="true">↗</span>
+              <div><h3>Concepts before clicks</h3><p>Build a foundation before exploring how a trade might work.</p></div>
+            </article>
+            <article class="feature">
+              <span class="feature-icon" aria-hidden="true">◎</span>
+              <div><h3>Practice without real orders</h3><p>Virtual examples let you explore without putting money at risk.</p></div>
+            </article>
+            <article class="feature">
+              <span class="feature-icon" aria-hidden="true">⌁</span>
+              <div><h3>Room to reflect</h3><p>Think about choices and trade-offs, not just a simulated result.</p></div>
+            </article>
+            <article class="feature">
+              <span class="feature-icon" aria-hidden="true">✳</span>
+              <div><h3>Learning over hype</h3><p>No promises of returns, winning trades, or quick success.</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="apps" id="apps" aria-labelledby="apps-title">
+        <div class="shell apps-inner">
+          <div class="apps-copy">
+            <p class="kicker">Coming soon</p>
+            <h2 id="apps-title">NGXLab is coming to your phone.</h2>
+            <p>Learn about the market, explore ideas, and keep building your understanding wherever you are. Our Android and iOS apps are on the way.</p>
+          </div>
+          <div class="app-platforms" aria-label="Planned app availability">
+            <article class="app-platform">
+              <div class="app-platform-heading">
+                <span class="app-platform-name">Android</span>
+                <span class="app-status">Coming soon</span>
+              </div>
+              <div class="phone-mockup phone-android" role="img" aria-label="Android app preview showing an illustrative NGXLab practice portfolio">
+                <div class="phone-screen">
+                  <div class="phone-status-bar"><span>9:41</span><span aria-hidden="true">● ● ▰</span></div>
+                  <div class="phone-app-bar"><span class="phone-brand-mark" aria-hidden="true">N</span><span>NGX<span>Lab</span></span><span class="phone-avatar" aria-hidden="true">A</span></div>
+                  <div class="phone-content">
+                    <span class="phone-eyebrow">PRACTICE PORTFOLIO</span>
+                    <strong class="phone-balance">₦100,000</strong>
+                    <span class="phone-caption">Virtual balance <span class="phone-gain">+2.4%</span></span>
+                    <div class="phone-chart-heading"><strong>Practice chart</strong><span>Illustrative</span></div>
+                    <svg class="phone-chart" viewBox="0 0 220 88" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                      <defs><linearGradient id="android-chart-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#008452" stop-opacity=".2"/><stop offset="1" stop-color="#008452" stop-opacity="0"/></linearGradient></defs>
+                      <path class="phone-chart-grid" d="M0 18H220M0 44H220M0 70H220"/>
+                      <path class="phone-chart-fill" d="M0 64C18 58 26 36 45 45S76 65 94 48s33-33 51-15 33 15 49-9 19-12 26-15v79H0Z"/>
+                      <path class="phone-chart-line" d="M0 64C18 58 26 36 45 45S76 65 94 48s33-33 51-15 33 15 49-9 19-12 26-15"/>
+                    </svg>
+                    <div class="phone-chart-labels"><span>1D</span><span>1W</span><span>1M</span><span>1Y</span><span>ALL</span></div>
+                    <div class="phone-watchlist"><span class="phone-watchlist-dot" aria-hidden="true"></span><span>Market concepts</span><span>Explore&nbsp; →</span></div>
+                  </div>
+                  <nav class="phone-tab-bar" aria-hidden="true"><span class="phone-tab-active">◉<small>Home</small></span><span>▤<small>Learn</small></span><span>⌁<small>Explore</small></span><span>◯<small>Profile</small></span></nav>
+                  <div class="phone-home-indicator" aria-hidden="true"></div>
+                </div>
+              </div>
+            </article>
+            <article class="app-platform">
+              <div class="app-platform-heading">
+                <span class="app-platform-name">iOS</span>
+                <span class="app-status">Coming soon</span>
+              </div>
+              <div class="phone-mockup phone-ios" role="img" aria-label="iOS app preview showing an illustrative NGXLab practice portfolio">
+                <div class="phone-screen">
+                  <div class="phone-status-bar"><span>9:41</span><span aria-hidden="true">● ● ▰</span></div>
+                  <div class="phone-app-bar"><span class="phone-brand-mark" aria-hidden="true">N</span><span>NGX<span>Lab</span></span><span class="phone-avatar" aria-hidden="true">A</span></div>
+                  <div class="phone-content">
+                    <span class="phone-eyebrow">PRACTICE PORTFOLIO</span>
+                    <strong class="phone-balance">₦100,000</strong>
+                    <span class="phone-caption">Virtual balance <span class="phone-gain">+2.4%</span></span>
+                    <div class="phone-chart-heading"><strong>Practice chart</strong><span>Illustrative</span></div>
+                    <svg class="phone-chart" viewBox="0 0 220 88" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                      <defs><linearGradient id="ios-chart-fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#008452" stop-opacity=".2"/><stop offset="1" stop-color="#008452" stop-opacity="0"/></linearGradient></defs>
+                      <path class="phone-chart-grid" d="M0 18H220M0 44H220M0 70H220"/>
+                      <path class="phone-chart-fill" d="M0 64C18 58 26 36 45 45S76 65 94 48s33-33 51-15 33 15 49-9 19-12 26-15v79H0Z"/>
+                      <path class="phone-chart-line" d="M0 64C18 58 26 36 45 45S76 65 94 48s33-33 51-15 33 15 49-9 19-12 26-15"/>
+                    </svg>
+                    <div class="phone-chart-labels"><span>1D</span><span>1W</span><span>1M</span><span>1Y</span><span>ALL</span></div>
+                    <div class="phone-watchlist"><span class="phone-watchlist-dot" aria-hidden="true"></span><span>Market concepts</span><span>Explore&nbsp; →</span></div>
+                  </div>
+                  <nav class="phone-tab-bar" aria-hidden="true"><span class="phone-tab-active">◉<small>Home</small></span><span>▤<small>Learn</small></span><span>⌁<small>Explore</small></span><span>◯<small>Profile</small></span></nav>
+                  <div class="phone-home-indicator" aria-hidden="true"></div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section faq-section" id="faq" aria-labelledby="faq-title">
+        <div class="shell">
+          <div class="section-heading">
+            <p class="kicker">FAQ · Questions worth asking</p>
+            <h2 id="faq-title">Frequently asked questions</h2>
+            <p>A clear picture of what NGXLab is for—and what it isn't.</p>
+          </div>
+          <div class="faq-list">
+            <details class="faq-item">
+              <summary>Is NGXLab a stockbroker or investment adviser?</summary>
+              <p>No. NGXLab is an educational project. It does not provide personalised investment advice, open brokerage accounts, or place real trades.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Are the market examples live prices or predictions?</summary>
+              <p>No. Examples and app previews are illustrative learning material, not live market data, forecasts, or promises of results.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Can I lose real money by using a practice example?</summary>
+              <p>Practice examples do not execute real transactions. Investing outside NGXLab carries risk, including the possible loss of capital; a simulated outcome cannot predict a real one.</p>
+            </details>
+            <details class="faq-item">
+              <summary>Who is NGXLab for?</summary>
+              <p>It is designed for people who want a more approachable introduction to Nigerian-market and investing concepts, especially beginners who want to learn before making their own decisions.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <section class="closing" id="get-started" aria-labelledby="closing-title">
+        <div class="shell">
+          <p class="kicker">Go beyond the demonstration</p>
+          <h2 id="closing-title">Build understanding you can take with you.</h2>
+          <p>Start with the ideas. Explore with virtual examples. Take your time deciding what you want to learn next.</p>
+          <a class="button button-primary" href="#how-it-works">Explore the NGXLab approach <span class="button-arrow" aria-hidden="true">→</span></a>
+        </div>
+      </section>
+
+      <section class="newsletter" id="newsletter" aria-labelledby="newsletter-title">
+        <div class="shell newsletter-inner">
+          <div class="newsletter-copy">
+            <p class="kicker">Notes from NGXLab</p>
+            <h2 id="newsletter-title">Get thoughtful updates in your inbox.</h2>
+            <p>Hear about new learning resources, product news, and the NGXLab app launch.</p>
+          </div>
+          <form class="newsletter-form" id="newsletter-form">
+            <label class="newsletter-label" for="newsletter-email">Email address</label>
+            <div class="newsletter-controls">
+              <input class="newsletter-input" id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+              <button class="newsletter-submit" type="submit">Sign me up <span aria-hidden="true">→</span></button>
+            </div>
+            <p class="newsletter-note">Newsletter sign-up isn't connected yet. Submitting won't send or save your email.</p>
+            <p class="newsletter-status" id="newsletter-status" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+  </main>
+
+  <footer class="footer">
+    <div class="shell">
+      <div class="footer-cta">
+        <div>
+          <h2>Beyond the demo is where understanding begins.</h2>
+          <p>Go beyond watching the market. Learn the ideas and explore your thinking, at your own pace.</p>
+        </div>
+        <a class="button" href="#how-it-works">See how NGXLab works <span class="button-arrow" aria-hidden="true">→</span></a>
+      </div>
+      <div class="footer-grid">
+        <div class="footer-brand-block">
+          <a class="brand" href="#" aria-label="NGXLab home">
+            <span class="brand-mark" aria-hidden="true">N</span>
+            <span class="brand-name">NGX<span>Lab</span></span>
+          </a>
+          <p class="footer-brand-copy">More than a market demo: a place to learn investing concepts, explore ideas, and reflect before real risk is involved.</p>
+        </div>
+        <div>
+          <h3 class="footer-heading">Explore</h3>
+          <nav class="footer-links" aria-label="Explore">
+            <a href="#how-it-works">How it works</a>
+            <a href="#learning-topics">Learn the basics</a>
+            <a href="#why-ngxlab">Why NGXLab</a>
+            <a href="#faq">FAQs</a>
+            <a href="#get-started">Get started</a>
+          </nav>
+        </div>
+        <div>
+          <h3 class="footer-heading">Our approach</h3>
+          <nav class="footer-links" aria-label="Our approach">
+            <a href="#why-ngxlab">Practice before investing</a>
+            <a href="#how-it-works">Learn at your own pace</a>
+            <a href="#get-started">Beginner-friendly learning</a>
+          </nav>
+        </div>
+        <div>
+          <h3 class="footer-heading">Legal</h3>
+          <nav class="footer-links" aria-label="Legal">
+            <a href="/cookie-policy">Cookie Policy</a>
+            <a href="/terms-and-conditions">Terms &amp; Conditions</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-disclaimer">NGXLab is an educational practice concept, not an investment adviser or broker. Practice activities and any market examples are illustrative only; they are not live prices, financial advice, or a recommendation to buy or sell any security. Investing involves risk, including the possible loss of capital. Make independent decisions and seek qualified advice if needed.</p>
+        <a class="back-to-top" href="#" aria-label="Back to top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+  <script type="module" src="/js/main.js"></script>
+  <script type="module" src="/js/market-board.js"></script>
+  <script type="module" src="/js/theme.js"></script>
+</body>
 </html>
