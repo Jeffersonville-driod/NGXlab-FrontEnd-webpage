@@ -77,6 +77,10 @@
 .dashboard-eyebrow { margin: 0 0 7px; color: var(--dash-green); font-size: 10px; font-weight: 750; letter-spacing: .12em; }
 .dashboard-welcome h1 { margin: 0; font-size: clamp(28px, 3vw, 36px); font-weight: 750; letter-spacing: -1.3px; }
 .dashboard-welcome > div > p:last-child { margin: 8px 0 0; color: var(--dash-muted); font-size: 13px; }
+.dashboard-investor-ids { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 15px; }
+.dashboard-investor-id { min-width: 190px; display: grid; gap: 3px; padding: 9px 12px; border: 1px solid var(--dash-line); border-radius: 8px; background: var(--dash-surface); }
+.dashboard-investor-id span { color: var(--dash-muted); font-size: 9px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; }
+.dashboard-investor-id strong { overflow-wrap: anywhere; color: var(--dash-ink); font-size: 12px; font-weight: 700; font-variant-numeric: tabular-nums; }
 .welcome-badge { display: flex; align-items: center; gap: 8px; padding: 10px 13px; border: 1px solid #f2e6d9; border-radius: 7px; background: #fffaf5; color: #a75a1b; font-size: 11px; font-weight: 650; white-space: nowrap; }
 .welcome-badge span { color: #ef7900; }
 
@@ -355,4 +359,232 @@
 
 @media (prefers-reduced-motion: reduce) {
   .app-nav-link, .order-submit { transition: none; }
+}
+
+.trading-dashboard {
+  background:
+    radial-gradient(ellipse at 92% 0, rgb(220 238 226 / 35%), transparent 34rem),
+    #f5f7f5;
+}
+
+.app-sidebar {
+  z-index: 40;
+  width: 252px;
+  padding: 22px 15px 18px;
+  box-shadow: 5px 0 24px rgb(16 38 29 / 3%);
+}
+
+.sidebar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 6px 21px;
+  border-bottom: 1px solid var(--dash-line);
+}
+
+.dashboard-brand { padding: 0 3px; }
+.sidebar-close, .dashboard-nav-toggle { display: none; }
+.sidebar-label { margin-top: 26px; }
+.app-navigation { gap: 4px; }
+.app-nav-link { min-height: 43px; border-radius: 9px; }
+.app-nav-link.is-active { box-shadow: inset 3px 0 var(--dash-green); }
+.sidebar-note { padding: 16px; }
+
+.app-main { margin-left: 252px; }
+.app-topbar {
+  height: 72px;
+  padding: 0 clamp(22px, 3.2vw, 48px);
+  background: rgb(255 255 255 / 90%);
+  backdrop-filter: blur(14px);
+}
+
+.dashboard-search { width: min(440px, 58%); height: 40px; }
+.topbar-actions { gap: 12px; }
+.practice-pill { padding: 8px 12px; }
+.profile-button { width: 36px; height: 36px; }
+.dashboard-content {
+  width: min(1320px, calc(100% - clamp(40px, 6vw, 88px)));
+  padding: clamp(26px, 4vw, 48px) 0 72px;
+}
+
+.dashboard-welcome {
+  position: relative;
+  overflow: hidden;
+  align-items: flex-start;
+  margin-bottom: 24px;
+  padding: clamp(22px, 3vw, 34px);
+  border: 1px solid #dfe9e1;
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 88% 12%, rgb(191 224 202 / 42%), transparent 18rem),
+    linear-gradient(115deg, #fff 0%, #f5faf6 100%);
+  box-shadow: 0 12px 34px rgb(16 38 29 / 4%);
+}
+
+.dashboard-welcome > div { min-width: 0; }
+.dashboard-welcome h1 { font-size: clamp(30px, 3.2vw, 42px); letter-spacing: -1.8px; }
+.dashboard-welcome > div > p:last-child { font-size: 14px; }
+.dashboard-investor-ids { gap: 10px; margin-top: 19px; }
+.dashboard-investor-id { min-width: 205px; padding: 10px 13px; border-radius: 10px; background: rgb(255 255 255 / 82%); }
+.welcome-badge { flex: 0 0 auto; margin-top: 3px; border-radius: 99px; }
+
+.overview-stats { gap: 16px; margin-bottom: 16px; }
+.overview-stat {
+  min-height: 124px;
+  padding: 21px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgb(16 38 29 / 4%);
+}
+.overview-stat-label { font-size: 12px; }
+.overview-stat-note { font-size: 11px; }
+.overview-stat > strong { font-size: clamp(20px, 2.2vw, 28px); }
+.overview-market-status { margin: 0 2px 19px; }
+
+.dashboard-card, .overview-stat, .stock-card, .portfolio-empty-state {
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgb(16 38 29 / 4%);
+}
+
+.overview-shortcuts { gap: 14px; margin-bottom: 20px; }
+.overview-shortcut { min-height: 84px; padding: 17px; border-radius: 13px; }
+.overview-shortcut-icon { width: 40px; height: 40px; flex-basis: 40px; border-radius: 11px; }
+.overview-shortcut strong { font-size: 13px; }
+.overview-shortcut small { font-size: 11px; }
+.overview-lower-grid { gap: 16px; }
+.overview-learning-card { padding: 25px; }
+.overview-learning-card h2 { font-size: 21px; }
+.overview-learning-card > p:not(.dashboard-eyebrow) { font-size: 13px; }
+.dashboard-disclaimer { margin-top: 0; padding: 20px; border-radius: 14px; }
+
+.dashboard-section-heading { margin-bottom: 26px; }
+.dashboard-section-heading h1, .market-section-heading h1 { font-size: clamp(27px, 3vw, 36px); letter-spacing: -1px; }
+.dashboard-section-heading > p:last-child { font-size: 14px; }
+.dashboard-grid { gap: 20px; }
+.portfolio-card { padding: clamp(20px, 2.5vw, 30px); border-radius: 16px; }
+.portfolio-chart { min-height: 190px; border-radius: 12px; }
+.order-card, .order-info-card { padding: 24px; border-radius: 16px; }
+.order-select, .order-amount-field { min-height: 44px; border-radius: 9px; }
+.order-submit { min-height: 46px; border-radius: 9px; }
+
+.resource-grid, .lesson-grid, .contest-learning-grid { gap: 16px; }
+.resource-card, .lesson-card, .contest-learning-card { border-radius: 14px; }
+.resource-card { min-height: 220px; padding: 22px; }
+.lesson-card { min-height: 230px; padding: 23px; }
+.help-list { gap: 12px; }
+.help-item { border-radius: 12px; }
+.wallet-card { padding: 28px; border-radius: 16px; }
+
+@media (max-width: 1100px) {
+  .app-sidebar { width: 224px; }
+  .app-main { margin-left: 224px; }
+  .dashboard-content { width: calc(100% - 48px); }
+  .app-topbar { padding-right: 24px; padding-left: 24px; }
+  .overview-stats { gap: 11px; }
+  .overview-stat { padding: 16px; }
+  .overview-shortcuts { gap: 10px; }
+  .overview-shortcut { padding: 13px; }
+  .dashboard-grid { grid-template-columns: minmax(0, 1fr) 280px; gap: 13px; }
+}
+
+@media (max-width: 980px) {
+  .dashboard-grid { grid-template-columns: minmax(0, 1fr); }
+  .order-card { width: 100%; }
+  .order-info-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; column-gap: 22px; }
+  .order-info-card .dashboard-eyebrow, .order-info-card h2, .order-info-card > p:not(.dashboard-eyebrow) { grid-column: 1; }
+  .order-info-card .view-link { grid-column: 2; grid-row: 2 / span 2; }
+  .resource-grid, .lesson-grid, .contest-learning-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 850px) {
+  .app-sidebar {
+    position: fixed;
+    z-index: 51;
+    inset: 0 auto 0 0;
+    width: min(320px, 86vw);
+    height: 100dvh;
+    flex-direction: column;
+    overflow-y: auto;
+    padding: max(18px, env(safe-area-inset-top)) 16px max(20px, env(safe-area-inset-bottom));
+    transform: translateX(-105%);
+    border-top: 0;
+    border-right: 1px solid var(--dash-line);
+    box-shadow: 18px 0 55px rgb(10 28 19 / 15%);
+    visibility: hidden;
+    transition: transform .24s ease, visibility .24s;
+  }
+  .dashboard-nav-open .app-sidebar { transform: translateX(0); visibility: visible; }
+  .sidebar-head { flex: 0 0 auto; }
+  .sidebar-close { display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid var(--dash-line); border-radius: 10px; background: var(--dash-surface); color: var(--dash-ink); cursor: pointer; font: inherit; font-size: 24px; line-height: 1; }
+  .dashboard-nav-toggle { display: flex; width: 40px; height: 40px; flex: 0 0 40px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; padding: 0; border: 1px solid var(--dash-line); border-radius: 10px; background: var(--dash-surface); color: var(--dash-ink); cursor: pointer; }
+  .dashboard-nav-toggle span { width: 16px; height: 2px; border-radius: 2px; background: currentColor; }
+  .dashboard-nav-backdrop:not([hidden]) { position: fixed; z-index: 50; inset: 0; display: block; border: 0; background: rgb(11 22 15 / 52%); }
+  .dashboard-nav-open { overflow: hidden; }
+  .sidebar-label { margin-top: 27px; }
+  .app-navigation { width: 100%; display: grid; align-items: initial; justify-content: initial; gap: 4px; overflow: visible; }
+  .app-nav-link { min-width: 0; min-height: 45px; flex: initial; flex-direction: row; justify-content: flex-start; gap: 12px; padding: 0 12px; font-size: 13px; }
+  .app-nav-icon { width: 19px; font-size: 18px; }
+  .dashboard-brand { display: flex; }
+  .sidebar-label { display: block; }
+  .sidebar-note { display: block; }
+  .sidebar-footer { display: grid; }
+  .app-main { margin-left: 0; padding-bottom: 0; }
+  .app-topbar { justify-content: flex-start; gap: 13px; padding: 0 clamp(18px, 4vw, 32px); }
+  .dashboard-search { width: min(520px, 100%); flex: 1 1 auto; }
+  .app-topbar > .topbar-actions { margin-left: auto; }
+  .dashboard-content { width: calc(100% - clamp(36px, 7vw, 72px)); padding-top: 30px; }
+  .dashboard-welcome { padding: clamp(20px, 4vw, 30px); }
+}
+
+@media (max-width: 650px) {
+  .app-topbar { height: 64px; gap: 10px; padding: 0 15px; }
+  .dashboard-nav-toggle { width: 38px; height: 38px; flex-basis: 38px; }
+  .dashboard-search { height: 38px; }
+  .dashboard-search kbd { display: none; }
+  .topbar-actions { gap: 8px; }
+  .practice-pill { padding: 6px 9px; font-size: 10px; }
+  .profile-button { width: 32px; height: 32px; }
+  .dashboard-content { width: calc(100% - 32px); padding: 23px 0 40px; }
+  .dashboard-welcome { display: block; margin-bottom: 17px; padding: 20px 17px; border-radius: 15px; }
+  .dashboard-welcome h1 { font-size: 29px; }
+  .dashboard-welcome > div > p:last-child { max-width: 100%; font-size: 12px; }
+  .dashboard-investor-ids { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 15px; }
+  .dashboard-investor-id { min-width: 0; padding: 9px 10px; }
+  .dashboard-investor-id strong { font-size: 11px; }
+  .welcome-badge { display: inline-flex; margin-top: 14px; }
+  .overview-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px; }
+  .overview-stat { min-height: 100px; padding: 13px; border-radius: 12px; }
+  .overview-stat:first-child { grid-column: 1 / -1; }
+  .overview-stat > strong { font-size: 19px; }
+  .overview-stat .overview-stat-value { font-size: 15px; }
+  .overview-shortcuts { grid-template-columns: minmax(0, 1fr); gap: 9px; }
+  .overview-shortcut { min-height: 74px; }
+  .overview-lower-grid { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .overview-learning-card { padding: 19px; }
+  .dashboard-disclaimer { padding: 15px; }
+  .dashboard-section-heading { margin-bottom: 19px; }
+  .dashboard-section-heading h1, .market-section-heading h1 { font-size: 27px; }
+  .dashboard-section-heading > p:last-child { font-size: 12px; }
+  .dashboard-grid { gap: 12px; }
+  .order-info-card { display: block; }
+  .order-info-card .view-link { display: inline-block; }
+  .resource-grid, .lesson-grid, .contest-learning-grid { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .resource-card, .lesson-card, .contest-learning-card { min-height: 0; padding: 18px; }
+  .wallet-card { grid-template-columns: auto minmax(0, 1fr); gap: 13px; padding: 17px; }
+  .wallet-disclaimer { grid-column: 1 / -1; }
+  .portfolio-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+  .portfolio-stats > div:last-child { grid-column: 1 / -1; }
+  .dashboard-market { margin-top: 0; }
+}
+
+@media (max-width: 390px) {
+  .dashboard-content { width: calc(100% - 26px); }
+  .app-topbar { padding-right: 11px; padding-left: 11px; }
+  .topbar-actions { gap: 6px; }
+  .practice-pill { gap: 5px; padding: 6px 7px; font-size: 9px; }
+  .overview-stats { gap: 7px; }
+  .overview-stat { padding: 11px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-sidebar { transition: none; }
 }

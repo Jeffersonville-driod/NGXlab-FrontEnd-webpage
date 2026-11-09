@@ -1,5 +1,7 @@
 const balanceStorageKey = "ngxlabVirtualBalanceNgn";
 const userNameStorageKey = "ngxlabUserName";
+const cscsNumberStorageKey = "ngxlabCscsNumber";
+const chnNumberStorageKey = "ngxlabChnNumber";
 const currencyFormat = new Intl.NumberFormat("en-NG", {
   style: "currency",
   currency: "NGN",
@@ -21,6 +23,8 @@ const tradeDate = document.getElementById("dashboard-trade-date");
 const stockCount = document.getElementById("dashboard-total-stocks");
 const welcomeTitle = document.getElementById("dashboard-title");
 const welcomeDate = document.getElementById("welcome-date");
+const cscsNumber = document.getElementById("dashboard-cscs-number");
+const chnNumber = document.getElementById("dashboard-chn-number");
 const userAvatar = document.getElementById("user-avatar");
 const stockSelect = document.getElementById("trade-symbol");
 const stockName = document.getElementById("selected-stock-name");
@@ -84,6 +88,8 @@ function initializeAccount() {
   }
 
   const storedName = sessionStorage.getItem(userNameStorageKey)?.trim();
+  if (cscsNumber) cscsNumber.textContent = sessionStorage.getItem(cscsNumberStorageKey)?.trim() || "Not provided";
+  if (chnNumber) chnNumber.textContent = sessionStorage.getItem(chnNumberStorageKey)?.trim() || "Not provided";
   const firstName = storedName?.split(/\s+/)[0];
   if (firstName && welcomeTitle && userAvatar) {
     const hour = new Date().getHours();

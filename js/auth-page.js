@@ -8,6 +8,8 @@ const authIntro = document.getElementById("auth-intro");
 const authStatus = document.getElementById("auth-status");
 const virtualBalanceStorageKey = "ngxlabVirtualBalanceNgn";
 const userNameStorageKey = "ngxlabUserName";
+const cscsNumberStorageKey = "ngxlabCscsNumber";
+const chnNumberStorageKey = "ngxlabChnNumber";
 const authFormElements = {
   login: document.getElementById("login-form"),
   signup: document.getElementById("signup-form"),
@@ -89,6 +91,8 @@ Object.entries(authForms).forEach(([view, form]) => {
     authStatus.textContent = "";
     sessionStorage.removeItem(virtualBalanceStorageKey);
     sessionStorage.removeItem(userNameStorageKey);
+    sessionStorage.removeItem(cscsNumberStorageKey);
+    sessionStorage.removeItem(chnNumberStorageKey);
 
     try {
       const formData = new FormData(form);
@@ -107,6 +111,12 @@ Object.entries(authForms).forEach(([view, form]) => {
       }
       if (typeof user?.name === "string" && user.name.trim()) {
         sessionStorage.setItem(userNameStorageKey, user.name.trim());
+      }
+      if (typeof user?.cscsNumber === "string" && user.cscsNumber.trim()) {
+        sessionStorage.setItem(cscsNumberStorageKey, user.cscsNumber.trim());
+      }
+      if (typeof user?.chnNumber === "string" && user.chnNumber.trim()) {
+        sessionStorage.setItem(chnNumberStorageKey, user.chnNumber.trim());
       }
       window.location.assign("dashboard.html");
     } catch (error) {

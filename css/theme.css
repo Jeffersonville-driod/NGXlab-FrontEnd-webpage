@@ -327,6 +327,38 @@ html[data-theme="dark"] .sidebar-note {
   background: #202d23;
 }
 
+html[data-theme="dark"] .trading-dashboard {
+  background:
+    radial-gradient(ellipse at 92% 0, rgb(45 78 57 / 18%), transparent 34rem),
+    #101713;
+}
+
+html[data-theme="dark"] .sidebar-head {
+  border-color: var(--dash-line);
+}
+
+html[data-theme="dark"] .dashboard-welcome {
+  border-color: #34483a;
+  background:
+    radial-gradient(circle at 88% 12%, rgb(57 91 65 / 38%), transparent 18rem),
+    linear-gradient(115deg, #1a241e 0%, #202e24 100%);
+}
+
+html[data-theme="dark"] .dashboard-investor-id {
+  background: rgb(26 36 30 / 84%);
+}
+
+html[data-theme="dark"] .sidebar-close,
+html[data-theme="dark"] .dashboard-nav-toggle {
+  border-color: var(--dash-line);
+  background: var(--dash-surface);
+  color: var(--dash-ink);
+}
+
+html[data-theme="dark"] .dashboard-nav-backdrop:not([hidden]) {
+  background: rgb(0 0 0 / 68%);
+}
+
 html[data-theme="dark"] .disclaimer-mark,
 html[data-theme="dark"] .sidebar-note-icon,
 html[data-theme="dark"] .overview-shortcut-icon,
@@ -348,6 +380,7 @@ html[data-theme="dark"] .contest-status {
 }
 
 html[data-theme="dark"] .overview-stat,
+html[data-theme="dark"] .dashboard-investor-id,
 html[data-theme="dark"] .dashboard-card,
 html[data-theme="dark"] .stock-card {
   border-color: var(--dash-line);

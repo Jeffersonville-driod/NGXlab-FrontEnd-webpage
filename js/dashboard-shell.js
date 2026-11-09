@@ -18,18 +18,22 @@ const content = main?.querySelector(".dashboard-content");
 if (shell && main && content) {
   const sidebar = document.createElement("aside");
   sidebar.className = "app-sidebar";
+  sidebar.id = "dashboard-sidebar";
   sidebar.setAttribute("aria-label", "Dashboard sidebar");
   sidebar.innerHTML = `
-    <a class="dashboard-brand" href="dashboard.html" aria-label="NGXLab practice overview">
-      <span class="dashboard-brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 36 36" fill="none">
-          <path d="M12 5h12l-2 8 7 15H7l7-15-2-8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
-          <path d="M11 23h14M14 18l3 2 4-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="23" cy="8" r="1.4" fill="#ff7900"/>
-        </svg>
-      </span>
-      <span class="dashboard-brand-name">NGX<span>Lab</span></span>
-    </a>
+    <div class="sidebar-head">
+      <a class="dashboard-brand" href="dashboard.html" aria-label="NGXLab practice overview">
+        <span class="dashboard-brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 36 36" fill="none">
+            <path d="M12 5h12l-2 8 7 15H7l7-15-2-8Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            <path d="M11 23h14M14 18l3 2 4-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="23" cy="8" r="1.4" fill="#ff7900"/>
+          </svg>
+        </span>
+        <span class="dashboard-brand-name">NGX<span>Lab</span></span>
+      </a>
+      <button class="sidebar-close" type="button" aria-label="Close dashboard navigation">×</button>
+    </div>
     <p class="sidebar-label">PRACTICE SPACE</p>
     <nav class="app-navigation" aria-label="Practice navigation"></nav>
     <div class="sidebar-note">
@@ -65,6 +69,9 @@ if (shell && main && content) {
   topbar.className = "app-topbar";
   const searchQuery = new URLSearchParams(window.location.search).get("q") || "";
   topbar.innerHTML = `
+    <button class="dashboard-nav-toggle" type="button" aria-controls="dashboard-sidebar" aria-expanded="false" aria-label="Open dashboard navigation">
+      <span></span><span></span><span></span>
+    </button>
     <label class="dashboard-search">
       <span aria-hidden="true">⌕</span>
       <input id="market-search" type="search" placeholder="Search stocks…" aria-label="Search NGX stocks">
@@ -91,4 +98,58 @@ if (shell && main && content) {
 
   main.insertBefore(topbar, content);
   shell.prepend(sidebar);
+
+  const navToggle = topbar.querySelector(".dashboard-nav-toggle");
+  const sidebarClose = sidebar.querySelector(".sidebar-close");
+  const backdrop = document.createElement("button");
+  backdrop.className = "dashboard-nav-backdrop";
+  backdrop.type = "button";
+  backdrop.tabIndex = -1;
+  backdrop.setAttribute("aria-label", "Close dashboard navigation");
+  backdrop.hidden = true;
+  document.body.append(backdrop);
+  const mobileViewport = window.matchMedia("(max-width: 850px)");
+  let sidebarOpen = false;
+
+  function setSidebarOpen(open, restoreFocus = false) {
+    sidebarOpen = mobileViewport.matches && open;
+    document.body.classList.toggle("dashboard-nav-open", sidebarOpen);
+    navToggle.setAttribute("aria-expanded", String(sidebarOpen));
+    navToggle.setAttribute("aria-label", sidebarOpen ? "Close dashboard navigation" : "Open dashboard navigation");
+    sidebar.setAttribute("aria-hidden", String(mobileViewport.matches && !sidebarOpen));
+    sidebar.inert = mobileViewport.matches && !sidebarOpen;
+    backdrop.hidden = !sidebarOpen;
+
+    if (sidebarOpen) sidebarClose.focus();
+    else if (restoreFocus) navToggle.focus();
+  }
+
+  navToggle.addEventListener("click", () => setSidebarOpen(!sidebarOpen));
+  sidebarClose.addEventListener("click", () => setSidebarOpen(false, true));
+  backdrop.addEventListener("click", () => setSidebarOpen(false, true));
+  nav.addEventListener("click", (event) => {
+    if (event.target instanceof Element && event.target.closest("a")) setSidebarOpen(false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (!sidebarOpen) return;
+    if (event.key === "Escape") {
+      setSidebarOpen(false, true);
+      return;
+    }
+
+    if (event.key === "Tab") {
+      const focusable = [...sidebar.querySelectorAll("a[href], button:not([disabled])")];
+      const first = focusable[0];
+      const last = focusable.at(-1);
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
+  mobileViewport.addEventListener("change", () => setSidebarOpen(false));
+  setSidebarOpen(false);
 }
