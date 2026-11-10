@@ -126,8 +126,8 @@ function renderStocks() {
     const practiceButton = document.createElement("button");
     practiceButton.className = "market-practice-button";
     practiceButton.type = "button";
-    practiceButton.textContent = "Practise";
-    practiceButton.setAttribute("aria-label", `Preview a practice order for ${displayValue(stock?.symbol)}`);
+    practiceButton.textContent = "Trade";
+    practiceButton.setAttribute("aria-label", `Preview a trade order for ${displayValue(stock?.symbol)}`);
     practiceButton.addEventListener("click", () => {
       window.location.assign(`new.html?symbol=${encodeURIComponent(stock?.symbol || "")}`);
     });

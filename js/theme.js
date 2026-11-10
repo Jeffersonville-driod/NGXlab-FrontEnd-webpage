@@ -16,6 +16,16 @@ function applyTheme(nextTheme) {
   const toggle = document.querySelector("[data-theme-toggle]");
   if (toggle) {
     const darkModeEnabled = theme === "dark";
+    if (toggle.closest(".app-user-menu")) {
+      const nextLabel = darkModeEnabled ? "Switch to light mode" : "Switch to dark mode";
+      const nextIcon = darkModeEnabled ? "☀" : "☾";
+      toggle.innerHTML = `<span class="user-menu-icon" aria-hidden="true">${nextIcon}</span><span>${nextLabel}</span>`;
+      toggle.setAttribute("aria-label", nextLabel);
+      toggle.setAttribute("title", nextLabel);
+      toggle.setAttribute("aria-pressed", String(darkModeEnabled));
+      return;
+    }
+
     toggle.textContent = darkModeEnabled ? "☀" : "☾";
     toggle.setAttribute("aria-label", darkModeEnabled ? "Switch to light mode" : "Switch to dark mode");
     toggle.setAttribute("title", darkModeEnabled ? "Switch to light mode" : "Switch to dark mode");
@@ -27,7 +37,7 @@ applyTheme(theme);
 
 const controlsHost = document.querySelector(".topbar-actions")
   || document.querySelector(".navigation, .drawer-header, .topbar-inner");
-if (controlsHost) {
+if (controlsHost && !document.body.classList.contains("trading-dashboard")) {
   const toggle = document.createElement("button");
   toggle.className = "theme-toggle";
   toggle.type = "button";

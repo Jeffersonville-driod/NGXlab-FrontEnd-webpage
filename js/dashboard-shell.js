@@ -1,13 +1,9 @@
 const navigation = [
-  ["overview", "Overview", "⌂", "dashboard.html"],
-  ["markets", "Markets", "▥", "markets.html"],
-  ["new", "New", "↗", "new.html"],
+  ["overview", "Home", "⌂", "dashboard.html"],
   ["portfolio", "Portfolio", "◫", "portfolio.html"],
-  ["wallet", "Wallet", "₦", "wallet.html"],
-  ["resources", "Resources", "▤", "resources.html"],
-  ["learn", "Learn", "✳", "learn.html"],
-  ["contest", "Contest", "★", "contest.html"],
-  ["help-center", "Help center", "?", "help-center.html"]
+  ["new", "Invest", "↗", "new.html"],
+  ["wallet", "Wallets", "₦", "wallet.html"],
+  ["history", "History", "▣", "portfolio.html"]
 ];
 
 const currentPage = document.body.dataset.dashboardPage;
@@ -48,7 +44,12 @@ if (shell && main && content) {
     </div>`;
 
   const nav = sidebar.querySelector(".app-navigation");
-  for (const [page, label, icon, href] of navigation) {
+  const primaryLinks = [
+    ["overview", "Home", "⌂", "dashboard.html"],
+    ["portfolio", "Portfolio", "◫", "portfolio.html"]
+  ];
+
+  for (const [page, label, icon, href] of primaryLinks) {
     const link = document.createElement("a");
     link.className = "app-nav-link";
     link.href = href;
@@ -64,6 +65,157 @@ if (shell && main && content) {
     link.append(mark, document.createTextNode(label));
     nav.append(link);
   }
+
+  const investGroup = document.createElement("div");
+  investGroup.className = "app-nav-group";
+
+  const investTrigger = document.createElement("button");
+  investTrigger.type = "button";
+  investTrigger.className = "app-nav-link app-nav-trigger";
+  investTrigger.setAttribute("aria-expanded", "false");
+  investTrigger.setAttribute("aria-label", "Expand investment options");
+
+  const investMark = document.createElement("span");
+  investMark.className = "app-nav-icon";
+  investMark.setAttribute("aria-hidden", "true");
+  investMark.textContent = "↗";
+
+  const investLabel = document.createElement("span");
+  investLabel.textContent = "Invest";
+  investTrigger.append(investMark, investLabel);
+
+  const investMenu = document.createElement("div");
+  investMenu.className = "app-nav-submenu";
+  investMenu.hidden = true;
+
+  const investItems = [
+    ["Nigerian Stocks", "◉", "markets.html"],
+    ["Public Offering", "▣", "new.html"],
+    ["FGN Savings Bond", "▤", "new.html"],
+    ["Treasury Bills", "▥", "new.html"],
+    ["Commercial Papers", "◌", "new.html"]
+  ];
+
+  for (const [itemLabel, itemIcon, itemHref] of investItems) {
+    const item = document.createElement("a");
+    item.className = "app-nav-subitem";
+    item.href = itemHref;
+
+    const icon = document.createElement("span");
+    icon.className = "app-nav-sub-icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = itemIcon;
+
+    const label = document.createElement("span");
+    label.className = "app-nav-sub-label";
+    const isComingSoon = itemLabel !== "Nigerian Stocks";
+    label.textContent = isComingSoon ? `${itemLabel} (Coming soon)` : itemLabel;
+
+    item.append(icon, label);
+    investMenu.append(item);
+  }
+
+  investTrigger.addEventListener("click", () => {
+    const isOpen = investTrigger.getAttribute("aria-expanded") === "true";
+    investTrigger.setAttribute("aria-expanded", String(!isOpen));
+    investMenu.hidden = isOpen;
+    investGroup.classList.toggle("is-open", !isOpen);
+  });
+
+  investGroup.append(investTrigger, investMenu);
+  nav.append(investGroup);
+
+  const secondaryLinks = [
+    ["wallet", "Wallets", "₦", "wallet.html"],
+    ["history", "History", "▣", "portfolio.html"]
+  ];
+
+  for (const [page, label, icon, href] of secondaryLinks) {
+    const link = document.createElement("a");
+    link.className = "app-nav-link";
+    link.href = href;
+    if (page === currentPage) {
+      link.classList.add("is-active");
+      link.setAttribute("aria-current", "page");
+    }
+
+    const mark = document.createElement("span");
+    mark.className = "app-nav-icon";
+    mark.setAttribute("aria-hidden", "true");
+    mark.textContent = icon;
+    link.append(mark, document.createTextNode(label));
+    nav.append(link);
+  }
+
+  const userProfile = document.createElement("div");
+  userProfile.className = "app-user-profile";
+
+  const userRow = document.createElement("div");
+  userRow.className = "app-user-row";
+
+  const userAvatar = document.createElement("span");
+  userAvatar.className = "app-user-avatar";
+  userAvatar.textContent = (sessionStorage.getItem("ngxlabUserName") || "User").trim().charAt(0).toUpperCase() || "U";
+
+  const userMeta = document.createElement("div");
+  userMeta.className = "app-user-meta";
+  const userName = document.createElement("strong");
+  userName.textContent = (sessionStorage.getItem("ngxlabUserName") || "User").trim() || "User";
+  userMeta.append(userName);
+
+  const userMenuToggle = document.createElement("button");
+  userMenuToggle.type = "button";
+  userMenuToggle.className = "app-user-menu-toggle";
+  userMenuToggle.setAttribute("aria-expanded", "false");
+  userMenuToggle.setAttribute("aria-label", "Open user menu");
+  userMenuToggle.innerHTML = '<span aria-hidden="true">⋯</span>';
+
+  userRow.append(userAvatar, userMeta, userMenuToggle);
+
+  const userMenu = document.createElement("div");
+  userMenu.className = "app-user-menu";
+  userMenu.hidden = true;
+
+  const profileItem = document.createElement("a");
+  profileItem.href = "portfolio.html";
+  profileItem.className = "app-user-menu-item";
+  profileItem.innerHTML = '<span class="user-menu-icon" aria-hidden="true">👤</span><span>Your profile</span>';
+
+  const themeItem = document.createElement("button");
+  themeItem.type = "button";
+  themeItem.className = "app-user-menu-item";
+  themeItem.setAttribute("data-theme-toggle", "");
+  const currentThemeLabel = document.documentElement.dataset.theme === "dark" ? "Switch to light mode" : "Switch to dark mode";
+  themeItem.innerHTML = `<span class="user-menu-icon" aria-hidden="true">${document.documentElement.dataset.theme === "dark" ? "☀" : "☾"}</span><span>${currentThemeLabel}</span>`;
+
+  const logoutItem = document.createElement("button");
+  logoutItem.type = "button";
+  logoutItem.className = "app-user-menu-item app-user-menu-item-danger";
+  logoutItem.innerHTML = '<span class="user-menu-icon" aria-hidden="true">↩</span><span>Logout</span>';
+  logoutItem.addEventListener("click", () => {
+    sessionStorage.clear();
+    window.location.assign("login.html");
+  });
+
+  userMenu.append(profileItem, themeItem, logoutItem);
+  userProfile.append(userRow, userMenu);
+  sidebar.append(userProfile);
+
+  userMenuToggle.addEventListener("click", (event) => {
+    event.stopPropagation();
+    const isOpen = userMenuToggle.getAttribute("aria-expanded") === "true";
+    userMenu.hidden = isOpen;
+    userMenuToggle.setAttribute("aria-expanded", String(!isOpen));
+    userMenu.classList.toggle("is-open", !isOpen);
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!userMenu.contains(event.target) && !userMenuToggle.contains(event.target)) {
+      userMenu.hidden = true;
+      userMenu.classList.remove("is-open");
+      userMenuToggle.setAttribute("aria-expanded", "false");
+    }
+  });
 
   const topbar = document.createElement("header");
   topbar.className = "app-topbar";

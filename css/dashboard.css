@@ -48,11 +48,30 @@
 .dashboard-brand-name span { color: #ef7900; }
 .sidebar-label { margin: 38px 11px 12px; color: var(--dash-faint); font-size: 10px; font-weight: 750; letter-spacing: .12em; }
 .app-navigation { display: grid; gap: 6px; }
-.app-nav-link { min-height: 44px; display: flex; align-items: center; gap: 12px; padding: 0 12px; border-radius: 8px; color: var(--dash-muted); font-size: 13px; font-weight: 600; text-decoration: none; transition: background .15s, color .15s; }
+.app-nav-link { min-height: 44px; display: flex; align-items: center; gap: 12px; padding: 0 12px; border: 0; border-radius: 8px; background: transparent; color: var(--dash-muted); font-size: 13px; font-weight: 600; text-align: left; text-decoration: none; transition: background .15s, color .15s; }
 .app-nav-link:hover { background: var(--dash-soft); color: var(--dash-ink); }
 .app-nav-link.is-active { background: var(--dash-green-soft); color: var(--dash-green-dark); }
+.app-nav-trigger { cursor: pointer; }
 .app-nav-icon { width: 19px; color: currentColor; font-size: 18px; line-height: 1; text-align: center; }
+.app-nav-group { display: grid; gap: 6px; }
+.app-nav-group.is-open .app-nav-trigger { background: var(--dash-green-soft); color: var(--dash-green-dark); }
+.app-nav-submenu { display: grid; gap: 4px; padding: 0 0 0 32px; }
+.app-nav-subitem { min-height: 32px; display: flex; align-items: center; gap: 8px; padding: 0 10px; border-radius: 7px; color: var(--dash-muted); font-size: 12px; font-weight: 600; text-decoration: none; }
+.app-nav-subitem:hover { background: var(--dash-soft); color: var(--dash-ink); }
+.app-nav-sub-icon { color: var(--dash-green); font-size: 11px; }
 .sidebar-note { margin-top: auto; padding: 15px; border: 1px solid #e6eee8; border-radius: 10px; background: #f6faf7; }
+.app-user-profile { margin-top: auto; padding-top: 16px; border-top: 1px solid var(--dash-line); }
+.app-user-row { display: flex; align-items: center; gap: 10px; padding: 8px 6px 10px; }
+.app-user-avatar { width: 34px; height: 34px; display: grid; place-items: center; border-radius: 50%; background: var(--dash-green-soft); color: var(--dash-green-dark); font-size: 12px; font-weight: 800; }
+.app-user-meta { flex: 1; min-width: 0; }
+.app-user-meta strong { display: block; overflow: hidden; color: var(--dash-ink); font-size: 12px; text-overflow: ellipsis; white-space: nowrap; }
+.app-user-menu-toggle { width: 28px; height: 28px; display: grid; place-items: center; border: 1px solid var(--dash-line); border-radius: 8px; background: transparent; color: var(--dash-muted); cursor: pointer; font-size: 18px; line-height: 1; }
+.app-user-menu { display: grid; gap: 4px; margin-top: 4px; padding: 8px; border: 1px solid var(--dash-line); border-radius: 10px; background: var(--dash-surface); box-shadow: var(--dash-shadow); }
+.app-user-menu.is-open { display: grid; }
+.app-user-menu-item { width: 100%; display: flex; align-items: center; gap: 8px; padding: 8px 10px; border: 0; border-radius: 8px; background: transparent; color: var(--dash-ink); cursor: pointer; font: inherit; font-size: 12px; font-weight: 600; text-align: left; }
+.app-user-menu-item:hover { background: var(--dash-soft); }
+.app-user-menu-item-danger { color: #b84040; }
+.user-menu-icon { width: 16px; display: inline-grid; place-items: center; font-size: 12px; }
 .sidebar-note-icon { display: grid; width: 27px; height: 27px; place-items: center; border-radius: 8px; background: var(--dash-green-soft); color: var(--dash-green); }
 .sidebar-note strong { display: block; margin-top: 11px; font-size: 11px; }
 .sidebar-note p { margin: 5px 0 0; color: var(--dash-muted); font-size: 11px; line-height: 1.6; }
@@ -289,45 +308,6 @@
   .wallet-card { grid-template-columns: auto minmax(0, 1fr); }
   .wallet-disclaimer { grid-column: 1 / -1; }
 }
-@media (max-width: 650px) {
-  .app-sidebar { inset: auto 0 0; width: 100%; height: 67px; flex-direction: row; padding: 6px 8px max(6px, env(safe-area-inset-bottom)); border-top: 1px solid var(--dash-line); border-right: 0; background: rgb(255 255 255 / 96%); }
-  .dashboard-brand, .sidebar-label, .sidebar-note, .sidebar-footer { display: none; }
-  .app-navigation { width: 100%; display: flex; align-items: stretch; justify-content: flex-start; gap: 3px; overflow-x: auto; }
-  .app-nav-link { min-width: 59px; min-height: 52px; flex: 1 0 59px; flex-direction: column; justify-content: center; gap: 3px; padding: 3px 4px; border-radius: 7px; font-size: 8px; }
-  .app-nav-icon { width: auto; font-size: 17px; }
-  .app-main { margin-left: 0; padding-bottom: 76px; }
-  .app-topbar { height: 57px; gap: 10px; padding: 0 15px; }
-  .dashboard-search { width: 100%; height: 35px; }
-  .dashboard-search kbd { display: none; }
-  .topbar-actions { gap: 9px; }
-  .practice-pill { padding: 6px 8px; font-size: 9px; }
-  .profile-button { width: 29px; height: 29px; }
-  .dashboard-content { width: calc(100% - 30px); padding-top: 23px; }
-  .dashboard-welcome { align-items: flex-start; flex-wrap: wrap; margin-bottom: 19px; }
-  .dashboard-welcome h1 { font-size: 26px; }
-  .dashboard-welcome > div > p:last-child { max-width: 290px; font-size: 12px; }
-  .welcome-badge { padding: 8px 10px; font-size: 10px; }
-  .overview-stats { grid-template-columns: 1fr 1fr; gap: 8px; }
-  .overview-shortcuts { grid-template-columns: minmax(0, 1fr); gap: 8px; }
-  .contest-hero { padding: 20px; }
-  .contest-learning-grid { grid-template-columns: minmax(0, 1fr); gap: 9px; }
-  .contest-learning-card { min-height: 0; padding: 17px; }
-  .contest-learning-card > p:not(.dashboard-eyebrow) { min-height: 0; }
-  .contest-coming-soon { gap: 11px; padding: 16px; }
-  .overview-stat { min-height: 94px; padding: 12px; }
-  .overview-stat:first-child { grid-column: 1 / -1; }
-  .overview-stat > strong { font-size: 18px; }
-  .overview-stat .overview-stat-value { font-size: 14px; }
-  .portfolio-card { padding: 17px; }
-  .portfolio-chart { min-height: 105px; }
-  .portfolio-stats { gap: 7px; }
-  .portfolio-stats span { font-size: 9px; }
-  .portfolio-stats strong { font-size: 10px; }
-  .order-card { padding: 16px; }
-  .market-section-heading { align-items: flex-start; flex-direction: column; gap: 8px; }
-  .market-section-heading h2 { font-size: 19px; }
-  .snapshot-date { white-space: normal; }
-  .dashboard-market .market-board-header { align-items: flex-start; flex-direction: column; gap: 8px; padding: 13px; }
   .dashboard-market .market-board-meta { justify-content: flex-start; text-align: left; }
   .dashboard-market .market-status { padding-right: 13px; padding-left: 13px; }
   .dashboard-market .market-retry { margin-right: 13px; margin-left: 13px; }
