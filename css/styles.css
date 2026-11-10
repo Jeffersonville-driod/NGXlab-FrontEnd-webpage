@@ -232,6 +232,22 @@ h2 { margin: 0; font-size: clamp(30px, 3.8vw, 42px); font-weight: 520; letter-sp
 .apps-copy .kicker { margin-bottom: 13px; }
 .apps-copy h2 { max-width: 480px; }
 .apps-copy > p:last-child { max-width: 450px; margin: 14px 0 0; color: var(--muted); font-size: 13px; }
+.apps-copy .apps-service-notice {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 17px 0 0;
+  padding: 10px 13px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--green);
+  border-radius: 7px;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 650;
+}
+.apps-service-notice > span { width: 8px; height: 8px; flex: 0 0 8px; border-radius: 50%; background: #d7923e; box-shadow: 0 0 0 3px rgb(215 146 62 / 15%); }
 .app-platforms { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 18px; isolation: isolate; }
 .app-platforms::before { position: absolute; z-index: -1; inset: 12% 4% 5%; border-radius: 50%; background: radial-gradient(ellipse, #fff 0, #ffffffa8 40%, #ffffff00 73%); content: ""; }
 .app-platform { min-width: 0; display: flex; flex-direction: column; align-items: center; gap: 14px; }

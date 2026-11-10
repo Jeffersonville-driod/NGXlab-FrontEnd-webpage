@@ -74,6 +74,7 @@ if (shell && main && content) {
   investTrigger.className = "app-nav-link app-nav-trigger";
   investTrigger.setAttribute("aria-expanded", "false");
   investTrigger.setAttribute("aria-label", "Expand investment options");
+  investTrigger.setAttribute("aria-controls", "invest-options");
 
   const investMark = document.createElement("span");
   investMark.className = "app-nav-icon";
@@ -86,6 +87,7 @@ if (shell && main && content) {
 
   const investMenu = document.createElement("div");
   investMenu.className = "app-nav-submenu";
+  investMenu.id = "invest-options";
   investMenu.hidden = true;
 
   const investItems = [
@@ -97,27 +99,38 @@ if (shell && main && content) {
   ];
 
   for (const [itemLabel, itemIcon, itemHref] of investItems) {
-    const item = document.createElement("a");
-    item.className = "app-nav-subitem";
-    item.href = itemHref;
+    const isComingSoon = itemLabel !== "Nigerian Stocks";
+    const item = document.createElement(isComingSoon ? "div" : "a");
+    item.className = `app-nav-subitem${isComingSoon ? " is-coming-soon" : ""}`;
+    if (!isComingSoon) item.href = itemHref;
 
     const icon = document.createElement("span");
     icon.className = "app-nav-sub-icon";
     icon.setAttribute("aria-hidden", "true");
     icon.textContent = itemIcon;
 
+    const copy = document.createElement("span");
+    copy.className = "app-nav-sub-copy";
     const label = document.createElement("span");
     label.className = "app-nav-sub-label";
-    const isComingSoon = itemLabel !== "Nigerian Stocks";
-    label.textContent = isComingSoon ? `${itemLabel} (Coming soon)` : itemLabel;
+    label.textContent = itemLabel;
+    copy.append(label);
 
-    item.append(icon, label);
+    if (isComingSoon) {
+      const status = document.createElement("small");
+      status.className = "app-nav-sub-status";
+      status.textContent = "This service will be available soon.";
+      copy.append(status);
+    }
+
+    item.append(icon, copy);
     investMenu.append(item);
   }
 
   investTrigger.addEventListener("click", () => {
     const isOpen = investTrigger.getAttribute("aria-expanded") === "true";
     investTrigger.setAttribute("aria-expanded", String(!isOpen));
+    investTrigger.setAttribute("aria-label", isOpen ? "Expand investment options" : "Collapse investment options");
     investMenu.hidden = isOpen;
     investGroup.classList.toggle("is-open", !isOpen);
   });

@@ -323,8 +323,8 @@ html[data-theme="dark"] .market-practice-button {
 
 html[data-theme="dark"] .dashboard-disclaimer,
 html[data-theme="dark"] .sidebar-note {
-  border-color: #35473a;
-  background: #202d23;
+  border-color: rgb(255 255 255 / 16%);
+  background: rgb(255 255 255 / 6%);
 }
 
 html[data-theme="dark"] .trading-dashboard {
@@ -334,7 +334,7 @@ html[data-theme="dark"] .trading-dashboard {
 }
 
 html[data-theme="dark"] .sidebar-head {
-  border-color: var(--dash-line);
+  border-color: rgb(255 255 255 / 13%);
 }
 
 html[data-theme="dark"] .dashboard-welcome {
@@ -389,8 +389,19 @@ html[data-theme="dark"] .stock-card {
 }
 
 html[data-theme="dark"] .app-sidebar {
-  border-color: var(--dash-line);
-  background: var(--dash-surface);
+  border-color: #214b38;
+  background: linear-gradient(180deg, #102d21 0%, #0b241a 100%);
+}
+
+html[data-theme="dark"] .sidebar-note-icon {
+  background: #d5ed9a;
+  color: #123a2a;
+}
+
+html[data-theme="dark"] .sidebar-close {
+  border-color: rgb(255 255 255 / 18%);
+  background: rgb(255 255 255 / 7%);
+  color: #fff;
 }
 
 html[data-theme="dark"] .app-topbar {
@@ -448,9 +459,11 @@ html[data-theme="dark"] .stock-card:nth-child(4n + 4) .stock-symbol-mark {
 }
 
 html[data-theme="dark"] .app-nav-link.is-active {
-  background: #294435;
-  color: #b5dfc7;
+  background: #d5ed9a;
+  color: #123a2a;
 }
+
+html[data-theme="dark"] .app-nav-link.is-active .app-nav-icon { color: #123a2a; }
 
 html[data-theme="dark"] .portfolio-value,
 html[data-theme="dark"] .wallet-balance {
